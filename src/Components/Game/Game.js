@@ -8,11 +8,15 @@ class Game extends Component {
   constructor() {
     super();
     this.state = {
-      numberOfCategories: null
+      numberOfCategories: 6
     }
   }
 
   //component did mount to fetch questions?
+
+  //handler on selector to update numberOfCategories in state
+
+  //handler on start game button to change route & start game
 
   render() {
       return (
@@ -24,7 +28,12 @@ class Game extends Component {
                 render={() => {
                   return (
                     <section className="categories-selector">
-                      //options: 3 and 6
+                      <label for="numberOfCategories">Number of Categories:</label>
+                      <select name="numberOfCategories" id="numberOfCategories">
+                        <option value="6">6</option>
+                        <option value="3">3</option>
+                      </select>
+                      <button id="startGameBtn">Start Game</button>
                     </section>
                   );
                 }}
