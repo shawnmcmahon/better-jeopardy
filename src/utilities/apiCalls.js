@@ -11,7 +11,8 @@ const getPastGames = () => {
 }
 
 const addGame = (pastGame) => {
-  return fetch(url + '/past-games', {
+  console.log(pastGame)
+  return fetch('http://localhost:3001/past-games', {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json'
