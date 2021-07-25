@@ -2,3 +2,11 @@ main {
   background-color: #17002E;
   color: #ffffff;
 }
+
+button {
+  background-color: #0F70BD;
+  border: 2px solid #ffffff;
+  border-radius: 5px;
+  color: #ffffff;
+  padding: 1%;
+}
