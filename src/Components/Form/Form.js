@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import './Form.css';
-import { addGame, getPastGames } from '../../utilities/apiCalls'
 
 class Form extends Component {
   constructor() {
@@ -28,27 +27,25 @@ class Form extends Component {
     }
     const pastGame = {
       questions: [
-        { question: this.state.q1, correct: true },
-        { question: this.state.q2, correct: true },
-        { question: this.state.q3, correct: true },
+        this.state.q1,
+        this.state.q2,
+        this.state.q3
       ],
       date: this.state.date,
       score: this.state.score
     }
-    addGame(pastGame)
-    .then(response => {
-
-      console.log("it worked")
-      return getPastGames()
+    fetch('http://localhost:3001/past-games', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(pastGame)
     })
-    .then(data => console.log(data))
-    .catch(error => console.log(error))
   }
 
   render() {
     return (
         <form onSubmit={this.handleSubmit}>
-          <br /><br />
           <input
             type="text"
             name="q1"
@@ -84,11 +81,11 @@ class Form extends Component {
             value={this.state.score}
             placeholder="Score"
           />
-        <button onClick={this.handleSubmit}>SUBMIT</button>
+          <button onClick={this.handleSubmit} />
         </form>
       )
     }
   }
-
+}
 
 export default Form;
