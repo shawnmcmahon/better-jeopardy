@@ -5,6 +5,11 @@ const getQuestions = () => {
   .then(checkResponse)
 }
 
+const getPastGames = () => {
+  return fetch(url + '/past-games')
+  .then(checkResponse)
+}
+
 const addGame = (pastGame) => {
   return fetch(url + '/past-games', {
     method: 'POST',
@@ -24,4 +29,4 @@ const checkResponse = (response) => {
   }
 };
 
-export { getQuestions, addGame }
+export { getQuestions, addGame, getPastGames }

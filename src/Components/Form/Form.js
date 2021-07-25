@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import './Form.css';
+import { addGame } from '../../utilities/apiCalls'
 
 class Form extends Component {
   constructor() {
@@ -34,13 +35,13 @@ class Form extends Component {
       date: this.state.date,
       score: this.state.score
     }
-    fetch('http://localhost:3001/past-games', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json'
-      },
-      body: JSON.stringify(pastGame)
+    addGame(pastGame)
+    .then(response => {
+
+      console.log("it worked"!)
+      return getPastGames()
     })
+    .then(data => console.log(data))
   }
 
   render() {
