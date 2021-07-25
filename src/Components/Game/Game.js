@@ -1,5 +1,8 @@
 import React, { Component } from 'react';
+import { BrowserRouter, Route, Switch } from 'react-router-dom';
 import './Game.css';
+
+import GameBoard from '../GameBoard/GameBoard';
 
 class Game extends Component {
   constructor() {
@@ -13,11 +16,30 @@ class Game extends Component {
 
   render() {
       return (
-        //Conditional -- if numberOfCategories null, render this
-        <section className="categories-selector">
-          //options: 3 and 6
-        </section>
-        //otherwise render GameBoard
+        <BrowserRouter>
+          <Switch>
+            <Route
+                exact
+                path='/'
+                render={() => {
+                  return (
+                    <section className="categories-selector">
+                      //options: 3 and 6
+                    </section>
+                  );
+                }}
+              />
+            <Route
+                exact
+                path='/game'
+                render={() => {
+                  return (
+                    <GameBoard />
+                  );
+                }}
+              />
+          </Switch>
+        </BrowserRouter>
     )
   }
 }
