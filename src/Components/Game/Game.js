@@ -43,7 +43,7 @@ class Game extends Component {
                 path='/game'
                 render={() => {
                   return (
-                    <GameBoard />
+                    <GameBoard numberOfCategories={this.state.numberOfCategories} />
                   );
                 }}
               />

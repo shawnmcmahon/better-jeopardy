@@ -3,9 +3,9 @@ import './GameBoard.css';
 
 import Tile from '../Tile/Tile';
 
-const GameBoard = () => {
+const GameBoard = ({numberOfCategories}) => {
   return (
-    <h2>Gameboard</h2>
+    <h2>{numberOfCategories}</h2>
   )
 }
 
