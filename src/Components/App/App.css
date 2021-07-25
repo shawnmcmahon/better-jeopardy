@@ -5,8 +5,13 @@ main {
 
 button {
   background-color: #0F70BD;
-  border: 2px solid #ffffff;
+  border: none;
   border-radius: 5px;
   color: #ffffff;
   padding: 1%;
+}
+
+button:hover {
+  background-color: #ffffff;
+  color: #0F70BD;
 }
