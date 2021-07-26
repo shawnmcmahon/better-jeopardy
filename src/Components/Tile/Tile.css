@@ -3,3 +3,9 @@ article {
   text-align: center;
   padding: 20px;
 }
+
+@media screen and (max-width: 450px) {
+  article {
+    margin-bottom: 5%;
+  }
+}

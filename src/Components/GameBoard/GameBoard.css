@@ -5,3 +5,10 @@
   grid-gap: 2em;
   padding: 2em;
 }
+
+@media screen and (max-width: 450px) {
+  .tiles {
+    display: table;
+    table-layout: auto;
+  }
+}
