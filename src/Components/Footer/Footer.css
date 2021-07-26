@@ -4,6 +4,7 @@ footer {
   width: 100vw;
   background: #0F70BD;
   text-align: center;
+  border-top: 4px solid white;
 }
 
 ul {
