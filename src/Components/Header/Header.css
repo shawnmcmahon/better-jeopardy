@@ -1,0 +1,33 @@
+header {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+h1 {
+  font-weight: 400;
+  margin-bottom: 0.5%;
+}
+
+.api-link {
+  color: #ffffff;
+  display: flex;
+  justify-content: center;
+  text-decoration: none;
+  width: 5%;
+}
+
+.api-link:hover {
+  cursor: pointer;
+  transition: .2s ease all;
+  transform: translateY(-5px);
+}
+
+.api-button {
+  padding: 10% 80%;
+}
+
+.tagline {
+  margin-top: 0.5%;
+}
