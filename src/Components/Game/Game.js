@@ -91,7 +91,7 @@ class Game extends Component {
 
   resetGame = () => {
     this.setState((prevState) => {
-      return ({game: {...prevState.game, categories: [], categoryQuestions: [], numCategories: 0}})
+      return ({game: {...prevState.game, categoryQuestions: [], numCategories: 0}})
     })
   }
 
