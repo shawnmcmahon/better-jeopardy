@@ -6,9 +6,9 @@ const Footer = () => {
     <footer>
     <h3>Authors</h3>
       <ul className="gh-links">
-        <li><a href="https://github.com/hoomberto"><button>Bobby Vasquez</button></a></li>
-        <li><a href="https://github.com/novaraptur"><button>Dean Cook</button></a></li>
-        <li><a href="https://github.com/shawnmcmahon"><button>Shawn McMahon</button></a></li>
+        <li><a href="https://github.com/hoomberto" target="_blank"><button>Bobby Vasquez</button></a></li>
+        <li><a href="https://github.com/novaraptur" target="_blank"><button>Dean Cook</button></a></li>
+        <li><a href="https://github.com/shawnmcmahon" target="_blank"><button>Shawn McMahon</button></a></li>
       </ul>
     </footer>
   )
