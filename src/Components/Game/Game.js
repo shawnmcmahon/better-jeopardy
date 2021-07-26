@@ -3,7 +3,7 @@ import { BrowserRouter, Route, Switch } from 'react-router-dom';
 import './Game.css';
 
 import GameBoard from '../GameBoard/GameBoard';
-import { getQuestion, getQuestions } from '../../utilities/apiCalls';
+import { getQuestions } from '../../utilities/apiCalls';
 
 class Game extends Component {
   constructor() {

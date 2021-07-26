@@ -1,12 +1,12 @@
 const url = 'http://localhost:3001'
 
 const getQuestions = () => {
-  return fetch(url + '/questions')
+  return fetch('https://better-jeopardy-api.herokuapp.com/questions')
   .then(checkResponse)
 }
 
 const getPastGames = () => {
-  return fetch(url + '/past-games')
+  return fetch('https://better-jeopardy-api.herokuapp.com/past-games')
   .then(checkResponse)
 }
 
