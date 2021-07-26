@@ -121,8 +121,7 @@ class Game extends Component {
                         <option value="3">3</option>
                         <option value="6">6</option>
                       </select>
-                      <button id="startGameBtn">Start Game</button>
-                      <button onClick={this.getQuestionsByCategory}>TEST BUTTON</button>
+                      <button id="startGameBtn" onClick={this.getQuestionsByCategory}>START GAME</button>
                       </section>
                       }
                     </div>
