@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { BrowserRouter, Route, Switch } from 'react-router-dom';
+import { BrowserRouter, Route, Switch, Redirect } from 'react-router-dom';
 import './Game.css';
 
 import GameBoard from '../GameBoard/GameBoard';
@@ -99,6 +99,7 @@ class Game extends Component {
                 render={() => {
                   return (
                     <div>
+                      { !!this.state.game.categoryQuestions.length && <Redirect to="/game" />}
                       { !!this.state.questions.length &&
                       <section className="categories-selector">
                       <label for="numberOfCategories">Number of Categories:</label>
