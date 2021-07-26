@@ -87,6 +87,14 @@ class Game extends Component {
     })
   }
 
+  // Reset function to cancel current game
+
+  resetGame = () => {
+    this.setState((prevState) => {
+      return ({game: {...prevState.game, categories: [], categoryQuestions: [], numCategories: 0}})
+    })
+  }
+
   //handler on start game button to change route & start game
 
   render() {
@@ -129,7 +137,7 @@ class Game extends Component {
                   return (
                     <>
                     {!this.state.game.categoryQuestions.length && <Redirect exact to="/" />}
-                    <GameBoard questions={this.state.game.categoryQuestions} />
+                    <GameBoard questions={this.state.game.categoryQuestions} reset={this.resetGame}/>
                     </>
                   );
                 }}

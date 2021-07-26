@@ -3,6 +3,10 @@ main {
   color: #ffffff;
 }
 
+header > h2 {
+  margin: 0;
+}
+
 button {
   background-color: #0F70BD;
   border: none;

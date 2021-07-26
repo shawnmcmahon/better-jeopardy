@@ -3,7 +3,7 @@ import './GameBoard.css';
 
 import Tile from '../Tile/Tile';
 
-const GameBoard = ({questions}) => {
+const GameBoard = ({questions, reset}) => {
   const tiledQuestions = questions.map(question => {
     return <Tile
       id={question.question_id}
@@ -15,7 +15,10 @@ const GameBoard = ({questions}) => {
   })
 
   return (
+    <>
+    <button onClick={reset}>EXIT GAME</button>
     <div className="tiles">{tiledQuestions}</div>
+    </>
   )
 }
 
