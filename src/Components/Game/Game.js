@@ -3,16 +3,23 @@ import { BrowserRouter, Route, Switch } from 'react-router-dom';
 import './Game.css';
 
 import GameBoard from '../GameBoard/GameBoard';
+import { getQuestion, getQuestions } from '../../utilities/apiCalls';
 
 class Game extends Component {
   constructor() {
     super();
     this.state = {
-      numberOfCategories: 6
+      numberOfCategories: 6,
+      questions: []
     }
   }
 
   //component did mount to fetch questions?
+  componentDidMount = () =>  {
+    getQuestions()
+      .then(data => this.setState({questions: data.questions}))
+  }
+
 
   //handler on selector to update numberOfCategories in state
 
