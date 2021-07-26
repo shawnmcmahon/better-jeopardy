@@ -1,9 +1,11 @@
 import React from 'react';
 import './GameBoard.css';
 
-const GameBoard = () => {
+import Tile from '../Tile/Tile';
+
+const GameBoard = ({numberOfCategories}) => {
   return (
-    <h2>Gameboard</h2>
+    <h2>{numberOfCategories}</h2>
   )
 }
 

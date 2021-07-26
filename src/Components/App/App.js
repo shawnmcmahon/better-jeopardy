@@ -1,19 +1,23 @@
-import React, { Component } from 'react';
+import React from 'react';
 import './App.css';
-import Form from '../Form/Form'
 
-class App extends Component {
-  constructor() {
-    super();
-  }
+import Header from '../Header/Header';
+import Game from '../Game/Game';
 
-  render() {
-      return (
-      <div className="App">
-        <Form />
-      </div>
-    );
-  }
+const App = () => {
+  return (
+    <main>
+      <Header />
+      <Game />
+      {
+        //App renders:
+          //Game
+            //Game renders choose difficulty form, then game board
+              //game board renders questions & answers
+          //Header at some point
+      }
+    </main>
+  );
 }
 
 export default App;
