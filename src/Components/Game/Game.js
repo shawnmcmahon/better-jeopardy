@@ -129,7 +129,7 @@ class Game extends Component {
                   return (
                     <>
                     {!this.state.game.categoryQuestions.length && <Redirect exact to="/" />}
-                    <GameBoard numberOfCategories={this.state.game.categories} />
+                    <GameBoard questions={this.state.game.categoryQuestions} />
                     </>
                   );
                 }}
