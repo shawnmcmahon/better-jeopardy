@@ -36,32 +36,10 @@ class Game extends Component {
 
   //handler on selector to update numberOfCategories in state
   updateNumberOfCategories = (event) => {
-
-    this.populateRandomCategories(parseInt(event.target.value))
-
-    // this.setState((prevState) => {
-    //
-    //   return ({game: {...prevState.game, numCategories: event.target.value}})
-    //
-    // })
-    // update categories
-  }
-
-  populateRandomCategories = () => {
-    const cats = this.state.game.categories;
-    console.log('cats', cats)
-    const generatedCategories = []
-    console.log(this)
-    while (generatedCategories.length < parseInt(this.state.game.numCategories)) {
-      const randomCategory =  cats[Math.floor(Math.random() * cats.length)]
-      console.log('randomCategory', randomCategory)
-      if (!generatedCategories.includes(randomCategory)) {
-        generatedCategories.push(randomCategory)
-      }
+    if (!event.target.value) {
+      return
     }
-    console.log('generatedCategories', generatedCategories)
-
-
+    this.populateRandomCategories(parseInt(event.target.value))
   }
 
   //function that inputs all available categories to state
@@ -87,10 +65,26 @@ class Game extends Component {
         generatedCategories.push(randomCategory)
       }
     }
-    console.log(generatedCategories)
-    // this.setState((prevState) => {
-    //   return ({game: {...prevState.game, categories: categories}})
-    // })
+    this.setState((prevState) => {
+      return ({game: {...prevState.game, selectedCategories: generatedCategories}})
+    })
+  }
+
+  // function that gets questions based on categoryQuestions
+
+  getQuestionsByCategory = () => {
+    let relevantQuestions = [];
+    if (!this.state.game.selectedCategories.length) {
+      return
+    }
+    this.state.game.selectedCategories.forEach(category => {
+      let categoryQuestions = this.state.questions.filter(question => question.category === category)
+      relevantQuestions = [...relevantQuestions, ...categoryQuestions]
+    })
+    // console.log(relevantQuestions)
+    this.setState((prevState) => {
+      return ({game: {...prevState.game, categoryQuestions: relevantQuestions}})
+    })
   }
 
   //handler on start game button to change route & start game
@@ -113,10 +107,13 @@ class Game extends Component {
                           id="numberOfCategories"
                           onChange={(event) => this.updateNumberOfCategories(event)}
                           >
-                        <option value="6">6</option>
+                        <option></option>
+                        <option value="2">2</option>
                         <option value="3">3</option>
+                        <option value="6">6</option>
                       </select>
                       <button id="startGameBtn">Start Game</button>
+                      <button onClick={this.getQuestionsByCategory}>TEST BUTTON</button>
                       </section>
                       }
                     </div>
