@@ -36,30 +36,18 @@ class Game extends Component {
 
   //handler on selector to update numberOfCategories in state
   updateNumberOfCategories = (event) => {
-    this.setState((prevState) => {
-      return ({game: {...prevState.game, numCategories: event.target.value}})
-    // update categories 
+
+    this.populateRandomCategories(parseInt(event.target.value))
+
+    // this.setState((prevState) => {
+    //
+    //   return ({game: {...prevState.game, numCategories: event.target.value}})
+    //
+    // })
+    // update categories
   }
 
-  //function that inputs all available categories to state
-  populateAllCategories = () => {
-    const categories = this.state.questions.reduce((allCategories, currentQuestion) => {
-        if (!allCategories.includes(currentQuestion.category)) {
-          allCategories.push(currentQuestion.category)
-        }
-        return allCategories
-    }, [])
-    console.log('categories', categories)
-    this.setState((prevState) => {
-
-      return ({game: {...prevState.game, categories: categories}})
-    
-    })
-  }
-
-  // function that picks three random categories 
-  populateRandomCategories = (event) => {
-    this.updateNumberOfCategories(event)
+  populateRandomCategories = () => {
     const cats = this.state.game.categories;
     console.log('cats', cats)
     const generatedCategories = []
@@ -76,6 +64,35 @@ class Game extends Component {
 
   }
 
+  //function that inputs all available categories to state
+  populateAllCategories = () => {
+    const categories = this.state.questions.reduce((allCategories, currentQuestion) => {
+        if (!allCategories.includes(currentQuestion.category)) {
+          allCategories.push(currentQuestion.category)
+        }
+        return allCategories
+    }, [])
+    this.setState((prevState) => {
+      return ({game: {...prevState.game, categories: categories}})
+    })
+  }
+
+  // function that picks three random categories
+  populateRandomCategories = (num) => {
+    const cats = this.state.game.categories;
+    const generatedCategories = []
+    while (generatedCategories.length < num) {
+      const randomCategory =  cats[Math.floor(Math.random() * cats.length)]
+      if (!generatedCategories.includes(randomCategory)) {
+        generatedCategories.push(randomCategory)
+      }
+    }
+    console.log(generatedCategories)
+    // this.setState((prevState) => {
+    //   return ({game: {...prevState.game, categories: categories}})
+    // })
+  }
+
   //handler on start game button to change route & start game
 
   render() {
@@ -88,13 +105,13 @@ class Game extends Component {
                 render={() => {
                   return (
                     <div>
-                      { !!this.state.questions.length && 
+                      { !!this.state.questions.length &&
                       <section className="categories-selector">
                       <label for="numberOfCategories">Number of Categories:</label>
-                      <select 
+                      <select
                           name="numberOfCategories"
                           id="numberOfCategories"
-                          onChange={(event) => this.populateRandomCategories(event)}
+                          onChange={(event) => this.updateNumberOfCategories(event)}
                           >
                         <option value="6">6</option>
                         <option value="3">3</option>
