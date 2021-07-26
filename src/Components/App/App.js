@@ -3,14 +3,12 @@ import './App.css';
 
 import Header from '../Header/Header';
 import Game from '../Game/Game';
-import Footer from '../Footer/Footer';
 
 const App = () => {
   return (
     <main>
       <Header />
       <Game />
-      <Footer />
       {
         //App renders:
           //Game
