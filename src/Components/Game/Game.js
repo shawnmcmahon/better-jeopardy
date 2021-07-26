@@ -127,7 +127,10 @@ class Game extends Component {
                 path='/game'
                 render={() => {
                   return (
-                    <GameBoard numberOfCategories={this.state.numberOfCategories} />
+                    <>
+                    {!this.state.game.categoryQuestions.length && <Redirect exact to="/" />}
+                    <GameBoard numberOfCategories={this.state.game.categories} />
+                    </>
                   );
                 }}
               />
