@@ -4,7 +4,8 @@ import './Header.css';
 const Header = () => {
   return (
     <header>
-      <h2>HEADER</h2>
+      <h1>Better Jeopardy!</h1>
+      <p className="tagline">Jeopardy for people who aren't good at Jeopardy.</p>
     </header>
   )
 }
