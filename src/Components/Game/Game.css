@@ -1,0 +1,19 @@
+select {
+  background: #0F70BD;
+  color: white;
+  width: 30%;
+  text-indent: 50%;
+  font-size: 18px;
+  margin: 1% 0;
+}
+
+.categories-selector {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.categories-selector button {
+  width: 20%;
+  margin: 1% 0;
+}

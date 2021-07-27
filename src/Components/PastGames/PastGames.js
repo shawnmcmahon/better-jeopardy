@@ -1,9 +1,18 @@
 import React, { Component } from 'react';
 import './PastGames.css';
+import { pastGames } from '../../utilities/apiCalls'
 
 class PastGames extends Component {
   constructor() {
-    super();
+    super()
+      this.state = {
+        pastGames: []
+      }
+  }
+
+  componentDidMount = () => {
+    pastGames()
+      .then(data => this.setState({pastGames: data.pastGames}))
   }
 
   render() {

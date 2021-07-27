@@ -1,10 +1,11 @@
 import React from 'react';
 import './Tile.css';
 
-const Tile = () => {
+const Tile = ({id, q, correct, incorrect, prize}) => {
   return (
     <article>
-      <h2>TILE</h2>
+      <h2>${prize}</h2>
+      <p>{q}</p>
     </article>
   )
 }
