@@ -1,8 +1,103 @@
 {
   "date": "Wednesday, July 28, 2021 10:10 AM",
   "numCategories": "3",
-  "selectedCategories": "Skiing, Literary Terms, 20th Century TV",
-  "categoryQuestions": "this.state.game.categoryQuestions",
-  "answeredQuestions": "this.state.game.answeredQuestions",
+  "selectedCategories": [
+    "Skiing, Literary Terms, 20th Century TV"
+  ],
+  "categoryQuestions": {
+    "questions": [
+      {
+        "question_id": 1,
+        "question": "The T-bar, the chair & the gondola are 3 types of these devices that transport skiers",
+        "correct_answer": "Lift",
+        "incorrect_answers": [
+          "Conveyors",
+          "Carriers",
+          "Hitches"
+        ],
+        "prize": 100,
+        "show_number": 1739,
+        "air_date": "03/05/1992",
+        "category": "Skiing"
+      },
+      {
+        "question_id": 2,
+        "question": "Skiers wear these in part to reduce glare & prevent eyestrain",
+        "correct_answer": "Sunglasses",
+        "incorrect_answers": [
+          "Hat",
+          "Headphones",
+          "Contacts"
+        ],
+        "prize": 200,
+        "show_number": 1739,
+        "air_date": "03/05/1992",
+        "category": "Skiing"
+      },
+      {
+        "question_id": 3,
+        "question": "\"Cosmetic\" name of the light, dry snow that is ideal for skiing",
+        "correct_answer": "Powder",
+        "incorrect_answers": [
+          "Spray",
+          "Mist",
+          "Debris"
+        ],
+        "prize": 300,
+        "show_number": 1739,
+        "air_date": "03/05/1992",
+        "category": "Skiing"
+      }
+    ]
+  },
+  "answeredQuestions": {
+    "questions": [
+      {
+        "question_id": 1,
+        "question": "The T-bar, the chair & the gondola are 3 types of these devices that transport skiers",
+        "correct_answer": "Lift",
+        "incorrect_answers": [
+          "Conveyors",
+          "Carriers",
+          "Hitches"
+        ],
+        "prize": 100,
+        "show_number": 1739,
+        "air_date": "03/05/1992",
+        "category": "Skiing",
+        "answered_correct": true
+      },
+      {
+        "question_id": 2,
+        "question": "Skiers wear these in part to reduce glare & prevent eyestrain",
+        "correct_answer": "Sunglasses",
+        "incorrect_answers": [
+          "Hat",
+          "Headphones",
+          "Contacts"
+        ],
+        "prize": 200,
+        "show_number": 1739,
+        "air_date": "03/05/1992",
+        "category": "Skiing",
+        "answered_correct": false
+      },
+      {
+        "question_id": 3,
+        "question": "\"Cosmetic\" name of the light, dry snow that is ideal for skiing",
+        "correct_answer": "Powder",
+        "incorrect_answers": [
+          "Spray",
+          "Mist",
+          "Debris"
+        ],
+        "prize": 300,
+        "show_number": 1739,
+        "air_date": "03/05/1992",
+        "category": "Skiing",
+        "answered_correct": false
+      }
+    ]
+  },
   "userScore": "1000"
 }
