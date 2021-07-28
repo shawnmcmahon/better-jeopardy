@@ -39,7 +39,13 @@ class Game extends Component {
   pickQuestion = (selected) => {
     let found = this.state.game.questions.find(question =>  question.question.id === selected)
     this.state.game.currentQuestion = found; 
-    this.presentChoices();
+    this.presentChoices(); 
+  }
+
+  presentChoices = () => {
+    const { correct_answer, incorrect_answers, question} = this.state.game.currentQuestion; 
+    let answers = [correct_answer, ...incorrect_answers]
+    answers.forEach(answer => console.log(answer))
   }
 
 
