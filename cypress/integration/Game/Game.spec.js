@@ -66,6 +66,11 @@ describe('Game', () => {
       cy.get('[data-cy=exit]').click()
   })
 
+  it('Should have a properly working network requests', () => {
+    cy.intercept('GET', 'https://better-jeopardy-api.herokuapp.com/api/v1/questions', { fixture: 'allQuestions.json' })
+  })
+      
+
 
 
 })
