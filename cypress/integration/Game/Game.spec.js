@@ -19,6 +19,7 @@ describe('Game', () => {
     cy.get('select')
       .select('2')
     cy.get('button').contains('START GAME').click()
+    cy.url().should('eq', 'http://localhost:3000/game')
     cy.get('.tiles')
       .find('article')
       .should('have.length', 10)
@@ -57,13 +58,12 @@ describe('Game', () => {
   })
 
   it('Should have an exit game button', () => {
-    // cy.get('button').click()
     cy.get('select')
       .select('2')
       cy.get('button').contains('START GAME').click()
       cy.get('[data-cy=exit]').click()
-
   })
+
 
 
 })
