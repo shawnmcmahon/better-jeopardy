@@ -4,6 +4,7 @@ import './Game.css';
 
 import Question from '../Question/Question';
 import GameBoard from '../GameBoard/GameBoard';
+import Results from '../Results/Results';
 import { getQuestions, addGame } from '../../utilities/apiCalls';
 import { getRandomIndex } from '../../utilities/utils';
 const dayjs = require('dayjs');
@@ -62,8 +63,6 @@ class Game extends Component {
     this.state.game.categoryQuestions = this.state.game.categoryQuestions.filter(question => question.question_id !== this.currentQuestion.question_id)
   }
 
-
-
   // function that ends the game
 
   checkIfOver = () => {
@@ -84,8 +83,6 @@ class Game extends Component {
       console.log('Next Question');
     }
   }
-
-
 
   //handler on selector to update numberOfCategories in state
   updateNumberOfCategories = (event) => {
@@ -164,6 +161,15 @@ class Game extends Component {
                   <GameBoard questions={this.state.game.categoryQuestions} reset={this.resetGame}/>
                   </>
                 );
+              }}
+            />
+            <Route
+              exact
+              path='/game/:question_id/results'
+              render={({match}) => {
+                return (
+                  <Results selectedQuestion={parseInt(match.params.question_id)} />
+                )
               }}
             />
             <Route

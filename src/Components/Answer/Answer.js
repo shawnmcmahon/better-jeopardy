@@ -1,12 +1,14 @@
 import React from 'react';
+import { NavLink } from 'react-router-dom';
 import './Answer.css';
 
-const Answer = ({answer}) => {
-  console.log(answer);
+const Answer = (props) => {
   return (
-    <button className="answer-button">
-      <p>{answer}</p>
-    </button>
+    <NavLink to={`/game/${props.id}/results`}>
+      <button className="answer-button">
+        <p>{props.answer}</p>
+      </button>
+    </NavLink>
   )
 }
 

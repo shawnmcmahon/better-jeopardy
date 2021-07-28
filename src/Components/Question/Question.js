@@ -24,16 +24,14 @@ class Question extends Component {
     incorrect_answers.forEach((answer) => {
       answers.push(answer);
     })
-    console.log("BEFORE SHUFFLE: " + answers);
     for (let i = answers.length - 1; i > 0; i--) {
       const j = Math.floor(Math.random() * (i + 1));
       [answers[i], answers[j]] = [answers[j], answers[i]];
     }
-    console.log("AFTER SHUFFLE: " + answers);
     return answers.map((answer) => {
       return (
         <div className="answer-choices">
-          <Answer answer={answer} />
+          <Answer answer={answer} id={this.state.question.question_id} />
         </div>
       )
     });
