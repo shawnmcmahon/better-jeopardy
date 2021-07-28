@@ -1,4 +1,4 @@
-import React, { Component, useEffect } from 'react';
+import React, { Component, useEffect, useState } from 'react';
 import { BrowserRouter, Route, Switch, Redirect } from 'react-router-dom';
 import './Game.css';
 
@@ -9,6 +9,19 @@ import { getQuestions, addGame } from '../../utilities/apiCalls';
 import { getRandomIndex } from '../../utilities/utils';
 const dayjs = require('dayjs');
 
+// const [numCategories, setNumCategories] = useState(0);
+// const [originalQuestions, setOriginalQuestions] = useState([]);
+// const [selectedCategories, setSelectedCategories] = useState([]);
+// const [answeredQuestions, setAnsweredQuestions] = useState([]);
+// const [currentQuestions, setCurrentQuestions] = useState({});
+// const [roundOver, setRoundOver] = useState(false);
+// const [hasAnswered, setHasAnswered] = useState(false);
+// const [categories, setCategories] = useState(0);
+// const [userScore, setUserScore] = useState(0);
+
+
+
+
 class Game extends Component {
   constructor() {
     super();
@@ -16,6 +29,7 @@ class Game extends Component {
       questions: [],
       game: {
         numCategories: 0,
+        originalQuestions: [],
         categories: [],
         selectedCategories: [],
         categoryQuestions: [],
@@ -60,28 +74,42 @@ class Game extends Component {
     })
   }
 
-  pickAnswer = (choice) => {
-    if (choice === this.state.game.currentQuestion.correct_answer) {
-      // this.state.game.userScore += this.state.game.currentQuestion.prize
-      let correct = {...this.state.game.currentQuestion, answered_correct: true}
-      // this.state.game.answeredQuestions.push(correct);
-      this.setState((prevState) => {
-        return ({game: {...prevState.game, answeredQuestions: [...prevState.game.answeredQuestions, correct], userScore: (prevState.game.userScore += parseInt(this.state.game.currentQuestion.prize))}})
-      })
-    } else {
-      let incorrect = {...this.state.game.currentQuestion, answered_correct: false}
-      // this.state.game.answeredQuestions.push(incorrect)
-      this.setState((prevState) => {
-        return ({game: {...prevState.game, answeredQuestions: [...prevState.game.answeredQuestions, incorrect]}})
-      })
-    }
-    this.checkIfOver();
-    console.log(this.state.game)
+  updateQuestions = () => {
     let newQuestions = this.state.game.categoryQuestions.filter(question => question.question_id !== this.state.game.currentQuestion.question_id)
-    this.state.game.categoryQuestions =
     this.setState((prevState) => {
       return ({game: {...prevState.game, categoryQuestions: newQuestions, hasAnswered: true}})
     })
+  }
+
+  evaluateChoice = (choice) => {
+    if (choice === this.state.game.currentQuestion.correct_answer) {
+      let correct = {...this.state.game.currentQuestion, answered_correct: true}
+      this.setState((prevState) => ({game: {...prevState.game, answeredQuestions: [...prevState.game.answeredQuestions, correct], userScore: (prevState.game.userScore += parseInt(this.state.game.currentQuestion.prize))}}))
+    } else {
+      let incorrect = {...this.state.game.currentQuestion, answered_correct: false}
+      this.setState((prevState) => ( { game: {...prevState.game, answeredQuestions: [...prevState.game.answeredQuestions, incorrect] } }, this.updateQuestions()))
+    }
+    // this.updateQuestions();
+  }
+
+  pickAnswer = (choice) => {
+    // if (choice === this.state.game.currentQuestion.correct_answer) {
+    //   let correct = {...this.state.game.currentQuestion, answered_correct: true}
+    //   this.setState((prevState) => ({game: {...prevState.game, answeredQuestions: [...prevState.game.answeredQuestions, correct], userScore: (prevState.game.userScore += parseInt(this.state.game.currentQuestion.prize))}}))
+    // } else {
+    //   let incorrect = {...this.state.game.currentQuestion, answered_correct: false}
+    //   this.setState((prevState) => ( { game: {...prevState.game, answeredQuestions: [...prevState.game.answeredQuestions, incorrect] } }))
+    // }
+    this.evaluateChoice(choice)
+    // this.updateQuestions();
+    this.checkIfOver();
+    // setTimeout(this.updateQuestions(), 50);
+    // setTimeout(this.checkIfOver(), 75);
+    console.log(this.state.game.answeredQuestions)
+    // let newQuestions = this.state.game.categoryQuestions.filter(question => question.question_id !== this.state.game.currentQuestion.question_id)
+    // this.setState((prevState) => {
+    //   return ({game: {...prevState.game, categoryQuestions: newQuestions, hasAnswered: true}})
+    // })
     setTimeout(this.letUserPickNext, 100);
   }
 
@@ -94,10 +122,10 @@ class Game extends Component {
   // function that ends the game
 
   checkIfOver = () => {
-    if (this.state.game.answeredQuestions.length === this.state.game.categoryQuestions.length) {
+    if (this.state.game.answeredQuestions.length === (this.state.game.originalQuestions.length)) {
       this.state.game.roundOver = true;
       const pastGame = {
-        date: dayjs('LLLL'),
+        date: dayjs().$d,
         numCategories: this.state.game.numCategories,
         selectedCategories: this.state.game.selectedCategories,
         categoryQuestions: this.state.game.categoryQuestions,
@@ -106,6 +134,7 @@ class Game extends Component {
       }
       // addGame(pastGame);
       console.log('Game over')
+      console.log(pastGame)
       this.resetGame();
     } else {
       console.log('Next Question');
@@ -161,15 +190,16 @@ class Game extends Component {
     })
     // console.log(relevantQuestions)
     this.setState((prevState) => {
-      return ({game: {...prevState.game, categoryQuestions: relevantQuestions}})
+      return ({game: {...prevState.game, categoryQuestions: relevantQuestions, originalQuestions: relevantQuestions}})
     })
   }
 
   // Reset function to cancel current game
 
   resetGame = () => {
+    console.log("Resetting Game!!")
     this.setState((prevState) => {
-      return ({game: {...prevState.game, categoryQuestions: [], numCategories: 0}})
+      return ({game: {...prevState.game, categoryQuestions: [], numCategories: 0, userScore: 0, selectedCategories: []}})
     })
   }
 
