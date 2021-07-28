@@ -12,13 +12,13 @@ class Game extends Component {
     super();
     this.state = {
       questions: [],
-      currentQuestion: {},
       game: {
         numCategories: 0,
         categories: [],
         selectedCategories: [],
         categoryQuestions: [],
         nextQuestions: []
+        currentQuestion: {},
         roundOver: false,
         answeredQuestions: [],
         userScore: 0
@@ -46,6 +46,19 @@ class Game extends Component {
     const { correct_answer, incorrect_answers, question} = this.state.game.currentQuestion; 
     let answers = [correct_answer, ...incorrect_answers]
     answers.forEach(answer => console.log(answer))
+  }
+
+  pickAnswer = (choice) => {
+    if (choice = this.state.game.currentQuestion.correct_answer) {
+      this.game.userScore += this.state.game.currentQuestion.prize
+      let correct = {...this.game.state.currentQuestion, answered_correct: true}
+      this.state.game.answeredQuestions.push(correct);
+    } else {
+      let incorrect = {...this.state.game.currentQuestion, answered_correct: false}
+      this.state.gane.answeredQuestions.push(incorrect)
+    }
+    this.checkIfOver();
+    this.state.game.categoryQuestions = this.state.game.categoryQuestions.filter(question => question.question_id !== this.currentQuestion.question_id)
   }
 
 
