@@ -5,6 +5,11 @@ const getQuestions = () => {
   .then(checkResponse)
 }
 
+const getSingleQuestion = (id) => {
+  return fetch(`https://better-jeopardy-api.herokuapp.com/api/v1/questions/${id}`)
+    .then(checkResponse)
+}
+
 const getPastGames = () => {
   return fetch('https://better-jeopardy-api.herokuapp.com/api/v1/past-games')
   .then(checkResponse)
@@ -30,4 +35,4 @@ const checkResponse = (response) => {
   }
 };
 
-export { getQuestions, addGame, getPastGames }
+export { getQuestions, addGame, getPastGames, getSingleQuestion }
