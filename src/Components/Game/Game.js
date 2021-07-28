@@ -119,7 +119,7 @@ class Game extends Component {
               path='/game/:question_id'
               render={({match}) => {
                 return (
-                  <Question selectedQuestion={parseInt(match)} />
+                  <Question selectedQuestion={parseInt(match.params.question_id)} />
                 );
               }}
             />

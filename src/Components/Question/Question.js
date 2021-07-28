@@ -1,9 +1,9 @@
 import React from 'react';
 import './Question.css';
 
-const Question = (selectedQuestion) => {
+const Question = ({selectedQuestion}) => {
   return (
-    <h3>Question</h3>
+  <h3>Question {selectedQuestion}</h3>
   )
 }
 
