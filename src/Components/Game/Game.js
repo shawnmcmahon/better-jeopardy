@@ -2,7 +2,9 @@ import React, { Component } from 'react';
 import { BrowserRouter, Route, Switch, Redirect } from 'react-router-dom';
 import './Game.css';
 
+import Question from '../Question/Question';
 import GameBoard from '../GameBoard/GameBoard';
+import Results from '../Results/Results';
 import { getQuestions, addGame } from '../../utilities/apiCalls';
 import { getRandomIndex } from '../../utilities/utils';
 const dayjs = require('dayjs');
@@ -35,15 +37,15 @@ class Game extends Component {
       })
   }
 
-  // Pick question 
+  // Pick question
   pickQuestion = (selected) => {
     let found = this.state.game.questions.find(question =>  question.question.id === selected)
-    this.state.game.currentQuestion = found; 
-    this.presentChoices(); 
+    this.state.game.currentQuestion = found;
+    this.presentChoices();
   }
 
   presentChoices = () => {
-    const { correct_answer, incorrect_answers, question} = this.state.game.currentQuestion; 
+    const { correct_answer, incorrect_answers, question} = this.state.game.currentQuestion;
     let answers = [correct_answer, ...incorrect_answers]
     answers.forEach(answer => console.log(answer))
   }
@@ -55,25 +57,23 @@ class Game extends Component {
       this.state.game.answeredQuestions.push(correct);
     } else {
       let incorrect = {...this.state.game.currentQuestion, answered_correct: false}
-      this.state.gane.answeredQuestions.push(incorrect)
+      this.state.game.answeredQuestions.push(incorrect)
     }
     this.checkIfOver();
     this.state.game.categoryQuestions = this.state.game.categoryQuestions.filter(question => question.question_id !== this.currentQuestion.question_id)
   }
 
-
-
   // function that ends the game
 
   checkIfOver = () => {
     if (this.state.game.answeredQuestions.length === this.state.game.categoryQuestions.length) {
-      roundOver = true;
-      const pastGame = { 
+      this.state.game.roundOver = true;
+      const pastGame = {
         date: dayjs('LLLL'),
-        numCategories: this.state.game.numCategories, 
-        selectedCategories: this.state.game.selectedCategories, 
-        categoryQuestions: this.state.game.categoryQuestions,  
-        answeredQuestions: this.state.game.answeredQuestions, 
+        numCategories: this.state.game.numCategories,
+        selectedCategories: this.state.game.selectedCategories,
+        categoryQuestions: this.state.game.categoryQuestions,
+        answeredQuestions: this.state.game.answeredQuestions,
         userScore: this.state.game.userScore,
       }
       // addGame(pastGame);
@@ -83,8 +83,6 @@ class Game extends Component {
       console.log('Next Question');
     }
   }
-
-
 
   //handler on selector to update numberOfCategories in state
   updateNumberOfCategories = (event) => {
@@ -153,6 +151,27 @@ class Game extends Component {
       return (
         <BrowserRouter>
           <Switch>
+          <Route
+              exact
+              path='/game'
+              render={() => {
+                return (
+                  <>
+                  {!this.state.game.categoryQuestions.length && <Redirect exact to="/" />}
+                  <GameBoard questions={this.state.game.categoryQuestions} reset={this.resetGame}/>
+                  </>
+                );
+              }}
+            />
+            <Route
+              exact
+              path='/game/:question_id'
+              render={({match}) => {
+                return (
+                  <Question selectedQuestion={parseInt(match.params.question_id)} pickAnswer={this.pickAnswer} />
+                );
+              }}
+            />
             <Route
                 exact
                 path='/'
@@ -178,18 +197,6 @@ class Game extends Component {
                       }
                     </div>
 
-                  );
-                }}
-              />
-            <Route
-                exact
-                path='/game'
-                render={() => {
-                  return (
-                    <>
-                    {!this.state.game.categoryQuestions.length && <Redirect exact to="/" />}
-                    <GameBoard questions={this.state.game.categoryQuestions} reset={this.resetGame}/>
-                    </>
                   );
                 }}
               />
