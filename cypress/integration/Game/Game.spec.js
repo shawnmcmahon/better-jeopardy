@@ -49,7 +49,7 @@ describe('Game', () => {
       .select('2')
     cy.get('button').contains('START GAME').click()
     cy.get('article').then(($el) => {
-      Cypress.dom.isElement($el) // true
+      Cypress.dom.isElement($el)
       Cypress.dom.isFocusable($el)
     })
     cy.get('article')
@@ -57,8 +57,12 @@ describe('Game', () => {
   })
 
   it('Should have an exit game button', () => {
-    // cy.contains('EXIT GAME')
-    cy.get('[data-cy=exit]').click()
+    // cy.get('button').click()
+    cy.get('select')
+      .select('2')
+      cy.get('button').contains('START GAME').click()
+      cy.get('[data-cy=exit]').click()
+
   })
 
 
