@@ -35,7 +35,12 @@ class Game extends Component {
       })
   }
 
-  // Pick answer
+  // Pick question 
+  pickQuestion = (selected) => {
+    let found = this.state.game.questions.find(question =>  question.question.id === selected)
+    this.state.game.currentQuestion = found; 
+    this.presentChoices();
+  }
 
 
 
