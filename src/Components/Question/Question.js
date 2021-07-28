@@ -30,8 +30,8 @@ class Question extends Component {
     }
     return answers.map((answer) => {
       return (
-        <div className="answer-choices">
-          <Answer answer={answer} id={this.state.question.question_id} />
+        <div className="answer-choices" >
+          <Answer answer={answer} pickAnswer={this.props.pickAnswer} />
         </div>
       )
     });

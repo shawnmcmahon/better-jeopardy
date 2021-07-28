@@ -57,7 +57,7 @@ class Game extends Component {
       this.state.game.answeredQuestions.push(correct);
     } else {
       let incorrect = {...this.state.game.currentQuestion, answered_correct: false}
-      this.state.gane.answeredQuestions.push(incorrect)
+      this.state.game.answeredQuestions.push(incorrect)
     }
     this.checkIfOver();
     this.state.game.categoryQuestions = this.state.game.categoryQuestions.filter(question => question.question_id !== this.currentQuestion.question_id)
@@ -165,19 +165,10 @@ class Game extends Component {
             />
             <Route
               exact
-              path='/game/:question_id/results'
-              render={({match}) => {
-                return (
-                  <Results selectedQuestion={parseInt(match.params.question_id)} />
-                )
-              }}
-            />
-            <Route
-              exact
               path='/game/:question_id'
               render={({match}) => {
                 return (
-                  <Question selectedQuestion={parseInt(match.params.question_id)} />
+                  <Question selectedQuestion={parseInt(match.params.question_id)} pickAnswer={this.pickAnswer} />
                 );
               }}
             />

@@ -1,14 +1,15 @@
 import React from 'react';
-import { NavLink } from 'react-router-dom';
 import './Answer.css';
 
 const Answer = (props) => {
+  const handleClick = () => {
+    props.pickAnswer(props.answer);
+  }
+
   return (
-    <NavLink to={`/game/${props.id}/results`}>
-      <button className="answer-button">
-        <p>{props.answer}</p>
-      </button>
-    </NavLink>
+    <button className="answer-button" onClick={handleClick}>
+      <p>{props.answer}</p>
+    </button>
   )
 }
 
