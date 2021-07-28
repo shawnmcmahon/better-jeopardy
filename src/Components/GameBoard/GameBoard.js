@@ -16,7 +16,7 @@ const GameBoard = ({questions, reset}) => {
 
   return (
     <>
-    <button onClick={reset}>EXIT GAME</button>
+    <button onClick={reset} data-cy="exit">EXIT GAME</button>
     <div className="tiles">{tiledQuestions}</div>
     </>
   )

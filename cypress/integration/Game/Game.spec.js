@@ -19,7 +19,47 @@ describe('Game', () => {
     cy.get('select')
       .select('2')
     cy.get('button').contains('START GAME').click()
+    cy.get('.tiles')
+      .find('article')
+      .should('have.length', 10)
   }); 
 
+  it('Should be able to start a game with 3 categories', () => {
+    cy.get('select')
+      .select('3')
+    cy.get('button').contains('START GAME').click()
+    cy.get('.tiles')
+      .find('article')
+      .should('have.length', 15)
+  }); 
 
-});
+  it('Should be able to start a game with 3 categories', () => {
+    cy.get('select')
+      .select('6')
+    cy.get('button').contains('START GAME').click()
+    cy.get('.tiles') 
+      .get('article').contains('$100')
+    cy.get('.tiles')
+      .find('article')
+      .should('have.length', 30)
+  }); 
+
+  it('Should have a property formatted tile', () => {
+    cy.get('select')
+      .select('2')
+    cy.get('button').contains('START GAME').click()
+    cy.get('article').then(($el) => {
+      Cypress.dom.isElement($el) // true
+      Cypress.dom.isFocusable($el)
+    })
+    cy.get('article')
+      .contains('$100') 
+  })
+
+  it('Should have an exit game button', () => {
+    // cy.contains('EXIT GAME')
+    cy.get('[data-cy=exit]').click()
+  })
+
+
+})
