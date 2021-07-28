@@ -2,7 +2,7 @@ const url = 'http://localhost:3001'
 
 const getQuestions = () => {
   return fetch('https://better-jeopardy-api.herokuapp.com/api/v1/questions')
-  .then(checkResponse)
+    .then(checkResponse)
 }
 
 const getSingleQuestion = (id) => {
@@ -12,7 +12,7 @@ const getSingleQuestion = (id) => {
 
 const getPastGames = () => {
   return fetch('https://better-jeopardy-api.herokuapp.com/api/v1/past-games')
-  .then(checkResponse)
+    .then(checkResponse)
 }
 
 const addGame = (pastGame) => {
