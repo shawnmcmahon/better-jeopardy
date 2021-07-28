@@ -1,18 +1,18 @@
 const url = 'http://localhost:3001'
 
 const getQuestions = () => {
-  return fetch('https://better-jeopardy-api.herokuapp.com/questions')
+  return fetch('https://better-jeopardy-api.herokuapp.com/api/v1/questions')
   .then(checkResponse)
 }
 
 const getPastGames = () => {
-  return fetch('https://better-jeopardy-api.herokuapp.com/past-games')
+  return fetch('https://better-jeopardy-api.herokuapp.com/api/v1/past-games')
   .then(checkResponse)
 }
 
 const addGame = (pastGame) => {
   console.log(pastGame)
-  return fetch('http://localhost:3001/past-games', {
+  return fetch('http://localhost:3001/api/v1/past-games', {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json'

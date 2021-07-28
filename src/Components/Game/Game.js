@@ -36,15 +36,15 @@ class Game extends Component {
       })
   }
 
-  // Pick question 
+  // Pick question
   pickQuestion = (selected) => {
     let found = this.state.game.questions.find(question =>  question.question.id === selected)
-    this.state.game.currentQuestion = found; 
-    this.presentChoices(); 
+    this.state.game.currentQuestion = found;
+    this.presentChoices();
   }
 
   presentChoices = () => {
-    const { correct_answer, incorrect_answers, question} = this.state.game.currentQuestion; 
+    const { correct_answer, incorrect_answers, question} = this.state.game.currentQuestion;
     let answers = [correct_answer, ...incorrect_answers]
     answers.forEach(answer => console.log(answer))
   }
@@ -68,13 +68,13 @@ class Game extends Component {
 
   checkIfOver = () => {
     if (this.state.game.answeredQuestions.length === this.state.game.categoryQuestions.length) {
-      roundOver = true;
-      const pastGame = { 
+      this.state.game.roundOver = true;
+      const pastGame = {
         date: dayjs('LLLL'),
-        numCategories: this.state.game.numCategories, 
-        selectedCategories: this.state.game.selectedCategories, 
-        categoryQuestions: this.state.game.categoryQuestions,  
-        answeredQuestions: this.state.game.answeredQuestions, 
+        numCategories: this.state.game.numCategories,
+        selectedCategories: this.state.game.selectedCategories,
+        categoryQuestions: this.state.game.categoryQuestions,
+        answeredQuestions: this.state.game.answeredQuestions,
         userScore: this.state.game.userScore,
       }
       // addGame(pastGame);
