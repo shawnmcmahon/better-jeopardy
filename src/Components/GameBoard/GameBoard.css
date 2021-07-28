@@ -6,6 +6,10 @@
   padding: 2em;
 }
 
+/* .tiles {
+  transform: rotate(90deg);
+} */
+
 @media screen and (max-width: 450px) {
   .tiles {
     display: table;

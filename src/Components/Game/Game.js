@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { Component, useEffect } from 'react';
 import { BrowserRouter, Route, Switch, Redirect } from 'react-router-dom';
 import './Game.css';
 
@@ -23,7 +23,8 @@ class Game extends Component {
         currentQuestion: {},
         roundOver: false,
         answeredQuestions: [],
-        userScore: 0
+        userScore: 0,
+        hasAnswered: false
       }
     }
   }
@@ -38,10 +39,13 @@ class Game extends Component {
   }
 
   // Pick question
-  pickQuestion = (selected) => {
-    let found = this.state.game.questions.find(question =>  question.question.id === selected)
-    this.state.game.currentQuestion = found;
-    this.presentChoices();
+  pickQuestion = (pickedQuestion) => {
+    this.setState((prevState) => {
+      return ({game: {...prevState.game, currentQuestion: pickedQuestion, hasAnswered: false}})
+    })
+    // let found = this.state.game.questions.find(question =>  question.question.id === selected)
+    // this.state.game.currentQuestion = found;
+    // this.presentChoices();
   }
 
   presentChoices = () => {
@@ -50,18 +54,42 @@ class Game extends Component {
     answers.forEach(answer => console.log(answer))
   }
 
+  letUserPickNext = () => {
+    this.setState((prevState) => {
+      return ({game: {...prevState.game, hasAnswered: false}})
+    })
+  }
+
   pickAnswer = (choice) => {
-    if (choice = this.state.game.currentQuestion.correct_answer) {
-      this.game.userScore += this.state.game.currentQuestion.prize
-      let correct = {...this.game.state.currentQuestion, answered_correct: true}
-      this.state.game.answeredQuestions.push(correct);
+    if (choice === this.state.game.currentQuestion.correct_answer) {
+      // this.state.game.userScore += this.state.game.currentQuestion.prize
+      let correct = {...this.state.game.currentQuestion, answered_correct: true}
+      // this.state.game.answeredQuestions.push(correct);
+      this.setState((prevState) => {
+        return ({game: {...prevState.game, answeredQuestions: [...prevState.game.answeredQuestions, correct], userScore: (prevState.game.userScore += parseInt(this.state.game.currentQuestion.prize))}})
+      })
     } else {
       let incorrect = {...this.state.game.currentQuestion, answered_correct: false}
-      this.state.game.answeredQuestions.push(incorrect)
+      // this.state.game.answeredQuestions.push(incorrect)
+      this.setState((prevState) => {
+        return ({game: {...prevState.game, answeredQuestions: [...prevState.game.answeredQuestions, incorrect]}})
+      })
     }
     this.checkIfOver();
-    this.state.game.categoryQuestions = this.state.game.categoryQuestions.filter(question => question.question_id !== this.currentQuestion.question_id)
+    console.log(this.state.game)
+    let newQuestions = this.state.game.categoryQuestions.filter(question => question.question_id !== this.state.game.currentQuestion.question_id)
+    this.state.game.categoryQuestions =
+    this.setState((prevState) => {
+      return ({game: {...prevState.game, categoryQuestions: newQuestions, hasAnswered: true}})
+    })
+    setTimeout(this.letUserPickNext, 100);
   }
+
+  // componentDidUpdate() {
+  //   this.setState((prevState) => {
+  //     return ({game: {...prevState.game, hasAnswered: false}})
+  //   })
+  // }
 
   // function that ends the game
 
@@ -168,7 +196,10 @@ class Game extends Component {
               path='/game/:question_id'
               render={({match}) => {
                 return (
-                  <Question selectedQuestion={parseInt(match.params.question_id)} pickAnswer={this.pickAnswer} />
+                  <>
+                  {!!this.state.game.hasAnswered && <Redirect exact to="/game" />}
+                  <Question selectedQuestion={parseInt(match.params.question_id)} pickQuestion={this.pickQuestion} pickAnswer={this.pickAnswer} />
+                  </>
                 );
               }}
             />
