@@ -5,17 +5,20 @@ import './Game.css';
 import GameBoard from '../GameBoard/GameBoard';
 import { getQuestions, addGame } from '../../utilities/apiCalls';
 import { getRandomIndex } from '../../utilities/utils';
+const dayjs = require('dayjs');
 
 class Game extends Component {
   constructor() {
     super();
     this.state = {
       questions: [],
+      currentQuestion: {},
       game: {
         numCategories: 0,
         categories: [],
         selectedCategories: [],
         categoryQuestions: [],
+        nextQuestions: []
         roundOver: false,
         answeredQuestions: [],
         userScore: 0
@@ -32,18 +35,26 @@ class Game extends Component {
       })
   }
 
-  // function that ends the 
+  // Pick answer
+
+
+
+  // function that ends the game
 
   endGame = () => {
+
     if (this.state.game.answeredQuestions.length === this.state.game.categoryQuestions.length) {
       roundOver = true;
       const pastGame = { 
-        date: Date.now(),
-        numCategories: this.state.game.numCategories, selectedCategories: this.state.game.selectedCategories, categoryQuestions: this.state.game.categoryQuestions,  answeredQuestions: this.state.game.answeredQuestions, 
+        date: dayjs('LLLL'),
+        numCategories: this.state.game.numCategories, 
+        selectedCategories: this.state.game.selectedCategories, 
+        categoryQuestions: this.state.game.categoryQuestions,  
+        answeredQuestions: this.state.game.answeredQuestions, 
         userScore: this.state.game.userScore,
       }
-      addGame(pastGame);
-      roundOver = false;
+      // addGame(pastGame);
+      this.resetGame();
     }
   }
 
