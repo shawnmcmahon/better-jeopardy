@@ -3,8 +3,8 @@ import { BrowserRouter, Route, Switch, Redirect } from 'react-router-dom';
 import './Game.css';
 
 import GameBoard from '../GameBoard/GameBoard';
-import { getQuestions } from '../../utilities/apiCalls';
-import { getRandomIndex } from '../../utilities/utils'
+import { getQuestions, addGame } from '../../utilities/apiCalls';
+import { getRandomIndex } from '../../utilities/utils';
 
 class Game extends Component {
   constructor() {
@@ -18,7 +18,6 @@ class Game extends Component {
         categoryQuestions: [],
         roundOver: false,
         answeredQuestions: [],
-        userInputNumber: 0,
         userScore: 0
       }
     }
@@ -32,6 +31,22 @@ class Game extends Component {
         this.populateAllCategories()
       })
   }
+
+  // function that ends the 
+
+  endGame = () => {
+    if (this.state.game.answeredQuestions.length === this.state.game.categoryQuestions.length) {
+      roundOver = true;
+      const pastGame = { 
+        date: Date.now(),
+        numCategories: this.state.game.numCategories, selectedCategories: this.state.game.selectedCategories, categoryQuestions: this.state.game.categoryQuestions,  answeredQuestions: this.state.game.answeredQuestions, 
+        userScore: this.state.game.userScore,
+      }
+      addGame(pastGame);
+      roundOver = false;
+    }
+  }
+
 
 
   //handler on selector to update numberOfCategories in state
