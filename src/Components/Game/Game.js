@@ -101,6 +101,18 @@ class Game extends Component {
       return (
         <BrowserRouter>
           <Switch>
+          <Route
+              exact
+              path='/game'
+              render={() => {
+                return (
+                  <>
+                  {!this.state.game.categoryQuestions.length && <Redirect exact to="/" />}
+                  <GameBoard questions={this.state.game.categoryQuestions} reset={this.resetGame}/>
+                  </>
+                );
+              }}
+            />
             <Route
                 exact
                 path='/'
@@ -126,18 +138,6 @@ class Game extends Component {
                       }
                     </div>
 
-                  );
-                }}
-              />
-            <Route
-                exact
-                path='/game'
-                render={() => {
-                  return (
-                    <>
-                    {!this.state.game.categoryQuestions.length && <Redirect exact to="/" />}
-                    <GameBoard questions={this.state.game.categoryQuestions} reset={this.resetGame}/>
-                    </>
                   );
                 }}
               />
