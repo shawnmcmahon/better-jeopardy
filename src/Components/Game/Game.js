@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { BrowserRouter, Route, Switch, Redirect } from 'react-router-dom';
 import './Game.css';
 
+import Question from '../Question/Question';
 import GameBoard from '../GameBoard/GameBoard';
 import { getQuestions } from '../../utilities/apiCalls';
 import { getRandomIndex } from '../../utilities/utils'
@@ -110,6 +111,15 @@ class Game extends Component {
                   {!this.state.game.categoryQuestions.length && <Redirect exact to="/" />}
                   <GameBoard questions={this.state.game.categoryQuestions} reset={this.resetGame}/>
                   </>
+                );
+              }}
+            />
+            <Route
+              exact
+              path='/game/:question_id'
+              render={({match}) => {
+                return (
+                  <Question selectedQuestion={parseInt(match)} />
                 );
               }}
             />
