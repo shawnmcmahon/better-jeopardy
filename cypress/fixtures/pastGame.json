@@ -1,0 +1,8 @@
+{
+  "date": "Wednesday, July 28, 2021 10:10 AM",
+  "numCategories": "3",
+  "selectedCategories": "Skiing, Literary Terms, 20th Century TV",
+  "categoryQuestions": "this.state.game.categoryQuestions",
+  "answeredQuestions": "this.state.game.answeredQuestions",
+  "userScore": "1000"
+}
