@@ -17,7 +17,7 @@ class Game extends Component {
         categories: [],
         selectedCategories: [],
         categoryQuestions: [],
-        nextQuestions: []
+        nextQuestions: [],
         currentQuestion: {},
         roundOver: false,
         answeredQuestions: [],
@@ -65,8 +65,7 @@ class Game extends Component {
 
   // function that ends the game
 
-  endGame = () => {
-
+  checkIfOver = () => {
     if (this.state.game.answeredQuestions.length === this.state.game.categoryQuestions.length) {
       roundOver = true;
       const pastGame = { 
@@ -78,7 +77,10 @@ class Game extends Component {
         userScore: this.state.game.userScore,
       }
       // addGame(pastGame);
+      console.log('Game over')
       this.resetGame();
+    } else {
+      console.log('Next Question');
     }
   }
 
