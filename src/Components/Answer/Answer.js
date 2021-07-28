@@ -1,9 +1,15 @@
 import React from 'react';
 import './Answer.css';
 
-const Answer = () => {
+const Answer = (props) => {
+  const handleClick = () => {
+    props.pickAnswer(props.answer);
+  }
+
   return (
-    <h3>Answer</h3>
+    <button className="answer-button" onClick={handleClick}>
+      <p>{props.answer}</p>
+    </button>
   )
 }
 

@@ -2,21 +2,23 @@ const url = 'http://localhost:3001'
 
 const getQuestions = () => {
   return fetch('https://better-jeopardy-api.herokuapp.com/api/v1/questions')
-  // .then(console.log('hello'))
-  .then(checkResponse)
-  // .then(console.log('hi'))
+    .then(checkResponse)
+}
+
+const getSingleQuestion = (id) => {
+  return fetch(`https://better-jeopardy-api.herokuapp.com/api/v1/questions/${id}`)
+    .then(checkResponse)
 }
 
 const getPastGames = () => {
   return fetch('https://better-jeopardy-api.herokuapp.com/api/v1/past-games')
-  // .then(console.log('what the'))
   .then(checkResponse)
-  // .then(console.log('fffffff'))
+
 }
 
 const addGame = (pastGame) => {
   console.log(pastGame)
-  return fetch('http://localhost:3001/past-games', {
+  return fetch('http://localhost:3001/api/v1/past-games', {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json'
@@ -34,4 +36,4 @@ const checkResponse = (response) => {
   }
 };
 
-export { getQuestions, addGame, getPastGames }
+export { getQuestions, addGame, getPastGames, getSingleQuestion }
