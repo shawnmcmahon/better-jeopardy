@@ -67,7 +67,7 @@ class Game extends Component {
 
   checkIfOver = () => {
     if (this.state.game.answeredQuestions.length === this.state.game.categoryQuestions.length) {
-      roundOver = true;
+      this.state.game.roundOver = true;
       const pastGame = { 
         date: dayjs('LLLL'),
         numCategories: this.state.game.numCategories, 

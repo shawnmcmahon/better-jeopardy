@@ -1,13 +1,17 @@
 const url = 'http://localhost:3001'
 
 const getQuestions = () => {
-  return fetch('https://better-jeopardy-api.herokuapp.com/questions')
+  return fetch('https://better-jeopardy-api.herokuapp.com/api/v1/questions')
+  // .then(console.log('hello'))
   .then(checkResponse)
+  // .then(console.log('hi'))
 }
 
 const getPastGames = () => {
-  return fetch('https://better-jeopardy-api.herokuapp.com/past-games')
+  return fetch('https://better-jeopardy-api.herokuapp.com/api/v1/past-games')
+  // .then(console.log('what the'))
   .then(checkResponse)
+  // .then(console.log('fffffff'))
 }
 
 const addGame = (pastGame) => {
