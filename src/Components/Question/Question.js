@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import './Question.css';
 
 import { getSingleQuestion } from '../../utilities/apiCalls';
+import Answer from '../Answer/Answer';
 
 class Question extends Component {
   constructor(props) {
@@ -29,9 +30,13 @@ class Question extends Component {
       [answers[i], answers[j]] = [answers[j], answers[i]];
     }
     console.log("AFTER SHUFFLE: " + answers);
-    // return answers.map((answer) => {
-    //   return
-    // });
+    return answers.map((answer) => {
+      return (
+        <div className="answer-choices">
+          <Answer answer={answer} />
+        </div>
+      )
+    });
   }
 
   render() {

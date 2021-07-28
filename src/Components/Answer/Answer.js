@@ -1,9 +1,12 @@
 import React from 'react';
 import './Answer.css';
 
-const Answer = () => {
+const Answer = ({answer}) => {
+  console.log(answer);
   return (
-    <h3>Answer</h3>
+    <button className="answer-button">
+      <p>{answer}</p>
+    </button>
   )
 }
 
