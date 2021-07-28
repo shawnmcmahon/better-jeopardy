@@ -8,4 +8,5 @@ describe('App', () => {
     cy.contains('Jeopardy for people who aren\'t good at Jeopardy.')
   }); 
 
+
 });
