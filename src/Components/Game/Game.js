@@ -37,6 +37,17 @@ const Game = () => {
     })
   }, [])
 
+  useEffect(() => {
+    if (!categoryQuestions.length && !!answeredQuestions.length) {
+      setRoundOver(true)
+    }
+  }, [categoryQuestions.length])
+
+
+  const gameOver = () => {
+    setRoundOver(true)
+  }
+
   const populateRandomCategories = (num) => {
 
     const generatedCategories = []
@@ -65,11 +76,12 @@ const Game = () => {
     })
     setCategoryQuestions(relevantQuestions)
     setOriginalQuestions(relevantQuestions)
+    setRoundOver(false)
   }
 
   const checkIfOver = () => {
-    if (answeredQuestions.length === (originalQuestions.length)) {
-      roundOver = true;
+    if (!categoryQuestions.length) {
+      setRoundOver(true)
       const pastGame = {
         date: dayjs().$d,
         numCategories,
@@ -78,12 +90,14 @@ const Game = () => {
         answeredQuestions,
         userScore,
       }
+      console.log("Number of questions answered", answeredQuestions.length)
       resetGame();
     } else {
     }
   }
 
   const updateNumberOfCategories = (event) => {
+    event.preventDefault();
     if (!event.target.value) {
       return
     }
@@ -127,30 +141,7 @@ const Game = () => {
   return (
     <BrowserRouter>
       <Switch>
-      <Route
-          exact
-          path='/game'
-          render={() => {
-            return (
-              <>
-              {!categoryQuestions.length && <Redirect exact to="/" />}
-              {!!categoryQuestions.length && <GameBoard questions={categoryQuestions} reset={resetGame}/>}
-              </>
-            );
-          }}
-        />
-        <Route
-          exact
-          path='/game/:question_id'
-          render={({match}) => {
-            return (
-              <>
-              {!!hasAnswered && <Redirect exact to="/game" />}
-              <Question selectedQuestion={parseInt(match.params.question_id)} pickQuestion={pickQuestion} pickAnswer={pickAnswer} />
-              </>
-            );
-          }}
-        />
+
         <Route
             exact
             path='/'
@@ -178,6 +169,37 @@ const Game = () => {
               );
             }}
           />
+        <Route
+            exact
+            path='/results'
+            component={Results}
+          />
+      <Route
+          exact
+          path='/game'
+          render={() => {
+            return (
+              <>
+              {!categoryQuestions.length && <Redirect exact to="/" />}
+              {!!answeredQuestions.length && !!roundOver && <Redirect exact to="/results" />}
+              {!!categoryQuestions.length && <GameBoard questions={categoryQuestions} reset={resetGame}/>}
+              </>
+            );
+          }}
+        />
+        <Route
+          exact
+          path='/game/:question_id'
+          render={({match}) => {
+            return (
+              <>
+              {!!hasAnswered && <Redirect exact to="/game" />}
+              <Question selectedQuestion={parseInt(match.params.question_id)} pickQuestion={pickQuestion} pickAnswer={pickAnswer} />
+              </>
+            );
+          }}
+        />
+
       </Switch>
     </BrowserRouter>
   )
