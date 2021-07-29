@@ -1,0 +1,424 @@
+{
+  "questions": [
+    {
+      "question_id": 1,
+      "question": "asdfg",
+      "correct_answer": "Lift",
+      "incorrect_answers": [
+        "Conveyors",
+        "Carriers",
+        "Hitches"
+      ],
+      "prize": 100,
+      "show_number": 1739,
+      "air_date": "03/05/1992",
+      "category": "Skiing"
+    },
+    {
+      "question_id": 2,
+      "question": "Skiers wear these in part to reduce glare & prevent eyestrain",
+      "correct_answer": "Sunglasses",
+      "incorrect_answers": [
+        "Hat",
+        "Headphones",
+        "Contacts"
+      ],
+      "prize": 200,
+      "show_number": 1739,
+      "air_date": "03/05/1992",
+      "category": "Skiing"
+    },
+    {
+      "question_id": 3,
+      "question": "\"Cosmetic\" name of the light, dry snow that is ideal for skiing",
+      "correct_answer": "Powder",
+      "incorrect_answers": [
+        "Spray",
+        "Mist",
+        "Debris"
+      ],
+      "prize": 300,
+      "show_number": 1739,
+      "air_date": "03/05/1992",
+      "category": "Skiing"
+    },
+    {
+      "question_id": 4,
+      "question": "In the snowplow method of stopping, a skier brings the tips of their skis together to form this letter",
+      "correct_answer": "V",
+      "incorrect_answers": [
+        "L",
+        "W",
+        "X"
+      ],
+      "prize": 400,
+      "show_number": 1739,
+      "air_date": "03/05/1992",
+      "category": "Skiing"
+    },
+    {
+      "question_id": 5,
+      "question": "The most basic movement in this type of skiing is the diagonal stride",
+      "correct_answer": "Cross Country Skiing",
+      "incorrect_answers": [
+        "Downhill Skiing",
+        "Alpine Rouring",
+        "Freestyle Skiing"
+      ],
+      "prize": 500,
+      "show_number": 1739,
+      "air_date": "03/05/1992",
+      "category": "Skiing"
+    },
+    {
+      "question_id": 6,
+      "question": "In 2020 Drake & Lil Durk decided to do this \"Now Cry Later\"",
+      "correct_answer": "Laugh",
+      "incorrect_answers": [
+        "Cry",
+        "Dance",
+        "Sing"
+      ],
+      "prize": 100,
+      "show_number": 8402,
+      "air_date": "05/18/2021",
+      "category": "Playing Today's Hits"
+    },
+    {
+      "question_id": 7,
+      "question": "\"Adore You\" was a post-boy band hit for this Brit\"",
+      "correct_answer": "Charlie's Angels",
+      "incorrect_answers": [
+        "Bono",
+        "Robbie Williams",
+        "Larry Styles"
+      ],
+      "prize": 200,
+      "show_number": 8402,
+      "air_date": "05/18/2021",
+      "category": "Playing Today's Hits"
+    },
+    {
+      "question_id": 8,
+      "question": "This word preceded \"Swings\" in a 2020 hit by Pop Smoke; just this word was the title of a No.1 hit by 24Goldn",
+      "correct_answer": "Mood",
+      "incorrect_answers": [
+        "Porch",
+        "Jazz",
+        "Full"
+      ],
+      "prize": 300,
+      "show_number": 8402,
+      "air_date": "05/18/2021",
+      "category": "Playing Today's Hits"
+    },
+    {
+      "question_id": 9,
+      "question": "Olivia Rodrigo's first hit single is this breakup song that debuted at No. 1 in 2021",
+      "correct_answer": "Driver License",
+      "incorrect_answers": [
+        "Good 4 U",
+        "Deja Vu",
+        "Happier"
+      ],
+      "prize": 400,
+      "show_number": 8402,
+      "air_date": "05/18/2021",
+      "category": "Playing Today's Hits"
+    },
+    {
+      "question_id": 10,
+      "question": "This country superstar added to his hit parade in 2020 with \"Happy Does\"",
+      "correct_answer": "Kenny Chesney",
+      "incorrect_answers": [
+        "Chipp Mccapp",
+        "George Strait",
+        "Carrie Underwood"
+      ],
+      "prize": 500,
+      "show_number": 8402,
+      "air_date": "05/18/2021",
+      "category": "Playing Today's Hits"
+    },
+    {
+      "question_id": 11,
+      "question": "The title of this 1970s series refers to a wealthy guy on a speakerphone & the 3 women who work as detectives for him",
+      "correct_answer": "Charlie's Angels",
+      "incorrect_answers": [
+        "Police Woman",
+        "The Rockford Files",
+        "Hawaii Five-O"
+      ],
+      "prize": 100,
+      "show_number": 8405,
+      "air_date": "05/21/2021",
+      "category": "20th Century TV"
+    },
+    {
+      "question_id": 12,
+      "question": "This actor drove the Knight Industries Two Thousand KITT, for short - before heading for the beach in 1989",
+      "correct_answer": "David Hasselhoff",
+      "incorrect_answers": [
+        "Burt Reynolds",
+        "William Shatner",
+        "Brad Pitt"
+      ],
+      "prize": 200,
+      "show_number": 8405,
+      "air_date": "05/21/2021",
+      "category": "20th Century TV"
+    },
+    {
+      "question_id": 13,
+      "question": "Barbara Eden could literally grant Larry Hagman any wish he could think of in this 1960s sitcom... but he wouldn't let her!",
+      "correct_answer": "I Dream of Jeannie",
+      "incorrect_answers": [
+        "Harper Valley PTA",
+        "Sabrina the Teenage Witch",
+        "Brand New Life"
+      ],
+      "prize": 300,
+      "show_number": 8405,
+      "air_date": "05/21/2021",
+      "category": "20th Century TV"
+    },
+    {
+      "question_id": 14,
+      "question": "In 1980 Tom Hanks came aboard this ABC show as Rick Martin; I hope he tipped Isaac the bartender well",
+      "correct_answer": "The Love Boat",
+      "incorrect_answers": [
+        "Happy Days",
+        "Bosom Buddies",
+        "Cheers"
+      ],
+      "prize": 400,
+      "show_number": 8405,
+      "air_date": "05/21/2021",
+      "category": "20th Century TV"
+    },
+    {
+      "question_id": 15,
+      "question": "Robert Downey Jr. told this lawyer played by Calista Flockhart: \"If you need a sympathetic ear, I can fake it\"",
+      "correct_answer": "Ally Mcbeal",
+      "incorrect_answers": [
+        "Dianne Lockhart",
+        "Patty Hewes",
+        "Mia Fey"
+      ],
+      "prize": 500,
+      "show_number": 8405,
+      "air_date": "05/21/2021",
+      "category": "20th Century TV"
+    },
+    {
+      "question_id": 16,
+      "question": "Oregon, Idaho",
+      "correct_answer": "Washington",
+      "incorrect_answers": [
+        "California",
+        "Nevada",
+        "Montana"
+      ],
+      "prize": 100,
+      "show_number": 8215,
+      "air_date": "05/01/2020",
+      "category": "States By Borders"
+    },
+    {
+      "question_id": 17,
+      "question": "New Hampshire",
+      "correct_answer": "Maine",
+      "incorrect_answers": [
+        "Rhode Island",
+        "Vermont",
+        "New England"
+      ],
+      "prize": 200,
+      "show_number": 8215,
+      "air_date": "05/01/2020",
+      "category": "States By Borders"
+    },
+    {
+      "question_id": 18,
+      "question": "Indiana, Ohio, Wisconsin",
+      "correct_answer": "Michigan",
+      "incorrect_answers": [
+        "Minnesota",
+        "Iowa",
+        "Illinois"
+      ],
+      "prize": 300,
+      "show_number": 8215,
+      "air_date": "05/01/2020",
+      "category": "States By Borders"
+    },
+    {
+      "question_id": 19,
+      "question": "Connectitcut, Massachusetts",
+      "correct_answer": "Rhode Island",
+      "incorrect_answers": [
+        "New Hampshire",
+        "New York",
+        "Maine"
+      ],
+      "prize": 400,
+      "show_number": 8215,
+      "air_date": "05/01/2020",
+      "category": "States By Borders"
+    },
+    {
+      "question_id": 20,
+      "question": "New Mexico, Oklahoma, Arkansas, Lousiana",
+      "correct_answer": "Texas",
+      "incorrect_answers": [
+        "Utah",
+        "Colorado",
+        "Oregon"
+      ],
+      "prize": 500,
+      "show_number": 8215,
+      "air_date": "05/01/2020",
+      "category": "States By Borders"
+    },
+    {
+      "question_id": 21,
+      "question": "In fiction, it's the term for the one who tells the story; first person & third person are 2 types",
+      "correct_answer": "Narrator",
+      "incorrect_answers": [
+        "Author",
+        "Producer",
+        "Publisher"
+      ],
+      "prize": 100,
+      "show_number": 8206,
+      "air_date": "04/20/2020",
+      "category": "Literary Terms"
+    },
+    {
+      "question_id": 22,
+      "question": "It's the practical lesson about right & wrong that results from an instructive story like a fable",
+      "correct_answer": "Moral",
+      "incorrect_answers": [
+        "Theme",
+        "Lesson",
+        "Parable"
+      ],
+      "prize": 200,
+      "show_number": 8206,
+      "air_date": "04/20/2020",
+      "category": "Literary Terms"
+    },
+    {
+      "question_id": 23,
+      "question": "From Greek words for \"first\" & \"actor\", it's the main character in a story",
+      "correct_answer": "Protagonist",
+      "incorrect_answers": [
+        "Thespian",
+        "Truant",
+        "Antagonist"
+      ],
+      "prize": 300,
+      "show_number": 8206,
+      "air_date": "04/20/2020",
+      "category": "Literary Terms"
+    },
+    {
+      "question_id": 24,
+      "question": "The 6-line \"Scottish stanza\" is also known by the name of this 18th century poet",
+      "correct_answer": "Burns",
+      "incorrect_answers": [
+        "Haiku",
+        "Monologue",
+        "Verse"
+      ],
+      "prize": 400,
+      "show_number": 8206,
+      "air_date": "04/20/2020",
+      "category": "Literary Terms"
+    },
+    {
+      "question_id": 25,
+      "question": "This 5-letter word for a figure of speech is widely used to mean any familiar reference",
+      "correct_answer": "Trope",
+      "incorrect_answers": [
+        "Story",
+        "Irony",
+        "Fable"
+      ],
+      "prize": 500,
+      "show_number": 8206,
+      "air_date": "04/20/2020",
+      "category": "Literary Terms"
+    },
+    {
+      "question_id": 26,
+      "question": "Tomahawk, hatchet",
+      "correct_answer": "Ax",
+      "incorrect_answers": [
+        "Story",
+        "Irony",
+        "Fable"
+      ],
+      "prize": 100,
+      "show_number": 8269,
+      "air_date": "10/29/2020",
+      "category": "Weapon Types"
+    },
+    {
+      "question_id": 27,
+      "question": "Cutlass, falchion",
+      "correct_answer": "Sword",
+      "incorrect_answers": [
+        "Spear",
+        "Missile",
+        "Flamethrower"
+      ],
+      "prize": 200,
+      "show_number": 8269,
+      "air_date": "10/29/2020",
+      "category": "Weapon Types"
+    },
+    {
+      "question_id": 28,
+      "question": "Compound, recurve",
+      "correct_answer": "Bow",
+      "incorrect_answers": [
+        "Handgun",
+        "Sniper Rifle",
+        "Torpedo"
+      ],
+      "prize": 300,
+      "show_number": 8269,
+      "air_date": "10/29/2020",
+      "category": "Weapon Types"
+    },
+    {
+      "question_id": 29,
+      "question": "Bolt action: AR, also called modern sporting",
+      "correct_answer": "Rifle",
+      "incorrect_answers": [
+        "Light Machine Gun",
+        "Bow",
+        "Shotgun"
+      ],
+      "prize": 400,
+      "show_number": 8269,
+      "air_date": "10/29/2020",
+      "category": "Weapon Types"
+    },
+    {
+      "question_id": 30,
+      "question": "Cudgel, shillelagh",
+      "correct_answer": "Club",
+      "incorrect_answers": [
+        "Rocket",
+        "Grenade",
+        "Sub Machine Gun"
+      ],
+      "prize": 500,
+      "show_number": 8269,
+      "air_date": "10/29/2020",
+      "category": "Weapon Types"
+    }
+  ]
+}

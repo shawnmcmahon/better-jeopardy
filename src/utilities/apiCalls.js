@@ -12,7 +12,8 @@ const getSingleQuestion = (id) => {
 
 const getPastGames = () => {
   return fetch('https://better-jeopardy-api.herokuapp.com/api/v1/past-games')
-    .then(checkResponse)
+  .then(checkResponse)
+
 }
 
 const addGame = (pastGame) => {
