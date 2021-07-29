@@ -39,6 +39,17 @@ const Game = () => {
 
   useEffect(() => {
     if (!categoryQuestions.length && !!answeredQuestions.length) {
+      console.log("Number of questions answered", answeredQuestions.length)
+      // setRoundOver(true)
+      const pastGame = {
+        date: dayjs().$d,
+        numCategories,
+        selectedCategories,
+        categoryQuestions,
+        answeredQuestions,
+        userScore,
+      }
+      console.log(pastGame)
       setRoundOver(true)
     }
   }, [categoryQuestions.length])
@@ -80,7 +91,8 @@ const Game = () => {
   }
 
   const checkIfOver = () => {
-    if (!categoryQuestions.length) {
+    if (answeredQuestions.length === originalQuestions.length) {
+      console.log("Number of questions answered", answeredQuestions.length)
       setRoundOver(true)
       const pastGame = {
         date: dayjs().$d,
@@ -90,7 +102,6 @@ const Game = () => {
         answeredQuestions,
         userScore,
       }
-      console.log("Number of questions answered", answeredQuestions.length)
       resetGame();
     } else {
     }
@@ -108,6 +119,8 @@ const Game = () => {
     setNumCategories(0)
     setUserScore(0)
     setSelectedCategories([])
+    setCategoryQuestions([])
+    setAnsweredQuestions([])
   }
 
   const pickAnswer = (choice) => {
@@ -172,7 +185,11 @@ const Game = () => {
         <Route
             exact
             path='/results'
-            component={Results}
+            render={() => {
+              return (
+                <Results newGame={resetGame} />
+              )
+            }}
           />
       <Route
           exact
