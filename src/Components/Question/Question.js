@@ -19,12 +19,8 @@ const Question = ({ selectedQuestion, pickQuestion, pickAnswer }) => {
   }, [])
 
   const randomlyPlaceAnswers = () => {
-    let answers = [currentQuestion.correct_answer];
-    currentQuestion.incorrect_answers.forEach((answer) => {
-      answers.push(answer);
-    })
-    const shuffled = shuffleAnswers(answers)
-    return shuffled.map((answer) => {
+    const { correct_answer, incorrect_answers } = currentQuestion
+    return shuffleAnswers([correct_answer, ...incorrect_answers]).map((answer) => {
       return (
         <div className="answer-choices" >
           <Answer answer={answer} pickAnswer={pickAnswer} />
