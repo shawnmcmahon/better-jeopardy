@@ -1,0 +1,14 @@
+{
+  "question_id": 1,
+  "question": "The T-bar, the chair & the gondola are 3 types of these devices that transport skiers",
+  "correct_answer": "Lift",
+  "incorrect_answers": [
+    "Conveyors",
+    "Carriers",
+    "Hitches"
+  ],
+  "prize": 100,
+  "show_number": 1739,
+  "air_date": "03/05/1992",
+  "category": "Skiing"
+}
