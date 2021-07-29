@@ -6,13 +6,11 @@
   padding: 2em;
 }
 
-/* .tiles {
-  transform: rotate(90deg);
-} */
-
-@media screen and (max-width: 450px) {
+@media screen and (max-width: 1400px) {
   .tiles {
-    display: table;
-    table-layout: auto;
+    align-items: center;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
   }
 }

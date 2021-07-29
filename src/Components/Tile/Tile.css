@@ -1,12 +1,12 @@
 article {
+  background-color: #0F70BD;
   display: flex;
   flex-direction: column;
-  background-color: #0F70BD;
   text-align: center;
   padding: 20px;
-  /* transform: rotate(-90deg);
-  width: 300px;
-  height: 300px; */
+  /* transform: rotate(-90deg); */
+  width: 200px;
+  height: 200px;
 }
 
 a {
@@ -21,7 +21,7 @@ a:visited {
 
 article * {
   margin: 0;
-
+  background-color: #0F70BD;
 }
 
 @media screen and (max-width: 450px) {
