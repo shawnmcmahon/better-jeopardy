@@ -14,7 +14,9 @@ class Question extends Component {
 
   componentDidMount() {
     getSingleQuestion(this.props.selectedQuestion)
-      .then(data => { this.setState({question: data}) })
+      .then(data => {
+        this.props.pickQuestion(data)
+        this.setState({question: data}) })
   }
 
   randomlyPlaceAnswers() {
