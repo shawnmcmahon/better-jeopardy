@@ -8,7 +8,7 @@ const Answer = (props) => {
 
   return (
     <button className="answer-button" onClick={handleClick}>
-      <p>{props.answer}</p>
+      <p className="answer-text">{props.answer}</p>
     </button>
   )
 }

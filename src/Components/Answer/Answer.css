@@ -1,0 +1,24 @@
+.answer-button {
+  height: 200px;
+  width: 200px;
+  margin: 3%;
+}
+
+.answer-text {
+  font-size: 1.5em;
+}
+
+.answer-button * {
+  background-color: #0F70BD;
+}
+
+.answer-button *:hover {
+  background-color: #ffffff;
+  color: #0F70BD;
+}
+
+@media screen and (max-width: 1000px) {
+  .answer-button {
+    width: 25%;
+  }
+}

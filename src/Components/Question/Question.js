@@ -22,9 +22,7 @@ const Question = ({ selectedQuestion, pickQuestion, pickAnswer }) => {
     const { correct_answer, incorrect_answers } = currentQuestion
     return shuffleAnswers([correct_answer, ...incorrect_answers]).map((answer) => {
       return (
-        <div className="answer-choices" >
-          <Answer answer={answer} pickAnswer={pickAnswer} />
-        </div>
+        <Answer answer={answer} pickAnswer={pickAnswer} />
       )
     });
   }
@@ -38,7 +36,9 @@ const Question = ({ selectedQuestion, pickQuestion, pickAnswer }) => {
           <h3>{currentQuestion.category}</h3>
           <h3>{currentQuestion.question}</h3>
           <h3 className="question-value">${currentQuestion.prize}</h3>
-          {randomlyPlaceAnswers()}
+          <div className="answer-choices">
+            {randomlyPlaceAnswers()}
+          </div>
         </section>
       )}
     </>
