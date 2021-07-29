@@ -4,7 +4,7 @@ import { pastGames } from '../../utilities/apiCalls'
 
 const PastGames = () => {
 
-  const setPastGames = useState([]);
+  const [pastGameData, setPastGames] = useState([]);
 
   useEffect(() => {
     pastGames()
