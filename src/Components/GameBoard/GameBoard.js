@@ -16,8 +16,8 @@ const GameBoard = ({questions, reset}) => {
 
   return (
     <>
-    <button className="exit" data-cy="exit" onClick={reset} >EXIT GAME</button>
-    <div className="tiles">{tiledQuestions}</div>
+      <button className="exit" data-cy="exit" onClick={reset} >EXIT GAME</button>
+      <div className="tiles">{tiledQuestions}</div>
     </>
   )
 }
