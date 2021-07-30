@@ -11,12 +11,18 @@ article {
   display: flex;
   flex-direction: column;
   text-align: center;
-  padding-top: 2%;
-  margin: 5%;
+  /* padding-top: 2%;
+  margin: 5%; */
   /* transform: rotate(-90deg); */
   width: 200px;
   height: 200px;
+  padding: 25px;
 }
+
+
+  .tile-wrapper {
+    margin: 5%;
+  }
 
 a {
   color: white;
