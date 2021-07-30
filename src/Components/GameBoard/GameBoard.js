@@ -25,21 +25,10 @@ const GameBoard = ({categories, questions, reset}) => {
       </div>
     })
 
-
-  const tiledQuestions = questions.map(question => {
-    return <Tile
-      id={question.question_id}
-      key={question.question_id}
-      q={question.question}
-      correct={question.correct_answer}
-      incorrect={question.incorrect_answers}
-      prize={question.prize} />
-  })
-
   return (
     <>
     <button className="exit" data-cy="exit" onClick={reset} >EXIT GAME</button>
-    {questionsAndCategories}
+    <div>{questionsAndCategories}</div>
     </>
   )
 }
