@@ -16,4 +16,8 @@
     display: flex;
     flex-direction: column;
   }
+
+  .tiles:nth-child(odd) {
+    background-color: #340073;
+  }
 }

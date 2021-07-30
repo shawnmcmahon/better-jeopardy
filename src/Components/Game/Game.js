@@ -180,7 +180,7 @@ const Game = () => {
                       <option value="3">3</option>
                       <option value="6">6</option>
                     </select>
-                    <button id="startGameBtn" onClick={getQuestionsByCategory}>START GAME</button>
+                    <button id="startGameBtn" class="start-game" onClick={getQuestionsByCategory}>START GAME</button>
                   </section>
                 </div>
               );
