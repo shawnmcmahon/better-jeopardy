@@ -17,3 +17,11 @@ select {
   width: 20%;
   margin: 1% 0;
 }
+
+.correct, .incorrect {
+  color: white;
+}
+
+.hidden {
+  display: none; 
+}
