@@ -8,4 +8,12 @@
 .tiles {
   display: grid;
   grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+  width: 100%;
+}
+
+@media screen and (max-width: 1350px) {
+  .tiles {
+    display: flex;
+    flex-direction: column;
+  }
 }
