@@ -199,7 +199,7 @@ const Game = () => {
               <>
               {!categoryQuestions.length && <Redirect exact to="/" />}
               {!!answeredQuestions.length && !!roundOver && <Redirect exact to="/results" />}
-              {!!categoryQuestions.length && <GameBoard questions={categoryQuestions} reset={resetGame}/>}
+              {!!categoryQuestions.length && <GameBoard categories={selectedCategories} questions={categoryQuestions} reset={resetGame}/>}
               </>
             );
           }}
