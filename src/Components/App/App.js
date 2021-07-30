@@ -13,7 +13,7 @@ const App = () => {
       <Header />
       <Game />
     </main>
-  </BrowserRouter>  
+  </BrowserRouter>
   );
 }
 

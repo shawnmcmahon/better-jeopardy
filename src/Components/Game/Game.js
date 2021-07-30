@@ -159,7 +159,7 @@ const Game = () => {
   }
 
   return (
-    <BrowserRouter>
+
       <Switch>
         <Route
             exact
@@ -223,7 +223,6 @@ const Game = () => {
           }}
         />
       </Switch>
-    </BrowserRouter>
   )
 }
 
