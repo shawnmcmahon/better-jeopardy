@@ -6,15 +6,18 @@
 }
 
 .tiles {
-  display: flex;
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  place-items: center;
   width: 100vw;
-  justify-content: space-around;
+  /* justify-content: space-around; */
 }
 
 @media screen and (max-width: 1350px) {
   .tiles {
     display: flex;
     flex-direction: column;
+    place-items: normal;
   }
 
   .tiles:nth-child(odd) {
