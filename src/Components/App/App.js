@@ -10,7 +10,6 @@ const App = () => {
     <main>
       <Header />
       <Game />
-      <Footer />
     </main>
   );
 }
