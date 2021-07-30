@@ -4,9 +4,25 @@ select {
   color: white;
   width: 30%;
   text-indent: 50%;
-  font-size: 18px;
-  margin: 1% 0;
-  min-width: 200px;
+  font-size: 22px;
+  min-width: 285px;
+  height: 47px;
+  border-radius: 7px;
+  border: none;
+  outline: none;
+  padding: 1px;
+  cursor: pointer;
+}
+
+.selector-bg {
+  display: grid;
+  place-items: center;
+  margin: 5% 0;
+  background: white;
+  width: 30%;
+  height: 90px;
+  min-width: 338px;
+  border-radius: 10px;
 }
 
 .categories-selector {
@@ -27,5 +43,5 @@ select {
 }
 
 .hidden {
-  display: none; 
+  display: none;
 }

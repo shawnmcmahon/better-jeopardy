@@ -170,17 +170,19 @@ const Game = () => {
                   { !!categoryQuestions.length && <Redirect to="/game" />}
                   <section className="categories-selector">
                     <label for="numberOfCategories">Number of Categories:</label>
-                    <select
-                      name="numberOfCategories"
-                      id="numberOfCategories"
-                      onChange={updateNumberOfCategories}
-                      >
-                      <option></option>
-                      <option value="2">2</option>
-                      <option value="3">3</option>
-                      <option value="6">6</option>
-                    </select>
-                    <button id="startGameBtn" onClick={getQuestionsByCategory}>START GAME</button>
+                    <div className="selector-bg">
+                      <select
+                        name="numberOfCategories"
+                        id="numberOfCategories"
+                        onChange={updateNumberOfCategories}
+                        >
+                        <option></option>
+                        <option value="2">2</option>
+                        <option value="3">3</option>
+                        <option value="6">6</option>
+                      </select>
+                    </div>
+                    <button id="startGameBtn" class="start-game" onClick={getQuestionsByCategory}>START GAME</button>
                   </section>
                 </div>
               );
