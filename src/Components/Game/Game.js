@@ -127,7 +127,7 @@ const Game = () => {
     evaluateChoice(choice)
     updateQuestions()
     checkIfOver();
-    setTimeout(letUserPickNext, 10000);
+    setTimeout(letUserPickNext, 100);
   }
 
   const evaluateChoice = (choice) => {
