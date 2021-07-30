@@ -2,6 +2,7 @@ import React from 'react';
 import './App.css';
 
 import Header from '../Header/Header';
+import Footer from '../Footer/Footer';
 import Game from '../Game/Game';
 
 const App = () => {
@@ -9,13 +10,7 @@ const App = () => {
     <main>
       <Header />
       <Game />
-      {
-        //App renders:
-          //Game
-            //Game renders choose difficulty form, then game board
-              //game board renders questions & answers
-          //Header at some point
-      }
+      <Footer />
     </main>
   );
 }
