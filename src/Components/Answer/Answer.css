@@ -1,0 +1,12 @@
+.answer-button {
+  font-size: 1.5em;
+  height: 200px;
+  width: 200px;
+  margin: 3%;
+}
+
+@media screen and (max-width: 1000px) {
+  .answer-button {
+    width: 25%;
+  }
+}

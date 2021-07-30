@@ -1,19 +1,15 @@
-import React, { Component } from 'react';
+import React, { useState, useEffect } from 'react';
 import './PastGames.css';
 import { pastGames } from '../../utilities/apiCalls'
 
-class PastGames extends Component {
-  constructor() {
-    super()
-      this.state = {
-        pastGames: []
-      }
-  }
+const PastGames = () => {
 
-  componentDidMount = () => {
+  const [pastGameData, setPastGames] = useState([]);
+
+  useEffect(() => {
     pastGames()
-      .then(data => this.setState({pastGames: data.pastGames}))
-  }
+      .then((data) => setPastGames(data))
+  }, [])
 
   render() {
     return (

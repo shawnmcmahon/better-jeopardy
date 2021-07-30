@@ -7,9 +7,7 @@ const Answer = (props) => {
   }
 
   return (
-    <button className="answer-button" onClick={handleClick}>
-      <p>{props.answer}</p>
-    </button>
+    <button className="answer-button" onClick={handleClick}>{props.answer}</button>
   )
 }
 

@@ -141,11 +141,11 @@ const Game = () => {
       let incorrect = {...currentQuestion, answered_correct: false}
       setAnsweredQuestions([...answeredQuestions, incorrect])
       setUserScore(userScore - parseInt(currentQuestion.prize))
-      
+
     }
   }
 
-  
+
 
   const updateQuestions = () => {
     let newQuestions = categoryQuestions.filter(question => question.question_id !== currentQuestion.question_id)

@@ -4,10 +4,10 @@ import './Results.css';
 
 const Results = ({ newGame }) => {
   return (
-    <>
-    <h3>RESULTS</h3>
-      <Link exact to="/"><button onClick={newGame}>Go back</button></Link>
-    </>
+    <section className="results-section">
+      <h3>RESULTS</h3>
+      <Link exact to="/"><button onClick={newGame} className="new-game-button">Go back</button></Link>
+    </section>
   )
 }
 
