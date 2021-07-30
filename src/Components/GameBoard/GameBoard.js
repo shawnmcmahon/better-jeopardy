@@ -4,10 +4,10 @@ import './GameBoard.css';
 import Tile from '../Tile/Tile';
 
 const GameBoard = ({categories, questions, reset}) => {
-  console.log(categories);
   const questionsAndCategories = categories.map(category => {
-      return <div>
+      return <div className="category">
         <h1>{category}</h1>
+        <div className="tiles">
         {questions.map(question => {
           if (question.category === category) {
             return (
@@ -22,6 +22,7 @@ const GameBoard = ({categories, questions, reset}) => {
             )
           }
         })}
+        </div>
       </div>
     })
 
