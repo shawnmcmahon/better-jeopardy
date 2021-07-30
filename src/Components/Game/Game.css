@@ -21,3 +21,11 @@ select {
   min-width: 200px;
   margin: 3% 0;
 }
+
+.correct, .incorrect {
+  color: white;
+}
+
+.hidden {
+  display: none; 
+}
