@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom'
 import './Header.css';
 
 const Header = () => {
@@ -6,7 +7,7 @@ const Header = () => {
     <header>
       <h1>Better Jeopardy!</h1>
       <p className="tagline">Jeopardy for people who aren't good at Jeopardy.</p>
-      <a className="api-link" href="https://github.com/hoomberto/better-jeopardy-API" target="_blank"><button className="api-button">Our API</button></a>
+      <Link exact to="/saved-games"><button className="api-button">Saved Games</button></Link>
     </header>
   )
 }
