@@ -124,10 +124,10 @@ const Game = () => {
   }
 
   const pickAnswer = (choice) => {
-    updateQuestions()
     evaluateChoice(choice)
+    updateQuestions()
     checkIfOver();
-    setTimeout(letUserPickNext, 100);
+    setTimeout(letUserPickNext, 10000);
   }
 
   const evaluateChoice = (choice) => {
@@ -135,15 +135,22 @@ const Game = () => {
       let correct = {...currentQuestion, answered_correct: true}
       setAnsweredQuestions([...answeredQuestions, correct])
       setUserScore(userScore + parseInt(currentQuestion.prize))
+
+
     } else {
       let incorrect = {...currentQuestion, answered_correct: false}
       setAnsweredQuestions([...answeredQuestions, incorrect])
+      setUserScore(userScore - parseInt(currentQuestion.prize))
+
     }
   }
+
+
 
   const updateQuestions = () => {
     let newQuestions = categoryQuestions.filter(question => question.question_id !== currentQuestion.question_id)
     setCategoryQuestions(newQuestions)
+    setTimeout(setHasAnswered(true), 2000)
     setHasAnswered(true)
   }
 
@@ -154,7 +161,6 @@ const Game = () => {
   return (
     <BrowserRouter>
       <Switch>
-
         <Route
             exact
             path='/'
@@ -174,11 +180,9 @@ const Game = () => {
                       <option value="3">3</option>
                       <option value="6">6</option>
                     </select>
-                    <button className="start-game-button" id="startGameBtn" onClick={getQuestionsByCategory}>START GAME</button>
+                    <button id="startGameBtn" onClick={getQuestionsByCategory}>START GAME</button>
                   </section>
-
                 </div>
-
               );
             }}
           />
@@ -216,7 +220,6 @@ const Game = () => {
             );
           }}
         />
-
       </Switch>
     </BrowserRouter>
   )
