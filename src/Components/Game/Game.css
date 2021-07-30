@@ -5,9 +5,9 @@ select {
   width: 30%;
   text-indent: 50%;
   font-size: 22px;
-  min-width: 220px;
-  height: 35px;
-  border-radius: 3px;
+  min-width: 285px;
+  height: 47px;
+  border-radius: 7px;
   border: none;
   outline: none;
   padding: 1px;
@@ -20,8 +20,8 @@ select {
   margin: 5% 0;
   background: white;
   width: 30%;
-  height: 60px;
-  min-width: 250px;
+  height: 90px;
+  min-width: 338px;
   border-radius: 10px;
 }
 
