@@ -6,7 +6,7 @@ import { getSingleQuestion } from '../../utilities/apiCalls';
 import { shuffleAnswers } from '../../utilities/gameUtils.js';
 import Answer from '../Answer/Answer';
 
-const Question = ({ selectedQuestion, pickQuestion, pickAnswer }) => {
+const Question = ({ selectedQuestion, pickQuestion, pickAnswer, isCorrect, hasAnswered }) => {
 
   const [currentQuestion, setCurrentQuestion] = useState('');
 

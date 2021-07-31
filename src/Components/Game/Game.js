@@ -22,6 +22,7 @@ const Game = () => {
   const [hasAnswered, setHasAnswered] = useState(false);
   const [categories, setCategories] = useState(0);
   const [userScore, setUserScore] = useState(0);
+  const [isCorrect, setIsCorrect] = useState('');
 
   useEffect(() => {
     getQuestions()
@@ -74,6 +75,7 @@ const Game = () => {
 
   const pickQuestion = (pickedQuestion) => {
     setCurrentQuestion(pickedQuestion)
+    setIsCorrect('')
   }
 
   const getQuestionsByCategory = () => {
@@ -124,10 +126,12 @@ const Game = () => {
   }
 
   const pickAnswer = (choice) => {
+    // setTimeout(updateQuestions, 1500)
     evaluateChoice(choice)
     updateQuestions()
+    // setTimeout(updateQuestions, 500)
     checkIfOver();
-    setTimeout(letUserPickNext, 100);
+    setTimeout(letUserPickNext, 800);
   }
 
   const evaluateChoice = (choice) => {
@@ -135,13 +139,13 @@ const Game = () => {
       let correct = {...currentQuestion, answered_correct: true}
       setAnsweredQuestions([...answeredQuestions, correct])
       setUserScore(userScore + parseInt(currentQuestion.prize))
-
+      setIsCorrect(true)
 
     } else {
       let incorrect = {...currentQuestion, answered_correct: false}
       setAnsweredQuestions([...answeredQuestions, incorrect])
       setUserScore(userScore - parseInt(currentQuestion.prize))
-
+      setIsCorrect(false)
     }
   }
 
@@ -150,7 +154,7 @@ const Game = () => {
   const updateQuestions = () => {
     let newQuestions = categoryQuestions.filter(question => question.question_id !== currentQuestion.question_id)
     setCategoryQuestions(newQuestions)
-    setTimeout(setHasAnswered(true), 2000)
+    // setTimeout(setHasAnswered(true), 2000)
     setHasAnswered(true)
   }
 
@@ -205,6 +209,7 @@ const Game = () => {
               <>
               {!categoryQuestions.length && <Redirect exact to="/" />}
               {!!answeredQuestions.length && !!roundOver && <Redirect exact to="/results" />}
+              <h1 className="in-correct">{!isCorrect && hasAnswered && "Incorrect!"}{!!isCorrect && hasAnswered && "Correct!"}{!hasAnswered && "Pick a Question"}</h1>
               {!!categoryQuestions.length && <GameBoard categories={selectedCategories} questions={categoryQuestions} reset={resetGame}/>}
               </>
             );
@@ -217,7 +222,7 @@ const Game = () => {
             return (
               <>
               {!!hasAnswered && <Redirect exact to="/game" />}
-              <Question selectedQuestion={parseInt(match.params.question_id)} pickQuestion={pickQuestion} pickAnswer={pickAnswer} />
+              <Question selectedQuestion={parseInt(match.params.question_id)} isCorrect={isCorrect} pickQuestion={pickQuestion} pickAnswer={pickAnswer} hasAnswered={hasAnswered} />
               </>
             );
           }}
