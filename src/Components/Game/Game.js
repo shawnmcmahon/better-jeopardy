@@ -1,5 +1,5 @@
 import React, { Component, useEffect, useState } from 'react';
-import { BrowserRouter, Route, Switch, Redirect } from 'react-router-dom';
+import { BrowserRouter, Route, Switch, Redirect, NavLink } from 'react-router-dom';
 import './Game.css';
 
 import Question from '../Question/Question';
@@ -168,6 +168,7 @@ const Game = () => {
               return (
                 <div>
                   { !!categoryQuestions.length && <Redirect to="/game" />}
+                  <NavLink exact to="/saved-games"><button className="api-button">Saved Games</button></NavLink>
                   <section className="categories-selector">
                     <label for="numberOfCategories">Number of Categories:</label>
                     <div className="selector-bg">
