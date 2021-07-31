@@ -11,20 +11,73 @@ const dayjs = require('dayjs');
 
 
 const Game = () => {
+
+//   const initialGame = {
+//     numCategories: 0,
+//     originalQuestions: [],
+//     selectedCategories: [],
+//     answeredQuestions: [],
+//     categoryQuestions: [],
+//     currentQuestion: '',
+//     roundOver: false,
+//     hasAnswered: false,
+//     categories: 0,
+//     userScore: 0,
+//     isCorrect: ''
+//   }
+//
+//   const gameHandler = (state, action) => {
+//   switch (action.type) {
+//     case 'populate_random_categories':
+//       const generatedCategories = []
+//
+//       while (generatedCategories.length < num) {
+//         const randomCategory =  state.categories[Math.floor(Math.random() * state.categories.length)]
+//         if (!generatedCategories.includes(randomCategory)) {
+//           generatedCategories.push(randomCategory)
+//         }
+//       }
+//       state.selectedCategories = generatedCategories
+//       return state
+//
+//     case 'get_questions_by_category':
+//       let relevantQuestions = [];
+//       if (!selectedCategories.length) {
+//         return
+//       }
+//       state.selectedCategories.forEach(category => {
+//         let categoryQuestions = questions.filter(question => question.category === category)
+//         relevantQuestions = [...relevantQuestions, ...categoryQuestions]
+//       })
+//       setGame({...game, categoryQuestions: relevantQuestions, originalQuestions: relevantQuestions, roundOver: false})
+//
+//       state.categoryQuestions = relevantQuestions
+//       state.originalQuestions = relevantQuestions
+//       state.roundOver = false
+//       return state
+//
+//     case '':
+//
+//       return
+//     default:
+//       return state;
+//   }
+// };
+
   const [questions, setQuestions] = useState([])
-  const [game, setGame] = useState({
-    numCategories: 0,
-    originalQuestions: [],
-    selectedCategories: [],
-    answeredQuestions: [],
-    categoryQuestions: [],
-    currentQuestion: '',
-    roundOver: false,
-    hasAnswered: false,
-    categories: 0,
-    userScore: 0,
-    isCorrect: ''
-  })
+  // const [game, setGame] = useState({
+  //   numCategories: 0,
+  //   originalQuestions: [],
+  //   selectedCategories: [],
+  //   answeredQuestions: [],
+  //   categoryQuestions: [],
+  //   currentQuestion: '',
+  //   roundOver: false,
+  //   hasAnswered: false,
+  //   categories: 0,
+  //   userScore: 0,
+  //   isCorrect: ''
+  // })
   const [numCategories, setNumCategories] = useState(0);
   const [originalQuestions, setOriginalQuestions] = useState([]);
   const [selectedCategories, setSelectedCategories] = useState([]);
@@ -47,7 +100,7 @@ const Game = () => {
           }
           return allCategories
       }, [])
-      setGame({...game, categories: categoriesFromQuestions})
+      // setGame({...game, categories: categoriesFromQuestions})
       setCategories(categoriesFromQuestions)
     })
   }, [])
@@ -65,12 +118,14 @@ const Game = () => {
         userScore,
       }
       console.log(pastGame)
+      // setGame({...game, roundOver: true})
       setRoundOver(true)
     }
   }, [categoryQuestions.length])
 
 
   const gameOver = () => {
+    // setGame({...game, roundOver: true})
     setRoundOver(true)
   }
 
@@ -84,10 +139,12 @@ const Game = () => {
         generatedCategories.push(randomCategory)
       }
     }
+    // setGame({...game, selectedCategories: generatedCategories})
     setSelectedCategories(generatedCategories)
   }
 
   const pickQuestion = (pickedQuestion) => {
+    // setGame({...game, currentQuestion: pickedQuestion, isCorrect: ''})
     setCurrentQuestion(pickedQuestion)
     setIsCorrect('')
   }
@@ -101,6 +158,7 @@ const Game = () => {
       let categoryQuestions = questions.filter(question => question.category === category)
       relevantQuestions = [...relevantQuestions, ...categoryQuestions]
     })
+    // setGame({...game, categoryQuestions: relevantQuestions, originalQuestions: relevantQuestions, roundOver: false})
     setCategoryQuestions(relevantQuestions)
     setOriginalQuestions(relevantQuestions)
     setRoundOver(false)
@@ -108,6 +166,7 @@ const Game = () => {
 
   const checkIfOver = () => {
     if (answeredQuestions.length === originalQuestions.length) {
+      // setGame({...game, roundOver: true})
       setRoundOver(true)
       const pastGame = {
         questions: [...answeredQuestions],
@@ -127,6 +186,7 @@ const Game = () => {
   }
 
   const resetGame = () => {
+    // setGame({...game, numCategories: 0, userScore: 0, selectedCategories: [], categoryQuestions: [], answeredQuestions: []})
     setNumCategories(0)
     setUserScore(0)
     setSelectedCategories([])
@@ -142,14 +202,17 @@ const Game = () => {
   }
 
   const evaluateChoice = (choice) => {
+    // const {answeredQuestions, userScore, currentQuestion} = game
     if (choice === currentQuestion.correct_answer) {
       let correct = {...currentQuestion, answered_correct: true}
+      // setGame({...game, answeredQuestions: [...answeredQuestions, correct], userScore: (userScore + parseInt(currentQuestion.prize)), isCorrect: true})
       setAnsweredQuestions([...answeredQuestions, correct])
       setUserScore(userScore + parseInt(currentQuestion.prize))
       setIsCorrect(true)
 
     } else {
       let incorrect = {...currentQuestion, answered_correct: false}
+      // setGame({...game, answeredQuestions: [...answeredQuestions, incorrect], userScore: (userScore - parseInt(currentQuestion.prize)), isCorrect: false})
       setAnsweredQuestions([...answeredQuestions, incorrect])
       setUserScore(userScore - parseInt(currentQuestion.prize))
       setIsCorrect(false)
@@ -160,11 +223,13 @@ const Game = () => {
 
   const updateQuestions = () => {
     let newQuestions = categoryQuestions.filter(question => question.question_id !== currentQuestion.question_id)
+    // setGame({...game, answeredQuestions: newQuestions, hasAnswered: true})
     setCategoryQuestions(newQuestions)
     setHasAnswered(true)
   }
 
   const letUserPickNext = () => {
+    // setGame({...game, hasAnswered: false})
     setHasAnswered(false)
   }
 
@@ -192,7 +257,7 @@ const Game = () => {
                         <option value="6">6</option>
                       </select>
                     </div>
-                    <button id="startGameBtn" className="start-game" onClick={getQuestionsByCategory}>START GAME</button>
+                    <button id="startGameBtn" className="start-game" onClick={getQuestionsByCategory}>Start Game</button>
                   </section>
                 </div>
               );
