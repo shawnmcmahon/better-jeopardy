@@ -173,7 +173,7 @@ const Game = () => {
                 <div>
                   { !!categoryQuestions.length && <Redirect to="/game" />}
                   <section className="categories-selector">
-                    <label for="numberOfCategories">Number of Categories:</label>
+                    <label htmlFor="numberOfCategories">Number of Categories:</label>
                     <div className="selector-bg">
                       <select
                         name="numberOfCategories"
@@ -186,7 +186,7 @@ const Game = () => {
                         <option value="6">6</option>
                       </select>
                     </div>
-                    <button id="startGameBtn" class="start-game" onClick={getQuestionsByCategory}>START GAME</button>
+                    <button id="startGameBtn" className="start-game" onClick={getQuestionsByCategory}>START GAME</button>
                   </section>
                 </div>
               );
