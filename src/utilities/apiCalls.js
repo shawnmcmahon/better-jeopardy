@@ -18,7 +18,7 @@ const getPastGames = () => {
 
 const addGame = (pastGame) => {
   console.log(pastGame)
-  return fetch('http://localhost:3001/api/v1/past-games', {
+  return fetch('http://better-jeopardy-api.herokuapp.com/api/v1/past-games', {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json'
