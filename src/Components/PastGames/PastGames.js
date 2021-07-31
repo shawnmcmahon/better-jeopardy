@@ -12,12 +12,15 @@ const PastGames = () => {
       .then((data) => setPastGames(data))
   }, [])
 
-  console.log(pastGameData.pastGames);
+  console.log('hi', pastGameData.pastGames);
 
   const renderPastGames = () => {
     return pastGameData.pastGames.map((gameData) => {
       <article className="past-game-card">
-        <h3>{gameData.date}</h3>
+        <h3>{gameData.date}</h3>\
+        <h3>{gameData.game_id}</h3>
+        <h3>{gameData.questions}</h3>
+        <h3>{gameData.score}</h3>
       </article>
     })
   }
