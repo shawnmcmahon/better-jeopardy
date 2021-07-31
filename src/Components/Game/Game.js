@@ -94,18 +94,13 @@ const Game = () => {
 
   const checkIfOver = () => {
     if (answeredQuestions.length === originalQuestions.length) {
-      console.log("Number of questions answered", answeredQuestions.length)
       setRoundOver(true)
       const pastGame = {
+        questions: [...answeredQuestions],
         date: dayjs().$d,
-        numCategories,
-        selectedCategories,
-        categoryQuestions,
-        answeredQuestions,
-        userScore,
+        score: userScore
       }
       resetGame();
-    } else {
     }
   }
 
@@ -126,10 +121,8 @@ const Game = () => {
   }
 
   const pickAnswer = (choice) => {
-    // setTimeout(updateQuestions, 1500)
     evaluateChoice(choice)
     updateQuestions()
-    // setTimeout(updateQuestions, 500)
     checkIfOver();
     setTimeout(letUserPickNext, 800);
   }
@@ -154,7 +147,6 @@ const Game = () => {
   const updateQuestions = () => {
     let newQuestions = categoryQuestions.filter(question => question.question_id !== currentQuestion.question_id)
     setCategoryQuestions(newQuestions)
-    // setTimeout(setHasAnswered(true), 2000)
     setHasAnswered(true)
   }
 
