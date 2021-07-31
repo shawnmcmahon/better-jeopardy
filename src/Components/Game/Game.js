@@ -111,12 +111,9 @@ const Game = () => {
       console.log("Number of questions answered", answeredQuestions.length)
       // setRoundOver(true)
       const pastGame = {
+        questions: [...answeredQuestions],
         date: dayjs().$d,
-        numCategories,
-        selectedCategories,
-        categoryQuestions,
-        answeredQuestions,
-        userScore,
+        score: userScore
       }
       console.log(pastGame)
       addGame(pastGame);
