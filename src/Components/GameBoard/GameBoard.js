@@ -4,8 +4,8 @@ import './GameBoard.css';
 import Tile from '../Tile/Tile';
 
 const GameBoard = ({categories, questions, reset}) => {
-  const questionsAndCategories = categories.map(category => {
-      return <div className="category">
+  const questionsAndCategories = categories.map((category, index) => {
+      return <div key={index} className="category">
         <h1>{category}</h1>
         <div className="tiles">
         {questions.map(question => {
@@ -28,7 +28,7 @@ const GameBoard = ({categories, questions, reset}) => {
 
   return (
     <>
-    <button className="exit" data-cy="exit" onClick={reset} >EXIT GAME</button>
+    <button className="exit" data-cy="exit" onClick={reset} >Leave Game</button>
     <div className="questions-container">{questionsAndCategories}</div>
     </>
   )
