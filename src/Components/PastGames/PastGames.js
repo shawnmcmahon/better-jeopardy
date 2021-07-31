@@ -1,21 +1,23 @@
 import React, { useState, useEffect } from 'react';
+import { Link } from 'react-router-dom';
 import './PastGames.css';
-import { pastGames } from '../../utilities/apiCalls'
+import { getPastGames } from '../../utilities/apiCalls'
 
 const PastGames = () => {
 
   const [pastGameData, setPastGames] = useState([]);
 
   useEffect(() => {
-    pastGames()
+    getPastGames()
       .then((data) => setPastGames(data))
   }, [])
 
-  render() {
-    return (
+  return (
+    <section className="past-games-section">
+      <Link exact to="/"><button className="nav-button">Back</button></Link>
       <h2>Past games!</h2>
-    )
-  }
+    </section>
+  )
 }
 
 export default PastGames;

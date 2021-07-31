@@ -1,10 +1,11 @@
-import React, { Component, useEffect, useState } from 'react';
-import { BrowserRouter, Route, Switch, Redirect, NavLink } from 'react-router-dom';
+import React, { useEffect, useState } from 'react';
+import { Route, Switch, Redirect, NavLink } from 'react-router-dom';
 import './Game.css';
 
 import Question from '../Question/Question';
 import GameBoard from '../GameBoard/GameBoard';
 import Results from '../Results/Results';
+import PastGames from '../PastGames/PastGames';
 import { getQuestions, addGame } from '../../utilities/apiCalls';
 import { getRandomIndex } from '../../utilities/utils';
 const dayjs = require('dayjs');
@@ -168,7 +169,7 @@ const Game = () => {
               return (
                 <div>
                   { !!categoryQuestions.length && <Redirect to="/game" />}
-                  <NavLink exact to="/saved-games"><button className="api-button">Saved Games</button></NavLink>
+                  <NavLink exact to="/saved-games"><button className="nav-button">Saved Games</button></NavLink>
                   <section className="categories-selector">
                     <label for="numberOfCategories">Number of Categories:</label>
                     <div className="selector-bg">
@@ -198,7 +199,16 @@ const Game = () => {
               )
             }}
           />
-      <Route
+        <Route
+          exact
+          path='/saved-games'
+          render={() => {
+            return (
+              <PastGames />
+            )
+          }}
+        />
+        <Route
           exact
           path='/game'
           render={() => {

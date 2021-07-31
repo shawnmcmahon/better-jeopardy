@@ -1,5 +1,5 @@
 import React from 'react';
-import { NavLink, Link } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import './Tile.css';
 
 const Tile = ({id, q, correct, incorrect, prize}) => {

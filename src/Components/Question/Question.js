@@ -11,15 +11,11 @@ const Question = ({ selectedQuestion, pickQuestion, pickAnswer }) => {
   const [currentQuestion, setCurrentQuestion] = useState('');
 
   useEffect(() => {
-    let isMounted = true;
     getSingleQuestion(selectedQuestion)
     .then(data => {
-      if (isMounted) {
-        pickQuestion(data)
-        setCurrentQuestion(data)
-      }
+      pickQuestion(data)
+      setCurrentQuestion(data)
     })
-    return () => { isMounted = false };
   }, [])
 
 //   useEffect(() => {
