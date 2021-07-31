@@ -17,7 +17,7 @@ main {
 }
 
 .exit, .start-game {
-  margin-top: 4%;
+  margin-top: 1%;
   cursor: pointer;
 }
 
