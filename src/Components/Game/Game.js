@@ -12,6 +12,19 @@ const dayjs = require('dayjs');
 
 const Game = () => {
   const [questions, setQuestions] = useState([])
+  const [game, setGame] = useState({
+    numCategories: 0,
+    originalQuestions: [],
+    selectedCategories: [],
+    answeredQuestions: [],
+    categoryQuestions: [],
+    currentQuestion: '',
+    roundOver: false,
+    hasAnswered: false,
+    categories: 0,
+    userScore: 0,
+    isCorrect: ''
+  })
   const [numCategories, setNumCategories] = useState(0);
   const [originalQuestions, setOriginalQuestions] = useState([]);
   const [selectedCategories, setSelectedCategories] = useState([]);
@@ -34,6 +47,7 @@ const Game = () => {
           }
           return allCategories
       }, [])
+      setGame({...game, categories: categoriesFromQuestions})
       setCategories(categoriesFromQuestions)
     })
   }, [])
