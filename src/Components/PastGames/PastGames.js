@@ -24,7 +24,7 @@ const PastGames = () => {
 
   return (
     <section className="past-games-section">
-      <Link exact to="/"><button className="nav-button">Back</button></Link>
+      <Link to="/"><button className="nav-button">Back</button></Link>
       <h2>Past Games</h2>
       {renderPastGames}
     </section>
