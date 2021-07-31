@@ -12,10 +12,21 @@ const PastGames = () => {
       .then((data) => setPastGames(data))
   }, [])
 
+  console.log(pastGameData.pastGames);
+
+  const renderPastGames = () => {
+    return pastGameData.pastGames.map((gameData) => {
+      <article className="past-game-card">
+        <h3>{gameData.date}</h3>
+      </article>
+    })
+  }
+
   return (
     <section className="past-games-section">
       <Link exact to="/"><button className="nav-button">Back</button></Link>
-      <h2>Past games!</h2>
+      <h2>Past Games</h2>
+      {renderPastGames}
     </section>
   )
 }

@@ -51,6 +51,7 @@ const Game = () => {
         userScore,
       }
       console.log(pastGame)
+      addGame(pastGame);
       setRoundOver(true)
     }
   }, [categoryQuestions.length])
