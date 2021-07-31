@@ -19,8 +19,8 @@ const PastGames = () => {
       <article className="past-game-card">
         <h3 className="date">{gameData.date}</h3>\
         <h3 className="id">{gameData.game_id}</h3>
-        <h3>{gameData.questions}</h3>
-        <h3>{gameData.score}</h3>
+        <h3 className="questions">{gameData.questions}</h3>
+        <h3 className="score">{gameData.score}</h3>
       </article>
     })
   }
