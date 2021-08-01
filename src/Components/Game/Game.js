@@ -117,7 +117,7 @@ const Game = ({ player }) => {
         score: userScore
       }
       console.log(pastGame)
-      addGame(pastGame);
+      // addGame(pastGame);
       setRoundOver(true)
     }
   }, [categoryQuestions.length])
@@ -125,6 +125,7 @@ const Game = ({ player }) => {
 
   const gameOver = () => {
     // setGame({...game, roundOver: true})
+    console.log('answeredQuestions', answeredQuestions)
     setRoundOver(true)
   }
 
@@ -270,7 +271,14 @@ const Game = ({ player }) => {
             path='/results'
             render={() => {
               return (
-                <Results newGame={resetGame} playerSet={setPlayerName} player={playerName}/>
+                <Results 
+                  newGame={resetGame} 
+                  playerSet={setPlayerName} 
+                  player={playerName} 
+                  userScore={userScore} 
+                  answeredQuestions={answeredQuestions} 
+                  addGame={addGame}
+                  />
               )
             }}
           />
