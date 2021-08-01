@@ -1,3 +1,7 @@
+h2, article {
+  color: white;
+}
+
 .past-game-card {
   border: 2px solid red; 
   height: 500px;

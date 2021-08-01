@@ -12,26 +12,28 @@ const PastGames = () => {
   useEffect(() => {
     getPastGames()
       .then((data) => {
-        setPastGames(data)
+        setPastGames(data.pastGames)
         // console.log('data', data)
       })
       .catch((err) => console.log(err))
   }, [])
 
   let renderPastGames
-  if (!!pastGameData.pastGames) {
-    const theDataWeNeed = [pastGameData.pastGames];
+  if (!!pastGameData) {
+    const theDataWeNeed = pastGameData
+    
     console.log('hi', theDataWeNeed);
-    return renderPastGames = theDataWeNeed[0].map((gameData, index) => {
+    return renderPastGames = theDataWeNeed.map((gameData, index) => {
       console.log('mapData', gameData)
+      const {date, game_id, questions, score} = gameData;
       return (
       <div>
         <SavedGame
-            date={gameData.date}
-            key={gameData.game_id}
-            id={gameData.game_id}
-            questions={gameData.questions}
-            score={gameData.score}
+            date={date}
+            key={game_id}
+            id={game_id}
+            questions={questions}
+            score={score}
           /> 
           {/* <SavedGame
             date={gameData[index].date}
