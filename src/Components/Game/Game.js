@@ -243,7 +243,7 @@ const Game = ({ player }) => {
               return (
                 <div>
                   { !!categoryQuestions.length && <Redirect to="/game" />}
-                  <Form playerSet={setPlayerName} player={playerName}/>
+                  {/* <Form playerSet={setPlayerName} player={playerName}/> */}
                   <NavLink exact to="/saved-games"><button className="nav-button">Saved Games</button></NavLink>
                   <section className="categories-selector">
                     <label htmlFor="numberOfCategories">Number of Categories:</label>
@@ -270,7 +270,7 @@ const Game = ({ player }) => {
             path='/results'
             render={() => {
               return (
-                <Results newGame={resetGame} />
+                <Results newGame={resetGame} playerSet={setPlayerName} player={playerName}/>
               )
             }}
           />

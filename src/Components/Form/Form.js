@@ -19,7 +19,7 @@ const Form = ({player, playerSet}) => {
 
       <input
         type="text"
-        name="PlayerName"
+        className="player-name"
         onChange={(event) => playerSet(event.target.value)}
         value={player}
         placeholder="Enter Player Name"
