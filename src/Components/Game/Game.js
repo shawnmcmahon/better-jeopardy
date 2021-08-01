@@ -261,7 +261,6 @@ const Game = ({ player }) => {
                 <div>
                   { !!categoryQuestions.length && <Redirect to="/game" />}
                   {/* <Form playerSet={setPlayerName} player={playerName}/> */}
-                  <NavLink exact to="/saved-games"><button className="nav-button">Saved Games</button></NavLink>
                   <section className="categories-selector">
                     <label htmlFor="numberOfCategories">Number of Categories:</label>
                     <div className="selector-bg">
@@ -277,6 +276,7 @@ const Game = ({ player }) => {
                       </select>
                     </div>
                     <button id="startGameBtn" className="start-game" onClick={getQuestionsByCategory}>Start Game</button>
+                    <NavLink exact to="/saved-games"><button className="nav-button">Saved Games</button></NavLink>
                   </section>
                 </div>
               );
