@@ -1,6 +1,7 @@
 import React from 'react';
 import './SavedGame.css';
 import dayjs from 'dayjs'
+import { Link } from 'react-router-dom'
 
 
 const SavedGame = ({date, id, questions, score, name}) => {
@@ -21,6 +22,7 @@ const SavedGame = ({date, id, questions, score, name}) => {
         <h2 className="score">Score: ${score}</h2>
         <ul className="questions">{questionContainer}</ul>
       </article>
+      <Link to="/saved-games"><button className="back-button">Back</button></Link>
     </div>
   )
 }
