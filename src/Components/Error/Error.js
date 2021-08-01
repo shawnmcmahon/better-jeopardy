@@ -7,7 +7,7 @@ const Error = () => {
 
   return (
     <> 
-    
+      <h2 className="error">Error: Something went wrong... </h2>
     </>
   )
 }
