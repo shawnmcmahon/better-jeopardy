@@ -15,21 +15,15 @@ describe('Game', () => {
   });
 
   it('Should be able to all dropdown options', () => {
-    // cy.intercept('GET', 'https://better-jeopardy-api.herokuapp.com/api/v1/questions', {
-    //   statusCode: 200,
-    //   fixture: 'allQuestions.json'
-    // })
     cy.get('select')
       .select('2')
-      // .select('3')
-      // .select('6')
+    cy.get('select')
+      .select('3')
+    cy.get('select')
+      .select('6')
   });
 
   it('Should be able to start a game with 2 categories', () => {
-    // cy.intercept('GET', 'https://better-jeopardy-api.herokuapp.com/api/v1/questions', {
-    //   statusCode: 200,
-    //   fixture: 'allQuestions.json'
-    // })
     cy.get('select')
       .select('2')
     cy.get('button').contains('Start Game').click()
@@ -40,10 +34,6 @@ describe('Game', () => {
   });
 
   it('Should be able to start a game with 3 categories', () => {
-    // cy.intercept('GET', 'https://better-jeopardy-api.herokuapp.com/api/v1/questions', {
-    //   statusCode: 200,
-    //   fixture: 'allQuestions.json'
-    // })
     cy.get('select')
       .select('3')
     cy.get('button').contains('Start Game').click()
@@ -66,10 +56,6 @@ describe('Game', () => {
   });
 
   it('Should have a property formatted tile', () => {
-    // cy.intercept('GET', 'https://better-jeopardy-api.herokuapp.com/api/v1/questions', {
-    //   statusCode: 200,
-    //   fixture: 'allQuestions.json'
-    // })
     cy.get('select')
       .select('2')
     cy.get('button').contains('Start Game').click()
@@ -82,10 +68,6 @@ describe('Game', () => {
   })
 
   it('Should have an exit game button', () => {
-    // cy.intercept('GET', 'https://better-jeopardy-api.herokuapp.com/api/v1/questions', {
-    //   statusCode: 200,
-    //   fixture: 'allQuestions.json'
-    // })
     cy.get('select')
       .select('2')
       cy.get('button').contains('Start Game').click()
@@ -93,10 +75,6 @@ describe('Game', () => {
   })
 
   it('Should have a game board with ten question links for a 2 category game', () => {
-    // cy.intercept('GET', 'https://better-jeopardy-api.herokuapp.com/api/v1/questions', {
-    //   statusCode: 200,
-    //   fixture: 'allQuestions.json'
-    // })
       cy.get('select')
       .select('2')
       cy.get('button').contains('Start Game').click()
@@ -116,10 +94,6 @@ describe('Game', () => {
   })
 
   it('Should navigate to a question page when a question box is clicked', () => {
-    //   cy.intercept('GET', 'https://better-jeopardy-api.herokuapp.com/api/v1/questions', {
-    //   statusCode: 200,
-    //   fixture: 'allQuestions.json'
-    // })
     cy.get('select')
       .select('2')
       cy.get('button').contains('Start Game').click()
@@ -129,10 +103,6 @@ describe('Game', () => {
 
 
     it('Should be able to use the back and forward buttons', () => {
-      //   cy.intercept('GET', 'https://better-jeopardy-api.herokuapp.com/api/v1/questions', {
-      //   statusCode: 200,
-      //   fixture: 'allQuestions.json'
-      // })
       cy.get('select')
         .select('2')
         cy.get('button').contains('Start Game').click()
