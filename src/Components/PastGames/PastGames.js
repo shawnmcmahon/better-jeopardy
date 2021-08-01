@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import './PastGames.css';
 import { getPastGames } from '../../utilities/apiCalls'
-import SavedGame from '../SavedGame/SavedGame';
+import SavedGameCard from '../SavedGameCard/SavedGameCard';
 import Tile from '../Tile/Tile';
 
 const PastGames = () => {
@@ -26,10 +26,9 @@ const PastGames = () => {
       // console.log('questions', questions)
       // console.log('score', score)
       return (
-        <SavedGame
+        <SavedGameCard
           date={date}
-          key={game_id}
-          questions={questions}
+          id={game_id}
           score={score}
           name={name}
         />
