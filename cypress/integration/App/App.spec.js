@@ -10,13 +10,16 @@ describe('App', () => {
 
   it('Should allow the user to view past games posted to the API', () => {
     cy.get('button').contains('Saved Games').click();
+    cy.url().should('eq', 'http://localhost:3000/saved-games');
     cy.get('h2').should('contain', 'Past Games');
   });
 
   it('Should allow the user to go back to the game start page', () => {
     cy.get('button').contains('Saved Games').click();
+    cy.url().should('eq', 'http://localhost:3000/saved-games');
     cy.get('h2').should('contain', 'Past Games');
     cy.get('button').contains('Back').click();
+    cy.url().should('eq', 'http://localhost:3000/');
     cy.get('label').contains('Number of Categories:')
   });
 
@@ -30,5 +33,4 @@ describe('App', () => {
   it('Should display an error message to the user if the questions cannot be loaded from the API', () => {
     
   });
-
 });
