@@ -8,9 +8,17 @@ describe('App', () => {
     cy.contains('Jeopardy for people who aren\'t good at Jeopardy.')
   });
 
-  it('Should allow the user to view past games posted to the API');
+  it('Should allow the user to view past games posted to the API', () => {
+    cy.get('button').contains('Saved Games').click();
+    cy.get('h2').should('contain', 'Past Games');
+  });
 
-  it('Should allow the user to go back to the game start page');
+  it('Should allow the user to go back to the game start page', () => {
+    cy.get('button').contains('Saved Games').click();
+    cy.get('h2').should('contain', 'Past Games');
+    cy.get('button').contains('Back').click();
+    cy.get('label').contains('Number of Categories:')
+  });
 
   it('Should not allow the user to go to the game page without selecting a number of categories', () => {
     cy.get('button').contains('Start Game').click();
