@@ -1,9 +1,14 @@
 .past-game-card {
-  border: 2px solid black; 
+  border: 2px solid black;
   height: 500px;
   width: 500px;
   background-color: white;
   color: black;
+}
+
+.past-games-section {
+  display: grid;
+  place-items: center;
 }
 
 .date {
@@ -19,7 +24,7 @@
 
 .questions {
   color: black;
-  
+
 
 }
 
