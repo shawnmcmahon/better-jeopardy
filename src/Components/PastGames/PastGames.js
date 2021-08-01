@@ -67,7 +67,7 @@ const PastGames = () => {
 
   return (
     <section className="past-games-section">
-      <Link to="/"><button className="nav-button">Back</button></Link>
+      <Link to="/"><button className="back-button">Back</button></Link>
       <h2>Past Games</h2>
       {pastGameData.length ? <div>{renderPastGames()}</div> : <h3>Loading...</h3>}
     </section>

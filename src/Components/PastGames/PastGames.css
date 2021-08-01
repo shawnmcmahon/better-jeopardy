@@ -27,3 +27,15 @@
   color: black;
 
 }
+
+.back-button {
+  min-width: 200px;
+  min-height: 30px;
+  margin-top: 5%;
+}
+
+section {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
