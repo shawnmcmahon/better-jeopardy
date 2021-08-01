@@ -91,6 +91,7 @@ const Game = ({ player }) => {
   const [categories, setCategories] = useState(0);
   const [userScore, setUserScore] = useState(0);
   const [isCorrect, setIsCorrect] = useState('');
+  const [pastGame, setPastGame] = useState({});
 
   useEffect(() => {
     getQuestions()
@@ -109,6 +110,22 @@ const Game = ({ player }) => {
 
   useEffect(() => {
     if (!categoryQuestions.length && !!answeredQuestions.length) {
+      // console.log("Number of questions answered", answeredQuestions.length)
+      // // setRoundOver(true)
+      // const pastGame = {
+      //   questions: [...answeredQuestions],
+      //   date: dayjs().$d,
+      //   score: userScore
+      // }
+      // console.log(pastGame)
+      // // setPastGame(pastGame);
+      // // addGame(pastGame);
+      setRoundOver(true)
+    }
+  }, [categoryQuestions.length])
+
+  const addGameAndReset = () => {
+    if (!categoryQuestions.length && !!answeredQuestions.length) {
       console.log("Number of questions answered", answeredQuestions.length)
       // setRoundOver(true)
       const pastGame = {
@@ -117,15 +134,14 @@ const Game = ({ player }) => {
         score: userScore
       }
       console.log(pastGame)
-      // addGame(pastGame);
-      setRoundOver(true)
+      setPastGame(pastGame);
+      addGame(pastGame);
+      resetGame();
     }
-  }, [categoryQuestions.length])
-
+  }
 
   const gameOver = () => {
     // setGame({...game, roundOver: true})
-    console.log('answeredQuestions', answeredQuestions)
     setRoundOver(true)
   }
 
@@ -271,14 +287,19 @@ const Game = ({ player }) => {
             path='/results'
             render={() => {
               return (
-                <Results 
+                <> 
+                  {!answeredQuestions.length && <Redirect exact to="/" />}
+                  <Results 
                   newGame={resetGame} 
                   playerSet={setPlayerName} 
                   player={playerName} 
                   userScore={userScore} 
                   answeredQuestions={answeredQuestions} 
-                  addGame={addGame}
+                  setPastGame={setPastGame}
+                  pastGame={pastGame}
+                  addGameAndReset={addGameAndReset}
                   />
+                </>
               )
             }}
           />

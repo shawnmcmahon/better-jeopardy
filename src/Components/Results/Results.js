@@ -2,8 +2,10 @@ import React from 'react';
 import { Link } from 'react-router-dom'
 import Form from '../Form/Form'
 import './Results.css';
+import addGame from '../../utilities/apiCalls';
 
-const Results = ({ newGame, playerSet, player, userScore, answeredQuestions, addGame}) => {
+
+const Results = ({ newGame, playerSet, player, userScore, answeredQuestions, addGame, setPastGame, pastGame, addGameAndReset}) => {
 
   // const findCorrect = () => {
   //   const correct = answeredQuestions.reduce((acc, currentQuestion) => {
@@ -23,7 +25,7 @@ const Results = ({ newGame, playerSet, player, userScore, answeredQuestions, add
       <h2>Your Score: ${userScore}</h2>
       {/* <h2>{findCorrect()} </h2> */}
       <Form className="name-input" playerSet={playerSet} player={player}/>
-      <button className="submit-score" onClick={addGame}>Submit Game</button>
+      <button className="submit-score" onClick={addGameAndReset}>Submit Game</button>
       <Link to="/"><button onClick={newGame} className="new-game-button">Go back</button></Link>
     </section>
   )
