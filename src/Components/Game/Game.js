@@ -6,12 +6,13 @@ import Question from '../Question/Question';
 import GameBoard from '../GameBoard/GameBoard';
 import Results from '../Results/Results';
 import PastGames from '../PastGames/PastGames';
+import Form from '../Form/Form';
 import { getQuestions, addGame } from '../../utilities/apiCalls';
 import { getRandomIndex } from '../../utilities/utils';
 const dayjs = require('dayjs');
 
 
-const Game = () => {
+const Game = ({ player }) => {
 
 //   const initialGame = {
 //     numCategories: 0,
@@ -64,7 +65,7 @@ const Game = () => {
 //       return state;
 //   }
 // };
-
+  const [playerName, setPlayerName] = useState('');
   const [questions, setQuestions] = useState([])
   // const [game, setGame] = useState({
   //   numCategories: 0,
@@ -79,7 +80,7 @@ const Game = () => {
   //   userScore: 0,
   //   isCorrect: ''
   // })
-  const [numCategories, setNumCategories] = useState(0);
+  // const [numCategories, setNumCategories] = useState(0);
   const [originalQuestions, setOriginalQuestions] = useState([]);
   const [selectedCategories, setSelectedCategories] = useState([]);
   const [answeredQuestions, setAnsweredQuestions] = useState([]);
@@ -185,11 +186,12 @@ const Game = () => {
 
   const resetGame = () => {
     // setGame({...game, numCategories: 0, userScore: 0, selectedCategories: [], categoryQuestions: [], answeredQuestions: []})
-    setNumCategories(0)
+    // setNumCategories(0)
     setUserScore(0)
     setSelectedCategories([])
     setCategoryQuestions([])
     setAnsweredQuestions([])
+    setPlayerName('')
   }
 
   const pickAnswer = (choice) => {
@@ -241,6 +243,7 @@ const Game = () => {
               return (
                 <div>
                   { !!categoryQuestions.length && <Redirect to="/game" />}
+                  <Form playerSet={setPlayerName} player={playerName}/>
                   <NavLink exact to="/saved-games"><button className="nav-button">Saved Games</button></NavLink>
                   <section className="categories-selector">
                     <label htmlFor="numberOfCategories">Number of Categories:</label>

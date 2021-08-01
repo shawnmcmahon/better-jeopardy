@@ -1,0 +1,58 @@
+h2, article {
+  color: white;
+}
+
+.past-game-card {
+  border: 2px solid red;
+  height: 500px;
+  width: 500px;
+  background-color: white;
+  color: black;
+}
+
+.date {
+  color: black;
+
+
+}
+
+.id {
+  color: black;
+
+}
+
+.questions {
+  color: black;
+
+
+}
+
+.score {
+  color: black;
+}
+
+.saved-game {
+  height: auto;
+  width: auto;
+  padding: 0;
+  margin: 2% 0;
+  border: 4px solid white;
+}
+
+.saved-game * {
+  color: white;
+  /* padding: 0; */
+}
+
+ul {
+  padding: 0;
+}
+
+li {
+  list-style-type: none;
+  padding: 8px 0;
+}
+
+.saved-game ul *:nth-child(odd){
+  background: #340073;
+}

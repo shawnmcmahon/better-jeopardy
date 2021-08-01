@@ -1,0 +1,29 @@
+.past-game-card {
+  border: 2px solid black; 
+  height: 500px;
+  width: 500px;
+  background-color: white;
+  color: black;
+}
+
+.date {
+  color: black;
+
+
+}
+
+.id {
+  color: black;
+
+}
+
+.questions {
+  color: black;
+  
+
+}
+
+.score {
+  color: black;
+
+}
