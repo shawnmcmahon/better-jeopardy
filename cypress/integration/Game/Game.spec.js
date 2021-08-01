@@ -1,7 +1,7 @@
 describe('Game', () => {
   beforeEach(() => {
     cy.visit('http://localhost:3000');
-    cy.intercept('GET', 'https://better-jeopardy-api.herokuapp.com/api/v1/questions', {
+    cy.intercept('GET', 'https://better-jeopardy-api-v2.herokuapp.com/api/v1/questions', {
       statusCode: 200,
       fixture: 'allQuestions.json'
     });
