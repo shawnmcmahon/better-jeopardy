@@ -22,18 +22,29 @@ const PastGames = () => {
   if (!!pastGameData.pastGames) {
     const theDataWeNeed = [pastGameData.pastGames];
     console.log('hi', theDataWeNeed);
-    renderPastGames = theDataWeNeed.map((gameData) => {
+    return renderPastGames = theDataWeNeed[0].map((gameData, index) => {
+      console.log('mapData', gameData)
       return (
-      <SavedGame
-        date={gameData.date}
-        key={gameData.game_id}
-        id={gameData.game_id}
-        questions={gameData.questions}
-        score={gameData.score}
-        />    
+      <div>
+        <SavedGame
+            date={gameData.date}
+            key={gameData.game_id}
+            id={gameData.game_id}
+            questions={gameData.questions}
+            score={gameData.score}
+          /> 
+          {/* <SavedGame
+            date={gameData[index].date}
+            key={gameData[index].game_id}
+            id={gameData[index].game_id}
+            questions={gameData[index].questions}
+            score={gameData[index].score}
+          />  */}
+      </div> 
+        
       )
     })
-    return renderPastGames;
+    // return renderPastGames;
   }
   
 
@@ -42,7 +53,7 @@ const PastGames = () => {
     <section className="past-games-section">
       <Link to="/"><button className="nav-button">Back</button></Link>
       <h2>Past Games</h2>
-      {!!pastGameData.length && <div>{renderPastGames}</div>}
+      {!!pastGameData.length && {renderPastGames}}
     </section>
   )
 }
