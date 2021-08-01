@@ -1,8 +1,9 @@
 import React from 'react';
 import './Error.css';
+import PropTypes from 'prop-types';
 
 
-const Error = () => {
+const Error = ({ error }) => {
 
 
   return (
@@ -14,3 +15,7 @@ const Error = () => {
 
 
 export default Error;
+
+Errors.propTypes = {
+  error: PropTypes.string.isRequired
+};
