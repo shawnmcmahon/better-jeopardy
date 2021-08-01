@@ -91,6 +91,7 @@ const Game = ({ player }) => {
   const [categories, setCategories] = useState(0);
   const [userScore, setUserScore] = useState(0);
   const [isCorrect, setIsCorrect] = useState('');
+  const [pastGame, setPastGame] = useState({});
 
   useEffect(() => {
     getQuestions()
@@ -109,19 +110,39 @@ const Game = ({ player }) => {
 
   useEffect(() => {
     if (!categoryQuestions.length && !!answeredQuestions.length) {
+      // console.log("Number of questions answered", answeredQuestions.length)
+      // // setRoundOver(true)
+      // const pastGame = {
+      //   questions: [...answeredQuestions],
+      //   date: dayjs().$d,
+      //   score: userScore
+      // }
+      // console.log(pastGame)
+      // // setPastGame(pastGame);
+      // // addGame(pastGame);
+      setRoundOver(true)
+    }
+  }, [categoryQuestions.length])
+
+  const addGameAndReset = () => {
+    if (!playerName) {
+      return
+    }
+    if (!categoryQuestions.length && !!answeredQuestions.length) {
       console.log("Number of questions answered", answeredQuestions.length)
       // setRoundOver(true)
       const pastGame = {
         questions: [...answeredQuestions],
         date: dayjs().$d,
+        name: playerName,
         score: userScore
       }
       console.log(pastGame)
+      setPastGame(pastGame);
       addGame(pastGame);
-      setRoundOver(true)
+      resetGame();
     }
-  }, [categoryQuestions.length])
-
+  }
 
   const gameOver = () => {
     // setGame({...game, roundOver: true})
@@ -243,8 +264,6 @@ const Game = ({ player }) => {
               return (
                 <div>
                   { !!categoryQuestions.length && <Redirect to="/game" />}
-                  <Form playerSet={setPlayerName} player={playerName}/>
-                  <NavLink exact to="/saved-games"><button className="nav-button">Saved Games</button></NavLink>
                   <section className="categories-selector">
                     <label htmlFor="numberOfCategories">Number of Categories:</label>
                     <div className="selector-bg">
@@ -254,12 +273,14 @@ const Game = ({ player }) => {
                         onChange={updateNumberOfCategories}
                         >
                         <option></option>
+                        <option value="1">1</option>
                         <option value="2">2</option>
                         <option value="3">3</option>
                         <option value="6">6</option>
                       </select>
                     </div>
                     <button id="startGameBtn" className="start-game" onClick={getQuestionsByCategory}>Start Game</button>
+                    <NavLink exact to="/saved-games"><button className="nav-button">Saved Games</button></NavLink>
                   </section>
                 </div>
               );
@@ -270,7 +291,19 @@ const Game = ({ player }) => {
             path='/results'
             render={() => {
               return (
-                <Results newGame={resetGame} />
+                <>
+                  {!answeredQuestions.length && <Redirect exact to="/" />}
+                  <Results
+                  newGame={resetGame}
+                  playerSet={setPlayerName}
+                  player={playerName}
+                  userScore={userScore}
+                  answeredQuestions={answeredQuestions}
+                  setPastGame={setPastGame}
+                  pastGame={pastGame}
+                  addGameAndReset={addGameAndReset}
+                  />
+                </>
               )
             }}
           />

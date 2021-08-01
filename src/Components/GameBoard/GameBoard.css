@@ -13,6 +13,11 @@
   /* justify-content: space-around; */
 }
 
+.exit {
+  min-width: 200px;
+  min-height: 30px;
+}
+
 @media screen and (max-width: 1350px) {
   .tiles {
     display: flex;
