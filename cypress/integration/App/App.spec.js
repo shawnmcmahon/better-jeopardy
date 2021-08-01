@@ -27,4 +27,8 @@ describe('App', () => {
     cy.get('label').contains('Number of Categories:')
   });
 
+  it('Should display an error message to the user if the questions cannot be loaded from the API', () => {
+    
+  });
+
 });

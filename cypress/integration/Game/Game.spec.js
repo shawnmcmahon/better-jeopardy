@@ -70,10 +70,10 @@ describe('Game', () => {
   })
 
   it('Should have a game board with ten question links for a 2 category game', () => {
-      cy.get('select')
+    cy.get('select')
       .select('2')
-      cy.get('button').contains('Start Game').click()
-        .get('div > a').should(($a) => {
+    cy.get('button').contains('Start Game').click()
+      .get('div > a').should(($a) => {
         expect($a).to.have.length(10)
         expect($a.eq(0)).to.contain('$100')
         expect($a.eq(1)).to.contain('$200')
@@ -90,32 +90,20 @@ describe('Game', () => {
 
   it('Should navigate to a question page when a question box is clicked', () => {
     cy.get('select')
-      .select('2')
-      cy.get('button').contains('Start Game').click()
-      cy.url().should('eq', 'http://localhost:3000/game')
-      cy.get('div > a').get('a').eq(1).click()
-      //TEST THAT PAGE IS Q PAGE
-    })
-
-    it('Should be able to use the back and forward buttons', () => {
-      cy.get('select')
         .select('2')
-        cy.get('button').contains('Start Game').click()
-        cy.url().should('eq', 'http://localhost:3000/game')
-        cy.get('div > a').get('a').eq(1).click()
-        cy.go('back')
-        cy.go('forward')
-    })
-
-    it('Should notify the user if they answered the question right or wrong', () => {
-      cy.get('select')
-      .select('6')
-      cy.get('button').contains('Start Game').click()
-      cy.url().should('eq', 'http://localhost:3000/game')
-      cy.get('div > a').get('a').eq(1).click()
-      // To be continued when a correct // incorrect p tag is added to the DOM
-    })
-
-    it('Should display the results of a game after it has been played');
+    cy.get('button').contains('Start Game').click()
+    cy.url().should('eq', 'http://localhost:3000/game')
+    cy.get('div > a').get('a').eq(1).click()
 
   })
+
+  it('Should be able to use the back and forward buttons', () => {
+    cy.get('select')
+      .select('2');
+    cy.get('button').contains('Start Game').click();
+    cy.url().should('eq', 'http://localhost:3000/game');
+    cy.get('div > a').get('a').eq(1).click();
+    cy.go('back');
+    cy.go('forward');
+  })
+})
