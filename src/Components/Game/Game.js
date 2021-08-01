@@ -7,6 +7,7 @@ import GameBoard from '../GameBoard/GameBoard';
 import Results from '../Results/Results';
 import PastGames from '../PastGames/PastGames';
 import Form from '../Form/Form';
+import SavedGamePage from '../SavedGamePage/SavedGamePage'
 import { getQuestions, addGame } from '../../utilities/apiCalls';
 import { getRandomIndex } from '../../utilities/utils';
 const dayjs = require('dayjs');
@@ -145,7 +146,6 @@ const Game = ({ player }) => {
   }
 
   const gameOver = () => {
-    // setGame({...game, roundOver: true})
     setRoundOver(true)
   }
 
@@ -159,12 +159,10 @@ const Game = ({ player }) => {
         generatedCategories.push(randomCategory)
       }
     }
-    // setGame({...game, selectedCategories: generatedCategories})
     setSelectedCategories(generatedCategories)
   }
 
   const pickQuestion = (pickedQuestion) => {
-    // setGame({...game, currentQuestion: pickedQuestion, isCorrect: ''})
     setCurrentQuestion(pickedQuestion)
     setIsCorrect('')
   }
@@ -178,7 +176,6 @@ const Game = ({ player }) => {
       let categoryQuestions = questions.filter(question => question.category === category)
       relevantQuestions = [...relevantQuestions, ...categoryQuestions]
     })
-    // setGame({...game, categoryQuestions: relevantQuestions, originalQuestions: relevantQuestions, roundOver: false})
     setCategoryQuestions(relevantQuestions)
     setOriginalQuestions(relevantQuestions)
     setRoundOver(false)
@@ -186,7 +183,6 @@ const Game = ({ player }) => {
 
   const checkIfOver = () => {
     if (answeredQuestions.length === originalQuestions.length) {
-      // setGame({...game, roundOver: true})
       setRoundOver(true)
       const pastGame = {
         questions: [...answeredQuestions],
@@ -314,6 +310,17 @@ const Game = ({ player }) => {
             return (
               <PastGames />
             )
+          }}
+        />
+        <Route
+          exact
+          path='/saved-games/:game_id'
+          render={({match}) => {
+            return (
+              <>
+              <SavedGamePage id={parseInt(match.params.game_id)} />
+              </>
+            );
           }}
         />
         <Route
