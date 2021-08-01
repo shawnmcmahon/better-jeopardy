@@ -22,7 +22,7 @@ const SavedGame = ({date, id, questions, score, name}) => {
         <h2 className="score">Score: ${score}</h2>
         <ul className="questions">{questionContainer}</ul>
       </article>
-      <Link to="/"><button className="back-button">Back</button></Link>
+      <Link to="/saved-games"><button className="back-button">Back</button></Link>
     </div>
   )
 }
