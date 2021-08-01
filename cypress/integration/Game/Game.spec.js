@@ -4,13 +4,11 @@ describe('Game', () => {
     cy.intercept('GET', 'https://better-jeopardy-api.herokuapp.com/api/v1/questions', {
       statusCode: 200,
       fixture: 'allQuestions.json'
-  });
-
-})
+    });
+  })
 
   it('Should see a dropdown menu to select the number of categories for a game', () => {
-    cy.get('label')
-    .contains('Number of Categories:')
+    cy.get('label').contains('Number of Categories:')
   });
 
   it('Should be able to select all dropdown options', () => {
@@ -55,22 +53,20 @@ describe('Game', () => {
   });
 
   it('Should have a property formatted tile', () => {
-    cy.get('select')
-      .select('2')
+    cy.get('select').select('2')
     cy.get('button').contains('Start Game').click()
     cy.get('article').then(($el) => {
       Cypress.dom.isElement($el)
       Cypress.dom.isFocusable($el)
     })
-    cy.get('article')
-      .contains('$100')
+    cy.get('article').contains('$100')
   })
 
   it('Should have an exit game button', () => {
-    cy.get('select')
-      .select('2')
-      cy.get('button').contains('Start Game').click()
-      cy.get('[data-cy=exit]').click()
+    cy.get('select').select('2')
+    cy.get('button').contains('Start Game').click()
+    cy.get('[data-cy=exit]').click()
+    cy.get('label').contains('Number of Categories')
   })
 
   it('Should have a game board with ten question links for a 2 category game', () => {
