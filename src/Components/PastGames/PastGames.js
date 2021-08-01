@@ -20,17 +20,18 @@ const PastGames = () => {
 
   const renderPastGames = () => {
     return pastGameData.map(data => {
-      const { game_id, date, questions, score } = data;
-      console.log('id', game_id)
-      console.log('date', date)
-      console.log('questions', questions)
-      console.log('score', score)
+      const { game_id, date, questions, score, name } = data;
+      // console.log('id', game_id)
+      // console.log('date', date)
+      // console.log('questions', questions)
+      // console.log('score', score)
       return (
         <SavedGame
           date={date}
           key={game_id}
           questions={questions}
           score={score}
+          name={name}
         />
       )
     })

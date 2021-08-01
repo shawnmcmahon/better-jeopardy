@@ -3,7 +3,7 @@ import './SavedGame.css';
 import dayjs from 'dayjs'
 
 
-const SavedGame = ({date, id, questions, score}) => {
+const SavedGame = ({date, id, questions, score, name}) => {
 
   const questionContainer = questions.map(question => {
     return (
@@ -16,6 +16,7 @@ const SavedGame = ({date, id, questions, score}) => {
   return (
     <div className="saved-game-wrapper">
       <article className="saved-game">
+        <h2>Player Name: {name}</h2>
         <h2 className="date">Played on: {dayjs(date).format("MM/DD/YYYY")}</h2>
         <h2 className="score">Score: ${score}</h2>
         <ul className="questions">{questionContainer}</ul>

@@ -125,12 +125,16 @@ const Game = ({ player }) => {
   }, [categoryQuestions.length])
 
   const addGameAndReset = () => {
+    if (!playerName) {
+      return
+    }
     if (!categoryQuestions.length && !!answeredQuestions.length) {
       console.log("Number of questions answered", answeredQuestions.length)
       // setRoundOver(true)
       const pastGame = {
         questions: [...answeredQuestions],
         date: dayjs().$d,
+        name: playerName,
         score: userScore
       }
       console.log(pastGame)
@@ -260,7 +264,6 @@ const Game = ({ player }) => {
               return (
                 <div>
                   { !!categoryQuestions.length && <Redirect to="/game" />}
-                  {/* <Form playerSet={setPlayerName} player={playerName}/> */}
                   <section className="categories-selector">
                     <label htmlFor="numberOfCategories">Number of Categories:</label>
                     <div className="selector-bg">
@@ -270,6 +273,7 @@ const Game = ({ player }) => {
                         onChange={updateNumberOfCategories}
                         >
                         <option></option>
+                        <option value="1">1</option>
                         <option value="2">2</option>
                         <option value="3">3</option>
                         <option value="6">6</option>
@@ -287,14 +291,14 @@ const Game = ({ player }) => {
             path='/results'
             render={() => {
               return (
-                <> 
+                <>
                   {!answeredQuestions.length && <Redirect exact to="/" />}
-                  <Results 
-                  newGame={resetGame} 
-                  playerSet={setPlayerName} 
-                  player={playerName} 
-                  userScore={userScore} 
-                  answeredQuestions={answeredQuestions} 
+                  <Results
+                  newGame={resetGame}
+                  playerSet={setPlayerName}
+                  player={playerName}
+                  userScore={userScore}
+                  answeredQuestions={answeredQuestions}
                   setPastGame={setPastGame}
                   pastGame={pastGame}
                   addGameAndReset={addGameAndReset}
