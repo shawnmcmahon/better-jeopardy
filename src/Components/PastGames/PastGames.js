@@ -12,7 +12,6 @@ const PastGames = () => {
   useEffect(() => {
     getPastGames()
       .then(data => {
-        console.log('WHAT WE WANT', data.pastGames)
         setPastGames(data.pastGames)
       })
       .catch((err) => console.log(err))
@@ -21,10 +20,6 @@ const PastGames = () => {
   const renderPastGames = () => {
     return pastGameData.map(data => {
       const { game_id, date, questions, score, name } = data;
-      // console.log('id', game_id)
-      // console.log('date', date)
-      // console.log('questions', questions)
-      // console.log('score', score)
       return (
         <SavedGameCard
           key={game_id}
@@ -68,7 +63,7 @@ const PastGames = () => {
 
   return (
     <section className="past-games-section">
-      <Link to="/"><button className="back-button">Back</button></Link>
+      <Link to="/"><button className="back-button">Go Back</button></Link>
       <h2>Past Games</h2>
       {pastGameData.length ? <div>{renderPastGames()}</div> : <h3>Loading...</h3>}
     </section>

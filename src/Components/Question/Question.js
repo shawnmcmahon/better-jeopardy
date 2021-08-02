@@ -11,20 +11,16 @@ const Question = ({ selectedQuestion, pickQuestion, pickAnswer, isCorrect, hasAn
   const [currentQuestion, setCurrentQuestion] = useState('');
 
   useEffect(() => {
+    let mounted = true;
     getSingleQuestion(selectedQuestion)
     .then(data => {
-      pickQuestion(data)
-      setCurrentQuestion(data)
+      if (mounted) {
+        pickQuestion(data)
+        setCurrentQuestion(data)
+      }
+      return () => mounted = false;
     })
   }, [])
-
-//   useEffect(() => {
-//   let isMounted = true;               // note mutable flag
-//   someAsyncOperation().then(data => {
-//     if (isMounted) setState(data);    // add conditional check
-//   })
-//   return () => { isMounted = false }; // cleanup toggles value, if unmounted
-// }, []);
 
   const randomlyPlaceAnswers = () => {
     const { correct_answer, incorrect_answers } = currentQuestion

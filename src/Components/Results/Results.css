@@ -5,8 +5,13 @@
   margin: 5%;
 }
 
+.new-game-button {
+  height: 50px;
+}
+
 .new-game-button, .submit-score {
   min-width: 150px;
-  padding: 5%;
+  padding: 4%;
   margin-bottom: 10%;
+  transition: .2s ease all;
 }
