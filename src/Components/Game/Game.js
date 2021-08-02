@@ -272,6 +272,13 @@ const Game = ({ player }) => {
             );
           }}
         />
+        <Route
+          render={() => {
+            return (
+              <Redirect to="/" />
+            )
+          }}
+        />
       </Switch>
   )
 }
@@ -280,16 +287,16 @@ export default Game;
 
 Question.PropTypes = {
   selectedQuestion: PropTypes.number.isRequired,
-  pickQuestion: PropTypes.func.isRequired, 
+  pickQuestion: PropTypes.func.isRequired,
   pickAnswer: PropTypes.func.isRequired,
 }
 
 Results.PropTypes = {
-  newGame: PropTypes.func.isRequired, 
-  playerSet: PropTypes.func.isRequired, 
-  player: PropTypes.string.isRequired, 
+  newGame: PropTypes.func.isRequired,
+  playerSet: PropTypes.func.isRequired,
+  player: PropTypes.string.isRequired,
   userScore: PropTypes.number.isRequired,
-  addGameAndReset: PropTypes.func.isRequired, 
+  addGameAndReset: PropTypes.func.isRequired,
 }
 
 SavedGamePage.PropTypes = {
@@ -297,7 +304,7 @@ SavedGamePage.PropTypes = {
 }
 
 GameBoard.PropTypes = {
-  categories: PropTypes.array.isRequired, 
-  questions: PropTypes.array.isRequired, 
+  categories: PropTypes.array.isRequired,
+  questions: PropTypes.array.isRequired,
   reset: PropTypes.func.isRequired
 }
