@@ -6,7 +6,7 @@
 
 ## Overview
 
-Better Jeopardy is a trivia game created with React during Mod 3 of the FE program at the Turing School of Software & Design. On visiting, the site displays a page that allows the user to see past games posted to the API or start a new game by choosing how many categories they wish to play through. Upon choosing how many categories they would like to play through, the user can then select questions and answer them in a multiple-choice format. Getting a question right will add its value to the user's score, while getting it wrong will subtract it from their score. Upon completing the game, the user will have the option to 'save' their game by inputting their name and posting it to the API.
+Better Jeopardy is a trivia game created with React during Mod 3 of the FE program at the Turing School of Software & Design. On visiting, the site displays a page that allows the user to see past games posted to the API or start a new game by choosing how many categories they wish to play through. Upon choosing how many categories they would like to play through, the user can then select questions and answer them in a multiple-choice format. Getting a question right will add its value to the user's score, while getting it wrong will subtract it from their score. Upon completing the game, the user will have the option to save their game record by inputting their name and posting it to the API.
 
 This project was done as the Mod 3 FE Stretch Tech project, meaning that our group was tasked with choosing a technology that we hadn't learned before to learn for this project. We chose to create our own back-end with PostgresQL and Express, and created a custom API of past Jeopardy questions in a multiple-choice format. 
 
