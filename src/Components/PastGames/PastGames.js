@@ -4,7 +4,6 @@ import { Link } from 'react-router-dom';
 import './PastGames.css';
 import { getPastGames } from '../../utilities/apiCalls'
 import SavedGameCard from '../SavedGameCard/SavedGameCard';
-import Tile from '../Tile/Tile';
 
 const PastGames = () => {
 
@@ -19,8 +18,8 @@ const PastGames = () => {
   }, [])
 
   const renderPastGames = () => {
-    return pastGameData.map(data => {
-      const { game_id, date, questions, score, name } = data;
+    return pastGameData.sort((a, b) => {return b.score-a.score}).map(data => {
+      const { game_id, date, score, name } = data;
       return (
         <SavedGameCard
           key={game_id}
@@ -32,6 +31,7 @@ const PastGames = () => {
       )
     })
   }
+  
 
   return (
     <section className="past-games-section">
@@ -44,8 +44,7 @@ const PastGames = () => {
 
 export default PastGames;
 
-SavedGameCard.PropTypes = {
-  key: PropTypes.number.isRequired,
+SavedGameCard.propTypes = {
   date: PropTypes.string.isRequired,
   id: PropTypes.number.isRequired,
   score: PropTypes.number.isRequired,
