@@ -14,12 +14,13 @@ const PastGames = () => {
     getPastGames()
       .then(data => {
         setPastGames(data.pastGames)
+        console.log(pastGameData)
       })
       .catch((err) => console.log(err))
   }, [])
 
   const renderPastGames = () => {
-    return pastGameData.map(data => {
+    return pastGameData.sort((a, b) => {return b.score-a.score}).map(data => {
       const { game_id, date, questions, score, name } = data;
       return (
         <SavedGameCard
