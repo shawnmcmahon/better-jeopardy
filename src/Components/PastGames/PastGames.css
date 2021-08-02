@@ -37,6 +37,7 @@
   min-width: 200px;
   min-height: 50px;
   margin-top: 5%;
+  transition: .2s ease all;
 }
 
 section {

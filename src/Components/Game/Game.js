@@ -15,73 +15,8 @@ const dayjs = require('dayjs');
 
 const Game = ({ player }) => {
 
-//   const initialGame = {
-//     numCategories: 0,
-//     originalQuestions: [],
-//     selectedCategories: [],
-//     answeredQuestions: [],
-//     categoryQuestions: [],
-//     currentQuestion: '',
-//     roundOver: false,
-//     hasAnswered: false,
-//     categories: 0,
-//     userScore: 0,
-//     isCorrect: ''
-//   }
-//
-//   const gameHandler = (state, action) => {
-//   switch (action.type) {
-//     case 'populate_random_categories':
-//       const generatedCategories = []
-//
-//       while (generatedCategories.length < num) {
-//         const randomCategory =  state.categories[Math.floor(Math.random() * state.categories.length)]
-//         if (!generatedCategories.includes(randomCategory)) {
-//           generatedCategories.push(randomCategory)
-//         }
-//       }
-//       state.selectedCategories = generatedCategories
-//       return state
-//
-//     case 'get_questions_by_category':
-//       let relevantQuestions = [];
-//       if (!selectedCategories.length) {
-//         return
-//       }
-//       state.selectedCategories.forEach(category => {
-//         let categoryQuestions = questions.filter(question => question.category === category)
-//         relevantQuestions = [...relevantQuestions, ...categoryQuestions]
-//       })
-//       setGame({...game, categoryQuestions: relevantQuestions, originalQuestions: relevantQuestions, roundOver: false})
-//
-//       state.categoryQuestions = relevantQuestions
-//       state.originalQuestions = relevantQuestions
-//       state.roundOver = false
-//       return state
-//
-//     case '':
-//
-//       return
-//     default:
-//       return state;
-//   }
-// };
   const [playerName, setPlayerName] = useState('');
   const [questions, setQuestions] = useState([])
-  // const [game, setGame] = useState({
-  //   numCategories: 0,
-  //   originalQuestions: [],
-  //   selectedCategories: [],
-  //   answeredQuestions: [],
-  //   categoryQuestions: [],
-  //   currentQuestion: '',
-  //   roundOver: false,
-  //   hasAnswered: false,
-  //   categories: 0,
-  //   userScore: 0,
-  //   isCorrect: ''
-  // })
-  // const [numCategories, setNumCategories] = useState(0);
   const [originalQuestions, setOriginalQuestions] = useState([]);
   const [selectedCategories, setSelectedCategories] = useState([]);
   const [answeredQuestions, setAnsweredQuestions] = useState([]);
@@ -94,6 +29,7 @@ const Game = ({ player }) => {
   const [isCorrect, setIsCorrect] = useState('');
   const [pastGame, setPastGame] = useState({});
   const [errorMessage, setErrorMessage] = useState('');
+  const [notify, setNotify] = useState('')
 
   useEffect(() => {
     getQuestions()
@@ -105,28 +41,15 @@ const Game = ({ player }) => {
           }
           return allCategories
       }, [])
-      // setGame({...game, categories: categoriesFromQuestions})
       setCategories(categoriesFromQuestions)
     })
     .catch(error => {
-      console.log('the error', error)
       setErrorMessage(error)
-      console.log('state.error', errorMessage)
     })
   }, [])
 
   useEffect(() => {
     if (!categoryQuestions.length && !!answeredQuestions.length) {
-      // console.log("Number of questions answered", answeredQuestions.length)
-      // // setRoundOver(true)
-      // const pastGame = {
-      //   questions: [...answeredQuestions],
-      //   date: dayjs().$d,
-      //   score: userScore
-      // }
-      // console.log(pastGame)
-      // // setPastGame(pastGame);
-      // // addGame(pastGame);
       setRoundOver(true)
     }
   }, [categoryQuestions.length])
@@ -136,15 +59,12 @@ const Game = ({ player }) => {
       return
     }
     if (!categoryQuestions.length && !!answeredQuestions.length) {
-      console.log("Number of questions answered", answeredQuestions.length)
-      // setRoundOver(true)
       const pastGame = {
         questions: [...answeredQuestions],
         date: dayjs().$d,
         name: playerName,
         score: userScore
       }
-      console.log(pastGame)
       setPastGame(pastGame);
       addGame(pastGame);
       resetGame();
@@ -176,8 +96,10 @@ const Game = ({ player }) => {
   const getQuestionsByCategory = () => {
     let relevantQuestions = [];
     if (!selectedCategories.length) {
+      setNotify('Please choose number of categories to play.')
       return
     }
+    setNotify('')
     selectedCategories.forEach(category => {
       let categoryQuestions = questions.filter(question => question.category === category)
       relevantQuestions = [...relevantQuestions, ...categoryQuestions]
@@ -208,8 +130,6 @@ const Game = ({ player }) => {
   }
 
   const resetGame = () => {
-    // setGame({...game, numCategories: 0, userScore: 0, selectedCategories: [], categoryQuestions: [], answeredQuestions: []})
-    // setNumCategories(0)
     setUserScore(0)
     setSelectedCategories([])
     setCategoryQuestions([])
@@ -221,21 +141,20 @@ const Game = ({ player }) => {
     evaluateChoice(choice)
     updateQuestions()
     checkIfOver();
-    setTimeout(letUserPickNext, 800);
+    setTimeout(() => {
+      setHasAnswered(false)
+    }, 500);
   }
 
   const evaluateChoice = (choice) => {
-    // const {answeredQuestions, userScore, currentQuestion} = game
     if (choice === currentQuestion.correct_answer) {
       let correct = {...currentQuestion, answered_correct: true}
-      // setGame({...game, answeredQuestions: [...answeredQuestions, correct], userScore: (userScore + parseInt(currentQuestion.prize)), isCorrect: true})
       setAnsweredQuestions([...answeredQuestions, correct])
       setUserScore(userScore + parseInt(currentQuestion.prize))
       setIsCorrect(true)
 
     } else {
       let incorrect = {...currentQuestion, answered_correct: false}
-      // setGame({...game, answeredQuestions: [...answeredQuestions, incorrect], userScore: (userScore - parseInt(currentQuestion.prize)), isCorrect: false})
       setAnsweredQuestions([...answeredQuestions, incorrect])
       setUserScore(userScore - parseInt(currentQuestion.prize))
       setIsCorrect(false)
@@ -246,15 +165,10 @@ const Game = ({ player }) => {
 
   const updateQuestions = () => {
     let newQuestions = categoryQuestions.filter(question => question.question_id !== currentQuestion.question_id)
-    // setGame({...game, answeredQuestions: newQuestions, hasAnswered: true})
     setCategoryQuestions(newQuestions)
     setHasAnswered(true)
   }
 
-  const letUserPickNext = () => {
-    // setGame({...game, hasAnswered: false})
-    setHasAnswered(false)
-  }
 
   return (
 
@@ -268,8 +182,8 @@ const Game = ({ player }) => {
                   {!!errorMessage && <ErrorComponent />}
                   { !!categoryQuestions.length && <Redirect to="/game" />}
                   <section className="categories-selector">
-            
-                    <label htmlFor="numberOfCategories">Number of Categories:</label>
+
+                    <label htmlFor="numberOfCategories">Choose Number of Categories:</label>
                     <div className="selector-bg">
                       <select
                         name="numberOfCategories"
@@ -283,6 +197,7 @@ const Game = ({ player }) => {
                         <option value="6">6</option>
                       </select>
                     </div>
+                    {!!notify && <h3>{notify}</h3>}
                     <button id="startGameBtn" className="start-game" onClick={getQuestionsByCategory}>Start Game</button>
                     <NavLink exact to="/saved-games"><button className="nav-button">Saved Games</button></NavLink>
                   </section>
