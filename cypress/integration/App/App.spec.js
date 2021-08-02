@@ -30,7 +30,7 @@ describe('App', () => {
     cy.get('label').contains('Number of Categories:')
   });
 
-  it('Should display an error message to the user if the questions cannot be loaded from the API', () => {
+  it('Should not load the game if there is a 404 error', () => {
     cy.intercept('GET', 'https://better-jeopardy-api-v2.herokuapp.com/api/v1/questions',
       {
         statusCode: 404
@@ -40,4 +40,15 @@ describe('App', () => {
     cy.get('button').contains('Start Game').click();
     cy.url().should('eq', 'http://localhost:3000/');
   });
+
+  it('Should not load the game if there is a 500 error', () => {
+    cy.intercept('GET', 'https://better-jeopardy-api-v2.herokuapp.com/api/v1/questions',
+      {
+        statusCode: 500
+      }
+    )
+    cy.visit('http://localhost:3000');
+    cy.get('button').contains('Start Game').click();
+    cy.url().should('eq', 'http://localhost:3000/');
+  })
 });

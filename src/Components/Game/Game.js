@@ -107,6 +107,7 @@ const Game = ({ player }) => {
       // setGame({...game, categories: categoriesFromQuestions})
       setCategories(categoriesFromQuestions)
     })
+    .catch(err => console.log(err))
   }, [])
 
   useEffect(() => {
