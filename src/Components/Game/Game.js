@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { Route, Switch, Redirect, NavLink } from 'react-router-dom';
 import './Game.css';
-
+import ErrorComponent from '../ErrorComponent/ErrorComponent';
 import Question from '../Question/Question';
 import GameBoard from '../GameBoard/GameBoard';
 import Results from '../Results/Results';
@@ -93,6 +93,7 @@ const Game = ({ player }) => {
   const [userScore, setUserScore] = useState(0);
   const [isCorrect, setIsCorrect] = useState('');
   const [pastGame, setPastGame] = useState({});
+  const [errorMessage, setErrorMessage] = useState('');
 
   useEffect(() => {
     getQuestions()
@@ -106,6 +107,11 @@ const Game = ({ player }) => {
       }, [])
       // setGame({...game, categories: categoriesFromQuestions})
       setCategories(categoriesFromQuestions)
+    })
+    .catch(error => {
+      console.log('the error', error)
+      setErrorMessage(error)
+      console.log('state.error', errorMessage)
     })
   }, [])
 
@@ -259,8 +265,10 @@ const Game = ({ player }) => {
             render={() => {
               return (
                 <div>
+                  {!!errorMessage && <ErrorComponent />}
                   { !!categoryQuestions.length && <Redirect to="/game" />}
                   <section className="categories-selector">
+            
                     <label htmlFor="numberOfCategories">Number of Categories:</label>
                     <div className="selector-bg">
                       <select

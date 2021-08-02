@@ -1,8 +1,9 @@
 const url = 'http://localhost:3001'
 
 const getQuestions = () => {
-  return fetch('https://better-jeopardy-api-v2.herokuapp.com/api/v1/questions')
+  return fetch('https://better-jeopardy-api-v2.herokuapp.com/api/v1/questionszzz')
     .then(checkResponse)
+    // .catch(error => console.log('apiCallCatch', error))
 }
 
 const getSingleQuestion = (id) => {
@@ -17,7 +18,7 @@ const getSingleGame = (id) => {
 
 const getPastGames = () => {
   return fetch('https://better-jeopardy-api-v2.herokuapp.com/api/v1/past-games')
-  .then(checkResponse)
+    .then(checkResponse)
 
 }
 
@@ -38,7 +39,8 @@ const checkResponse = (response) => {
   if (response.ok) {
     return response.json();
   } else {
-    throw new Error(`Request could not go through.`);
+    return `Request could not go through.`
+    // throw new Error(`Request could not go through.`);
   }
 };
 
