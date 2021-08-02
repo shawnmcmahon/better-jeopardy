@@ -12,6 +12,9 @@ Better Jeopardy is a simple trivia game created with React during Mod 3 of the F
 
 This project was done as the Mod 3 FE Stretch Tech project, meaning that our group was tasked with choosing a technology that we hadn't learned before to learn for this project. We chose to create our own back-end with PostgresQL and Express, and created a custom API of past Jeopardy questions in a multiple-choice format. We kept our front-end application fairly limited due to the time it took to implement this, as it was our first time working with relational databases.
 
+### The Game 
+![The Game](https://media.giphy.com/media/daP5nfTg7Ih8OlYRj7/giphy.gif)
+
 
 ### Responsive Design
 ![Responsive Design](https://media.giphy.com/media/6lNt4OiA6izr3JcgOv/giphy.gif)
