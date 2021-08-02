@@ -201,7 +201,7 @@ const Game = ({ player }) => {
 
   const updateNumberOfCategories = (event) => {
     event.preventDefault();
-    if (!event.target.value) {
+    if (!event.target.value || !questions) {
       return
     }
     populateRandomCategories(parseInt(event.target.value))

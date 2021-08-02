@@ -1,7 +1,7 @@
 const url = 'http://localhost:3001'
 
 const getQuestions = () => {
-  return fetch('https://better-jeopardy-api-v2.herokuapp.com/api/v1/questionszzz')
+  return fetch('https://better-jeopardy-api-v2.herokuapp.com/api/v1/questions')
     .then(checkResponse)
     // .catch(error => console.log('apiCallCatch', error))
 }
