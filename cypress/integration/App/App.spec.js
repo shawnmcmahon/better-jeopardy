@@ -30,6 +30,11 @@ describe('App', () => {
     cy.get('label').contains('Number of Categories:')
   });
 
+  it('Should give the user a warning if they attempt to start the game without selecting a number of categories', () => {
+    cy.get('button').contains('Start Game').click();
+    cy.get('h3').contains('Please choose number of categories to play.');
+  });
+
   it('Should not load the game if there is a 404 error', () => {
     cy.intercept('GET', 'https://better-jeopardy-api-v2.herokuapp.com/api/v1/questions',
       {

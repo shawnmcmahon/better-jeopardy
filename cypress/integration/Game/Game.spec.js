@@ -106,4 +106,10 @@ describe('Game', () => {
     cy.go('back');
     cy.go('forward');
   })
+
+  it('Should allow the user to play and submit a game', () => {
+    
+  });
+
+  it('Should not allow the user to submit a game without inputting their name');
 })
