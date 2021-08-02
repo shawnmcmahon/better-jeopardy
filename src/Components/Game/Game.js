@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { Route, Switch, Redirect, NavLink } from 'react-router-dom';
 import './Game.css';
-
+import ErrorComponent from '../ErrorComponent/ErrorComponent';
 import Question from '../Question/Question';
 import GameBoard from '../GameBoard/GameBoard';
 import Results from '../Results/Results';
@@ -93,6 +93,7 @@ const Game = ({ player }) => {
   const [userScore, setUserScore] = useState(0);
   const [isCorrect, setIsCorrect] = useState('');
   const [pastGame, setPastGame] = useState({});
+  const [errorMessage, setErrorMessage] = useState('');
 
   useEffect(() => {
     getQuestions()
@@ -107,7 +108,15 @@ const Game = ({ player }) => {
       // setGame({...game, categories: categoriesFromQuestions})
       setCategories(categoriesFromQuestions)
     })
+<<<<<<< HEAD
     .catch(err => console.log(err))
+=======
+    .catch(error => {
+      console.log('the error', error)
+      setErrorMessage(error)
+      console.log('state.error', errorMessage)
+    })
+>>>>>>> d800aa459bc142148ab8cfea7e1bdfc08f8dd213
   }, [])
 
   useEffect(() => {
@@ -196,7 +205,7 @@ const Game = ({ player }) => {
 
   const updateNumberOfCategories = (event) => {
     event.preventDefault();
-    if (!event.target.value) {
+    if (!event.target.value || !questions) {
       return
     }
     populateRandomCategories(parseInt(event.target.value))
@@ -260,8 +269,10 @@ const Game = ({ player }) => {
             render={() => {
               return (
                 <div>
+                  {!!errorMessage && <ErrorComponent />}
                   { !!categoryQuestions.length && <Redirect to="/game" />}
                   <section className="categories-selector">
+            
                     <label htmlFor="numberOfCategories">Number of Categories:</label>
                     <div className="selector-bg">
                       <select
