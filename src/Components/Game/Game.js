@@ -284,3 +284,11 @@ Question.PropTypes = {
   pickQuestion: PropTypes.func.isRequired, 
   pickAnswer: PropTypes.func.isRequired,
 }
+
+Results.PropTypes = {
+  newGame: PropTypes.func.isRequired, 
+  playerSet: PropTypes.func.isRequired, 
+  player: PropTypes.string.isRequired, 
+  userScore: PropTypes.number.isRequired,
+  addGameAndReset: PropTypes.func.isRequired, 
+}
