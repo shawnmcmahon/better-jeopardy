@@ -7,13 +7,12 @@ import Game from '../Game/Game';
 import Form from '../Form/Form'
 
 const App = () => {
-  // const [playerName, setPlayerName] = useState('');
 
   return (
   <BrowserRouter>
     <main>
       <Header />
-      
+
       <Game />
     </main>
   </BrowserRouter>

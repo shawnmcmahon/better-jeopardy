@@ -2,7 +2,6 @@ import React, { useState, useEffect } from "react"
 import PropTypes from 'prop-types';
 import SavedGame from '../SavedGame/SavedGame';
 import { getSingleGame } from '../../utilities/apiCalls'
-// import 'SavedGamePage.css'
 
 const SavedGamePage = ({ id }) => {
   const [gameInfo, setGameInfo] = useState('')
@@ -24,8 +23,8 @@ const SavedGamePage = ({ id }) => {
 export default SavedGamePage
 
 SavedGame.PropTypes= {
-  date: PropTypes.string.isRequired, 
-  questions: PropTypes.array.isRequired, 
-  score: PropTypes.number.isRequired, 
+  date: PropTypes.string.isRequired,
+  questions: PropTypes.array.isRequired,
+  score: PropTypes.number.isRequired,
   name: PropTypes.string.isRequired
 }

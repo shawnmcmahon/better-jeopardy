@@ -13,26 +13,3 @@ h1 {
 header button {
   padding: 12px;
 }
-
-/* .api-link {
-  color: #ffffff;
-  display: flex;
-  justify-content: center;
-  text-decoration: none;
-  width: 5%;
-}
-
-.api-link:hover {
-  cursor: pointer;
-  transition: .2s ease all;
-  transform: translateY(-5px);
-} */
-
-/* .api-button {
-  padding: 10% 80%;
-  min-width: 150px;
-} */
-
-.tagline {
-  margin-top: 0.5%;
-}
