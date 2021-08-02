@@ -6,7 +6,7 @@
 
 ## Overview
 
-IMAGE HERE
+<img width="1440" alt="game-board" src="https://user-images.githubusercontent.com/70540855/127904432-e0d8bd21-11c0-47bd-ae41-6a115ca223de.png">
 
 Better Jeopardy is a simple trivia game created with React during Mod 3 of the FE program at the Turing School of Software & Design. On visiting, the site displays a page that allows the user to see past games posted to the API or start a new game by choosing how many categories they wish to play through. Upon choosing how many categories they would like to play through, the user can then select questions and answer them in a multiple-choice format. Getting a question right will add its value to the user's score, while getting it wrong will subtract it from their score. Upon completing the game, the user will have the option to 'save' their game by inputting their name and posting it to the API.
 
@@ -42,4 +42,10 @@ This project was done as the Mod 3 FE Stretch Tech project, meaning that our gro
 
 ## Project Images
 
-MORE IMAGES
+<img width="1437" alt="select-categories" src="https://user-images.githubusercontent.com/70540855/127904389-0a58b17c-799e-44e9-b345-4fe126ba9203.png">
+
+<img width="1440" alt="question-page" src="https://user-images.githubusercontent.com/70540855/127904476-019c3815-75b3-4d73-bd3e-13ed0938e2a1.png">
+
+<img width="1440" alt="past-games" src="https://user-images.githubusercontent.com/70540855/127904531-0448c761-391a-46a0-80ce-008d6dad632a.png">
+
+<img width="1440" alt="past-game-detail" src="https://user-images.githubusercontent.com/70540855/127904558-3b500400-b17b-4ff4-b8d6-bc3f22002d1d.png">
