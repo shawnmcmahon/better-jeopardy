@@ -16,6 +16,10 @@
   color: black;
 }
 
+.question-value {
+  font-size: 2em;
+}
+
 .answer-choices *:hover {
   color: black;
   filter: brightness(1.25);
