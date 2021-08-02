@@ -19,7 +19,6 @@ const getPastGames = () => {
 }
 
 const addGame = (pastGame) => {
-  console.log(pastGame)
   return fetch('https://better-jeopardy-api-v2.herokuapp.com/api/v1/past-games', {
     method: 'POST',
     headers: {
