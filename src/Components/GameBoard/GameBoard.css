@@ -15,7 +15,7 @@
 
 .exit {
   min-width: 200px;
-  min-height: 30px;
+  min-height: 50px;
 }
 
 @media screen and (max-width: 1350px) {
