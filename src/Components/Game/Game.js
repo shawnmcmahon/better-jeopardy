@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import PropTypes from 'prop-types';
 import { Route, Switch, Redirect, NavLink } from 'react-router-dom';
 import './Game.css';
 import ErrorComponent from '../ErrorComponent/ErrorComponent';
@@ -276,3 +277,27 @@ const Game = ({ player }) => {
 }
 
 export default Game;
+
+Question.PropTypes = {
+  selectedQuestion: PropTypes.number.isRequired,
+  pickQuestion: PropTypes.func.isRequired, 
+  pickAnswer: PropTypes.func.isRequired,
+}
+
+Results.PropTypes = {
+  newGame: PropTypes.func.isRequired, 
+  playerSet: PropTypes.func.isRequired, 
+  player: PropTypes.string.isRequired, 
+  userScore: PropTypes.number.isRequired,
+  addGameAndReset: PropTypes.func.isRequired, 
+}
+
+SavedGamePage.PropTypes = {
+  id: PropTypes.number.isRequired
+}
+
+GameBoard.PropTypes = {
+  categories: PropTypes.array.isRequired, 
+  questions: PropTypes.array.isRequired, 
+  reset: PropTypes.func.isRequired
+}
