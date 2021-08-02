@@ -2,7 +2,7 @@
 
 ## [View The Deployed Site Here](https://better-jeopardy.herokuapp.com/)
 
-## [Our API](https://github.com/hoomberto/better-jeopardy-API)
+## [Our API](https://github.com/hoomberto/better-jeopardy-API-v2)
 
 ## Overview
 
