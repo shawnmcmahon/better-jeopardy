@@ -50,5 +50,6 @@ describe('App', () => {
     cy.visit('http://localhost:3000');
     cy.get('button').contains('Start Game').click();
     cy.url().should('eq', 'http://localhost:3000/');
+    cy.get('.error-message').contains('Error: 500 Internal Server Error')
   })
 });
