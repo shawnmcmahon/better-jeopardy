@@ -169,9 +169,7 @@ const Game = ({ player }) => {
     setHasAnswered(true)
   }
 
-
   return (
-
       <Switch>
         <Route
             exact
@@ -183,7 +181,8 @@ const Game = ({ player }) => {
                   { !!categoryQuestions.length && <Redirect to="/game" />}
                   <section className="categories-selector">
 
-                    <label htmlFor="numberOfCategories">Choose Number of Categories:</label>
+
+                 <label htmlFor="numberOfCategories">Choose Number of Categories:</label>
                     <div className="selector-bg">
                       <select
                         name="numberOfCategories"
