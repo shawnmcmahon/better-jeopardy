@@ -7,14 +7,11 @@ import Question from '../Question/Question';
 import GameBoard from '../GameBoard/GameBoard';
 import Results from '../Results/Results';
 import PastGames from '../PastGames/PastGames';
-import Form from '../Form/Form';
 import SavedGamePage from '../SavedGamePage/SavedGamePage'
 import { getQuestions, addGame } from '../../utilities/apiCalls';
-import { getRandomIndex } from '../../utilities/utils';
 const dayjs = require('dayjs');
 
-
-const Game = ({ player }) => {
+const Game = () => {
 
   const [playerName, setPlayerName] = useState('');
   const [questions, setQuestions] = useState([])
@@ -72,9 +69,6 @@ const Game = ({ player }) => {
     }
   }
 
-  const gameOver = () => {
-    setRoundOver(true)
-  }
 
   const populateRandomCategories = (num) => {
 
@@ -113,11 +107,6 @@ const Game = ({ player }) => {
   const checkIfOver = () => {
     if (answeredQuestions.length === originalQuestions.length) {
       setRoundOver(true)
-      const pastGame = {
-        questions: [...answeredQuestions],
-        date: dayjs().$d,
-        score: userScore
-      }
       resetGame();
     }
   }
@@ -162,8 +151,6 @@ const Game = ({ player }) => {
     }
   }
 
-
-
   const updateQuestions = () => {
     let newQuestions = categoryQuestions.filter(question => question.question_id !== currentQuestion.question_id)
     setCategoryQuestions(newQuestions)
@@ -181,9 +168,7 @@ const Game = ({ player }) => {
                   {!!errorMessage && <ErrorComponent />}
                   { !!categoryQuestions.length && <Redirect to="/game" />}
                   <section className="categories-selector">
-
-
-                 <label htmlFor="numberOfCategories">Choose Number of Categories:</label>
+                  <label htmlFor="numberOfCategories">Choose Number of Categories:</label>
                     <div className="selector-bg">
                       <select
                         name="numberOfCategories"

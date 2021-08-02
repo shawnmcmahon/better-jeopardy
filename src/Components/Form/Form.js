@@ -1,22 +1,9 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import './Form.css';
 
-
 const Form = ({player, playerSet}) => {
-  // const [name, setName] = useState('')
-
-  // const submit = () => {
-  //   if (name) {
-  //     playerSet(name)
-  //   }
-  // }
-  //
-  // useEffect(() => {
-  //   playerSet(name)
-  // }, [name])
 
   return (
-
       <input
         type="text"
         className="player-name"
@@ -24,8 +11,6 @@ const Form = ({player, playerSet}) => {
         value={player}
         placeholder="Enter Player Name"
       />
-    // <button onClick={submit} />Submit Name</button>
-
   )
 }
 

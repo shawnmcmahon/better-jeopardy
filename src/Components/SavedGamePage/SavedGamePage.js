@@ -2,7 +2,6 @@ import React, { useState, useEffect } from "react"
 import PropTypes from 'prop-types';
 import SavedGame from '../SavedGame/SavedGame';
 import { getSingleGame } from '../../utilities/apiCalls'
-// import 'SavedGamePage.css'
 
 const SavedGamePage = ({ id }) => {
   const [gameInfo, setGameInfo] = useState('')

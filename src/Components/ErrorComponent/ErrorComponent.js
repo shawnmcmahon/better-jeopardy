@@ -2,9 +2,7 @@ import React from 'react';
 import './ErrorComponent.css';
 import PropTypes from 'prop-types';
 
-
 const ErrorComponent = () => {
-
 
   return (
     <div className="error-container"> 
@@ -16,6 +14,6 @@ const ErrorComponent = () => {
 
 export default ErrorComponent;
 
-// ErrorComponent.propTypes = {
-//   errorMessage: PropTypes.string.isRequired
-// };
+ErrorComponent.propTypes = {
+  errorMessage: PropTypes.string.isRequired
+};

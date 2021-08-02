@@ -3,8 +3,6 @@ import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom'
 import Form from '../Form/Form'
 import './Results.css';
-import addGame from '../../utilities/apiCalls';
-
 
 const Results = ({ newGame, playerSet, player, userScore, addGame, setPastGame, pastGame, addGameAndReset}) => {
   const [notifyUser, setNotifyUser] = useState('')

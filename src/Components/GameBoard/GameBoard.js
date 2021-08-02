@@ -1,12 +1,12 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import './GameBoard.css';
-
 import Tile from '../Tile/Tile';
+import './GameBoard.css';
 
 const GameBoard = ({categories, questions, reset}) => {
   const questionsAndCategories = categories.map((category, index) => {
-      return <div key={index} className="category">
+      return (
+        <div key={index} className="category">
         <h1>{category}</h1>
         <div className="tiles">
         {questions.map(question => {
@@ -25,6 +25,7 @@ const GameBoard = ({categories, questions, reset}) => {
         })}
         </div>
       </div>
+      )
     })
 
   return (
@@ -39,6 +40,6 @@ export default GameBoard;
 
 Tile.propTypes = {
   id: PropTypes.number.isRequired, 
-  q: PropTypes.array.isRequired,
+  q: PropTypes.string.isRequired,
   prize: PropTypes.number.isRequired
 }
