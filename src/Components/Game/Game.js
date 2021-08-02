@@ -30,6 +30,7 @@ const Game = ({ player }) => {
   const [isCorrect, setIsCorrect] = useState('');
   const [pastGame, setPastGame] = useState({});
   const [errorMessage, setErrorMessage] = useState('');
+  const [notify, setNotify] = useState('')
 
   useEffect(() => {
     getQuestions()
@@ -44,9 +45,7 @@ const Game = ({ player }) => {
       setCategories(categoriesFromQuestions)
     })
     .catch(error => {
-      console.log('the error', error)
       setErrorMessage(error)
-      console.log('state.error', errorMessage)
     })
   }, [])
 
@@ -61,14 +60,12 @@ const Game = ({ player }) => {
       return
     }
     if (!categoryQuestions.length && !!answeredQuestions.length) {
-      console.log("Number of questions answered", answeredQuestions.length)
       const pastGame = {
         questions: [...answeredQuestions],
         date: dayjs().$d,
         name: playerName,
         score: userScore
       }
-      console.log(pastGame)
       setPastGame(pastGame);
       addGame(pastGame);
       resetGame();
@@ -100,8 +97,10 @@ const Game = ({ player }) => {
   const getQuestionsByCategory = () => {
     let relevantQuestions = [];
     if (!selectedCategories.length) {
+      setNotify('Please choose number of categories to play.')
       return
     }
+    setNotify('')
     selectedCategories.forEach(category => {
       let categoryQuestions = questions.filter(question => question.category === category)
       relevantQuestions = [...relevantQuestions, ...categoryQuestions]
@@ -143,7 +142,9 @@ const Game = ({ player }) => {
     evaluateChoice(choice)
     updateQuestions()
     checkIfOver();
-    setTimeout(letUserPickNext, 800);
+    setTimeout(() => {
+      setHasAnswered(false)
+    }, 500);
   }
 
   const evaluateChoice = (choice) => {
@@ -169,10 +170,6 @@ const Game = ({ player }) => {
     setHasAnswered(true)
   }
 
-  const letUserPickNext = () => {
-    setHasAnswered(false)
-  }
-
   return (
       <Switch>
         <Route
@@ -185,7 +182,8 @@ const Game = ({ player }) => {
                   { !!categoryQuestions.length && <Redirect to="/game" />}
                   <section className="categories-selector">
 
-                    <label htmlFor="numberOfCategories">Number of Categories:</label>
+
+                 <label htmlFor="numberOfCategories">Choose Number of Categories:</label>
                     <div className="selector-bg">
                       <select
                         name="numberOfCategories"
@@ -199,6 +197,7 @@ const Game = ({ player }) => {
                         <option value="6">6</option>
                       </select>
                     </div>
+                    {!!notify && <h3>{notify}</h3>}
                     <button id="startGameBtn" className="start-game" onClick={getQuestionsByCategory}>Start Game</button>
                     <NavLink exact to="/saved-games"><button className="nav-button">Saved Games</button></NavLink>
                   </section>
