@@ -292,3 +292,7 @@ Results.PropTypes = {
   userScore: PropTypes.number.isRequired,
   addGameAndReset: PropTypes.func.isRequired, 
 }
+
+SavedGamePage.PropTypes = {
+  id: PropTypes.number.isRequired
+}
