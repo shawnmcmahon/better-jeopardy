@@ -27,6 +27,7 @@ const PastGames = () => {
       // console.log('score', score)
       return (
         <SavedGameCard
+          key={game_id}
           date={date}
           id={game_id}
           score={score}
