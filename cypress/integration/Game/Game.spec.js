@@ -89,8 +89,7 @@ describe('Game', () => {
   })
 
   it('Should navigate to a question page when a question box is clicked', () => {
-    cy.get('select')
-        .select('2')
+    cy.get('select').select('2')
     cy.get('button').contains('Start Game').click()
     cy.url().should('eq', 'http://localhost:3000/game')
     cy.get('div > a').get('a').eq(1).click()
@@ -98,12 +97,57 @@ describe('Game', () => {
   })
 
   it('Should be able to use the back and forward buttons', () => {
-    cy.get('select')
-      .select('2');
+    cy.get('select').select('2');
     cy.get('button').contains('Start Game').click();
     cy.url().should('eq', 'http://localhost:3000/game');
     cy.get('div > a').get('a').eq(1).click();
     cy.go('back');
     cy.go('forward');
   })
+
+  it('Should allow the user to play and submit a game', () => {
+    cy.get('select').select('1');
+    cy.get('button').contains('Start Game').click();
+    cy.url().should('eq', 'http://localhost:3000/game');
+    cy.get('div > a').get('a').first().click();
+    cy.get('button').first().click();
+    cy.wait(600)
+    cy.get('div > a').get('a').first().click();
+    cy.get('button').first().click();
+    cy.wait(600)
+    cy.get('div > a').get('a').first().click();
+    cy.get('button').first().click();
+    cy.wait(600)
+    cy.get('div > a').get('a').first().click();
+    cy.get('button').first().click();
+    cy.wait(600)
+    cy.get('div > a').get('a').first().click();
+    cy.get('button').first().click();
+    cy.wait(600)
+    cy.get('input').type('Cypress Test!')
+    cy.get('button').contains('Submit Game').click();
+  });
+
+  it('Should not allow the user to submit a game without inputting their name', () => {
+    cy.get('select').select('1');
+    cy.get('button').contains('Start Game').click();
+    cy.url().should('eq', 'http://localhost:3000/game');
+    cy.get('div > a').get('a').first().click();
+    cy.get('button').first().click();
+    cy.wait(600)
+    cy.get('div > a').get('a').first().click();
+    cy.get('button').first().click();
+    cy.wait(600)
+    cy.get('div > a').get('a').first().click();
+    cy.get('button').first().click();
+    cy.wait(600)
+    cy.get('div > a').get('a').first().click();
+    cy.get('button').first().click();
+    cy.wait(600)
+    cy.get('div > a').get('a').first().click();
+    cy.get('button').first().click();
+    cy.wait(600)
+    cy.get('button').contains('Submit Game').click();
+    cy.get('h3').contains('Please provide name to submit a record of game.');
+  });
 })
