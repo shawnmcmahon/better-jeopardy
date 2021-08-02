@@ -10,7 +10,6 @@
   grid-template-columns: repeat(5, 1fr);
   place-items: center;
   width: 100vw;
-  /* justify-content: space-around; */
 }
 
 .exit {

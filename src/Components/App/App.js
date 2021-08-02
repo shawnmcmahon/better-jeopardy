@@ -10,7 +10,7 @@ const App = () => {
   <BrowserRouter>
     <main>
       <Header />
-      
+
       <Game />
     </main>
   </BrowserRouter>

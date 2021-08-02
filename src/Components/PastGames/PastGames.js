@@ -31,7 +31,10 @@ const PastGames = () => {
       )
     })
   }
+<<<<<<< HEAD
   
+=======
+>>>>>>> ff5b72f1189ac9fd6efd9a48a00b6a6612ce262e
 
   return (
     <section className="past-games-section">
@@ -44,7 +47,12 @@ const PastGames = () => {
 
 export default PastGames;
 
+<<<<<<< HEAD
 SavedGameCard.propTypes = {
+=======
+SavedGameCard.PropTypes = {
+  key: PropTypes.number.isRequired,
+>>>>>>> ff5b72f1189ac9fd6efd9a48a00b6a6612ce262e
   date: PropTypes.string.isRequired,
   id: PropTypes.number.isRequired,
   score: PropTypes.number.isRequired,

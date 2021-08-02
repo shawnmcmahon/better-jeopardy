@@ -16,11 +16,11 @@ const getSingleGame = (id) => {
 const getPastGames = () => {
   return fetch('https://better-jeopardy-api-v2.herokuapp.com/api/v1/past-games')
     .then(checkResponse)
-
 }
 
 const addGame = (pastGame) => {
-  return fetch('http://better-jeopardy-api-v2.herokuapp.com/api/v1/past-games', {
+  console.log(pastGame)
+  return fetch('https://better-jeopardy-api-v2.herokuapp.com/api/v1/past-games', {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json'

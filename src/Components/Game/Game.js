@@ -257,6 +257,13 @@ const Game = () => {
             );
           }}
         />
+        <Route
+          render={() => {
+            return (
+              <Redirect to="/" />
+            )
+          }}
+        />
       </Switch>
   )
 }
@@ -265,7 +272,7 @@ export default Game;
 
 Question.propTypes = {
   selectedQuestion: PropTypes.number.isRequired,
-  pickQuestion: PropTypes.func.isRequired, 
+  pickQuestion: PropTypes.func.isRequired,
   pickAnswer: PropTypes.func.isRequired,
 }
 
@@ -274,7 +281,7 @@ Results.propTypes = {
   playerSet: PropTypes.func.isRequired, 
   player: PropTypes.string.isRequired, 
   userScore: PropTypes.number.isRequired,
-  addGameAndReset: PropTypes.func.isRequired, 
+  addGameAndReset: PropTypes.func.isRequired,
 }
 
 SavedGamePage.propTypes = {

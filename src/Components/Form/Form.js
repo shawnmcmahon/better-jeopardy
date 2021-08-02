@@ -2,7 +2,6 @@ import React from 'react';
 import './Form.css';
 
 const Form = ({player, playerSet}) => {
-
   return (
       <input
         type="text"
