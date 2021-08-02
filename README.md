@@ -42,6 +42,9 @@ This project was done as the Mod 3 FE Stretch Tech project, meaning that our gro
 
 ## Contributors
 <table>
+     <tr>
+          <td> Dean Cook <a href="https://github.com/novaraptur">GH</td>
+    </tr>
     </tr>
  <td><img src="https://avatars.githubusercontent.com/u/70540855?v=4" alt="Dean GH img"
 width="150" height="auto" /></td>
@@ -53,14 +56,11 @@ width="150" height="auto" /></td>
 width="150" height="auto" /></td>
     </tr>
      <tr>
-        <td> Bobby Vasquez <a href="https://github.com/mendozalourdes">GH</td>
+        <td> Bobby Vasquez <a href="https://github.com/hoomberto">GH</td>
     </tr>
     </tr>
     <td><img src="https://avatars.githubusercontent.com/u/78388491?v=4" alt="Bobby GH img"
  width="150" height="auto" /></td>
-    <tr>
-          <td> Dean Cook <a href="https://github.com/clairefields15">GH</td>
-    </tr>
 </table>
 
 **************************************************************************
