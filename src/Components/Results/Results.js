@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom'
 import Form from '../Form/Form'
 import './Results.css';
@@ -20,3 +21,8 @@ const Results = ({ newGame, playerSet, player, userScore, addGame, setPastGame, 
 }
 
 export default Results;
+
+Form.PropTypes = {
+  playerSet: PropTypes.func.isRequired,
+  player: PropTypes.string.isRequired
+}
