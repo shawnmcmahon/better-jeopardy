@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import './GameBoard.css';
 
 import Tile from '../Tile/Tile';
@@ -35,3 +36,9 @@ const GameBoard = ({categories, questions, reset}) => {
 }
 
 export default GameBoard;
+
+Tile.PropTypes = {
+  id: PropTypes.number.isRequired, 
+  q: PropTypes.array.isRequired,
+  prize: PropTypes.number.isRequired
+}
