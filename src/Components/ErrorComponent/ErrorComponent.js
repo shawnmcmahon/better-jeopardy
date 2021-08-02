@@ -7,7 +7,7 @@ const ErrorComponent = () => {
 
 
   return (
-    <div className="error-container"> 
+    <div className="error-container">
       <h2 className="error-message">Error: 500 Internal Server Error</h2>
     </div>
   )
@@ -15,7 +15,3 @@ const ErrorComponent = () => {
 
 
 export default ErrorComponent;
-
-// ErrorComponent.propTypes = {
-//   errorMessage: PropTypes.string.isRequired
-// };

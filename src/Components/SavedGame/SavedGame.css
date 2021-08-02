@@ -12,19 +12,14 @@ h2, article {
 
 .date {
   color: black;
-
-
 }
 
 .id {
   color: black;
-
 }
 
 .questions {
   color: black;
-
-
 }
 
 .score {
@@ -46,7 +41,6 @@ h2, article {
 
 .saved-game * {
   color: white;
-  /* padding: 0; */
 }
 
 ul {

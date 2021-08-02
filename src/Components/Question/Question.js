@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
-// import React, { Component } from 'react';
 import './Question.css';
 import { getSingleQuestion } from '../../utilities/apiCalls';
 import { shuffleAnswers } from '../../utilities/gameUtils.js';
@@ -52,7 +51,7 @@ const Question = ({ selectedQuestion, pickQuestion, pickAnswer, isCorrect, hasAn
 export default Question;
 
 Answer.PropTypes = {
-  key: PropTypes.number.isRequired, 
-  answer: PropTypes.string.isRequired, 
+  key: PropTypes.number.isRequired,
+  answer: PropTypes.string.isRequired,
   pickAnswer: PropTypes.func.isRequired
 }

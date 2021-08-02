@@ -1,28 +1,16 @@
-/* article:nth-child(even) {
-  background-color: #0F70BD;
-}
-
-article:nth-child(odd) {
-  background-color: #340073;
-} */
-
 article {
   background-color: #0F70BD;
   display: flex;
   flex-direction: column;
   text-align: center;
-  /* padding-top: 2%;
-  margin: 5%; */
-  /* transform: rotate(-90deg); */
   width: 200px;
   height: 200px;
   padding: 25px;
 }
 
-
-  .tile-wrapper {
-    margin: 5%;
-  }
+.tile-wrapper {
+  margin: 5%;
+}
 
 a {
   color: white;
@@ -39,28 +27,6 @@ article * {
   background-color: inherit;
   pointer-events: none;
 }
-
-/* .tile-wrapper {
-  border-radius: 0;
-
-} */
-
-/* .tile-wrapper {
-  background-color: #0F70BD;
-}
-
-.tile-wrapper *, .tile-wrapper {
-  transition: .2s ease all;
-}
-
-.tile-wrapper * {
-  background: inherit;
-}
-
-.tile-wrapper *:hover, .tile-wrapper:hover {
-  background: #340073;
-} */
-
 
 @media screen and (max-width: 1350px) {
   article {
@@ -90,14 +56,10 @@ article * {
   .tile-wrapper *:hover {
     background: inherit;
     color: white;
-    /* color: blue; */
   }
 }
 
 @media screen and (max-width: 450px) {
-  /* article {
-    margin-bottom: 5%;
-  } */
   .tile-wrapper {
     margin-bottom: 5%;
   }

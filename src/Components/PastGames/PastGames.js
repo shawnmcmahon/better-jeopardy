@@ -32,35 +32,6 @@ const PastGames = () => {
       )
     })
   }
-  // if (!!pastGameData.length) {
-  //   const theDataWeNeed = pastGameData
-  //
-  //   console.log('hi', theDataWeNeed);
-  //   return renderPastGames = theDataWeNeed.map((gameData, index) => {
-  //     console.log('mapData', gameData)
-  //     const {date, game_id, questions, score} = gameData;
-  //     return (
-  //     <div>
-  //       <SavedGame
-  //           date={date}
-  //           key={game_id}
-  //           id={game_id}
-  //           questions={questions}
-  //           score={score}
-  //         />
-  //         {/* <SavedGame
-  //           date={gameData[index].date}
-  //           key={gameData[index].game_id}
-  //           id={gameData[index].game_id}
-  //           questions={gameData[index].questions}
-  //           score={gameData[index].score}
-  //         />  */}
-  //     </div>
-  //
-  //     )
-  //   })
-  //   // return renderPastGames;
-  // }
 
   return (
     <section className="past-games-section">
@@ -74,7 +45,7 @@ const PastGames = () => {
 export default PastGames;
 
 SavedGameCard.PropTypes = {
-  key: PropTypes.number.isRequired, 
+  key: PropTypes.number.isRequired,
   date: PropTypes.string.isRequired,
   id: PropTypes.number.isRequired,
   score: PropTypes.number.isRequired,
