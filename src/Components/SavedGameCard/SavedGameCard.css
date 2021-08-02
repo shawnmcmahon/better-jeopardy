@@ -6,6 +6,8 @@
   margin: 6% 0;
   border-radius: 8px;
   transition: .2s ease all;
+  height: auto;
+  width: auto;
 }
 
 .more-info:hover {

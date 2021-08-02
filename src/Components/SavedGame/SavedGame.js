@@ -9,7 +9,7 @@ const SavedGame = ({date, id, questions, score, name}) => {
   const questionContainer = questions.map(question => {
     return (
 
-        <li>{question.question} | {question.answered_correct ? "Answered Correct" : "Incorrect Answer"}</li>
+        <li key={question.question_id}>{question.question} | {question.answered_correct ? "Answered Correct" : "Incorrect Answer"}</li>
 
     )
   })

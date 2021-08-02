@@ -31,6 +31,13 @@ describe('App', () => {
   });
 
   it('Should display an error message to the user if the questions cannot be loaded from the API', () => {
-    
+    cy.intercept('GET', 'https://better-jeopardy-api-v2.herokuapp.com/api/v1/questions',
+      {
+        statusCode: 404
+      }
+    )
+    cy.visit('http://localhost:3000');
+    cy.get('button').contains('Start Game').click();
+    cy.url().should('eq', 'http://localhost:3000/');
   });
 });

@@ -36,15 +36,13 @@ select {
   padding-top: 7%;
 }
 
-.start-game {
+.start-game, .nav-button {
   min-width: 200px;
-  min-height: 30px;
+  min-height: 50px;
   margin-top: 5%;
 }
 
 .nav-button {
-  min-width: 200px;
-  min-height: 30px;
   margin: 15% 0;
 
 }

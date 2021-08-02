@@ -31,7 +31,6 @@ const addGame = (pastGame) => {
     body: JSON.stringify(pastGame)
   })
   .then(checkResponse)
-  // .then(console.log('Success!'))
 }
 
 const checkResponse = (response) => {
