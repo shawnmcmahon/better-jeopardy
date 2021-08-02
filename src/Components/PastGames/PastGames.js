@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 import './PastGames.css';
 import { getPastGames } from '../../utilities/apiCalls'
@@ -71,3 +72,11 @@ const PastGames = () => {
 }
 
 export default PastGames;
+
+SavedGameCard.PropTypes = {
+  key: PropTypes.number.isRequired, 
+  date: PropTypes.string.isRequired,
+  id: PropTypes.number.isRequired,
+  score: PropTypes.number.isRequired,
+  name: PropTypes.string.isRequired
+}
