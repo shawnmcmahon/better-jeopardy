@@ -296,3 +296,9 @@ Results.PropTypes = {
 SavedGamePage.PropTypes = {
   id: PropTypes.number.isRequired
 }
+
+GameBoard.PropTypes = {
+  categories: PropTypes.array.isRequired, 
+  questions: PropTypes.array.isRequired, 
+  reset: PropTypes.func.isRequired
+}
