@@ -37,7 +37,7 @@ const GameBoard = ({categories, questions, reset}) => {
 
 export default GameBoard;
 
-Tile.PropTypes = {
+Tile.propTypes = {
   id: PropTypes.number.isRequired, 
   q: PropTypes.array.isRequired,
   prize: PropTypes.number.isRequired

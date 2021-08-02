@@ -51,8 +51,7 @@ const Question = ({ selectedQuestion, pickQuestion, pickAnswer, isCorrect, hasAn
 
 export default Question;
 
-Answer.PropTypes = {
-  key: PropTypes.number.isRequired, 
+Answer.propTypes = {
   answer: PropTypes.string.isRequired, 
   pickAnswer: PropTypes.func.isRequired
 }

@@ -73,8 +73,7 @@ const PastGames = () => {
 
 export default PastGames;
 
-SavedGameCard.PropTypes = {
-  key: PropTypes.number.isRequired, 
+SavedGameCard.propTypes = {
   date: PropTypes.string.isRequired,
   id: PropTypes.number.isRequired,
   score: PropTypes.number.isRequired,

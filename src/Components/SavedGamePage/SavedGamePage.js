@@ -23,7 +23,7 @@ const SavedGamePage = ({ id }) => {
 
 export default SavedGamePage
 
-SavedGame.PropTypes= {
+SavedGame.propTypes= {
   date: PropTypes.string.isRequired, 
   questions: PropTypes.array.isRequired, 
   score: PropTypes.number.isRequired, 

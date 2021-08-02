@@ -32,7 +32,7 @@ const Results = ({ newGame, playerSet, player, userScore, addGame, setPastGame, 
 
 export default Results;
 
-Form.PropTypes = {
+Form.propTypes = {
   playerSet: PropTypes.func.isRequired,
   player: PropTypes.string.isRequired
 }

@@ -278,13 +278,13 @@ const Game = ({ player }) => {
 
 export default Game;
 
-Question.PropTypes = {
+Question.propTypes = {
   selectedQuestion: PropTypes.number.isRequired,
   pickQuestion: PropTypes.func.isRequired, 
   pickAnswer: PropTypes.func.isRequired,
 }
 
-Results.PropTypes = {
+Results.propTypes = {
   newGame: PropTypes.func.isRequired, 
   playerSet: PropTypes.func.isRequired, 
   player: PropTypes.string.isRequired, 
@@ -292,11 +292,11 @@ Results.PropTypes = {
   addGameAndReset: PropTypes.func.isRequired, 
 }
 
-SavedGamePage.PropTypes = {
+SavedGamePage.propTypes = {
   id: PropTypes.number.isRequired
 }
 
-GameBoard.PropTypes = {
+GameBoard.propTypes = {
   categories: PropTypes.array.isRequired, 
   questions: PropTypes.array.isRequired, 
   reset: PropTypes.func.isRequired
