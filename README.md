@@ -17,10 +17,15 @@ This project was done as the Mod 3 FE Stretch Tech project, meaning that our gro
 ### Responsive Design
 ![Responsive Design](https://media.giphy.com/media/6lNt4OiA6izr3JcgOv/giphy.gif)
 
-
-
 [Project Rubric](https://frontend.turing.edu/projects/module-3/stretch.html)
 
+## Set Up
+
+Clone this repo down, and `cd` into it.
+
+Run `npm install`
+
+Run `npm start`
 
 ## Future Extensions
 
