@@ -1,17 +1,19 @@
 import React, { useState, useEffect } from "react"
 import PropTypes from 'prop-types';
+import { useParams } from 'react-router-dom';
 import SavedGame from '../SavedGame/SavedGame';
 import { getSingleGame } from '../../utilities/apiCalls'
 
-const SavedGamePage = ({ id }) => {
+const SavedGamePage = () => {
+  const { game_id } = useParams();
   const [gameInfo, setGameInfo] = useState('')
 
   useEffect(() => {
-    getSingleGame(id)
+    getSingleGame(parseInt(game_id))
     .then(data => {
       setGameInfo(data)
     })
-  }, [])
+  }, [game_id])
 
   return (
     <>

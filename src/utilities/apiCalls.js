@@ -1,25 +1,27 @@
+const API_BASE_URL = process.env.REACT_APP_API_URL || 'http://localhost:3006';
+
 const getQuestions = () => {
-  return fetch('https://better-jeopardy-api-v2.herokuapp.com/api/v1/questions')
+  return fetch(`${API_BASE_URL}/api/v1/questions`)
     .then(checkResponse)
 }
 
 const getSingleQuestion = (id) => {
-  return fetch(`https://better-jeopardy-api-v2.herokuapp.com/api/v1/questions/${id}`)
+  return fetch(`${API_BASE_URL}/api/v1/questions/${id}`)
     .then(checkResponse)
 }
 
 const getSingleGame = (id) => {
-  return fetch(`https://better-jeopardy-api-v2.herokuapp.com/api/v1/past-games/${id}`)
+  return fetch(`${API_BASE_URL}/api/v1/past-games/${id}`)
     .then(checkResponse)
 }
 
 const getPastGames = () => {
-  return fetch('https://better-jeopardy-api-v2.herokuapp.com/api/v1/past-games')
+  return fetch(`${API_BASE_URL}/api/v1/past-games`)
     .then(checkResponse)
 }
 
 const addGame = (pastGame) => {
-  return fetch('https://better-jeopardy-api-v2.herokuapp.com/api/v1/past-games', {
+  return fetch(`${API_BASE_URL}/api/v1/past-games`, {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json'

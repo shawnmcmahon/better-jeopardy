@@ -1,17 +1,18 @@
 import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
+import { useParams } from 'react-router-dom';
 import './Question.css';
 import { getSingleQuestion } from '../../utilities/apiCalls';
 import { shuffleAnswers } from '../../utilities/gameUtils.js';
 import Answer from '../Answer/Answer';
 
-const Question = ({ selectedQuestion, pickQuestion, pickAnswer, isCorrect, hasAnswered }) => {
-
+const Question = ({ pickQuestion, pickAnswer, isCorrect, hasAnswered }) => {
+  const { question_id } = useParams();
   const [currentQuestion, setCurrentQuestion] = useState('');
 
   useEffect(() => {
     let mounted = true;
-    getSingleQuestion(selectedQuestion)
+    getSingleQuestion(parseInt(question_id))
     .then(data => {
       if (mounted) {
         pickQuestion(data)
@@ -19,7 +20,7 @@ const Question = ({ selectedQuestion, pickQuestion, pickAnswer, isCorrect, hasAn
       }
       return () => mounted = false;
     })
-  }, [])
+  }, [question_id, pickQuestion])
 
   const randomlyPlaceAnswers = () => {
     const { correct_answer, incorrect_answers } = currentQuestion
