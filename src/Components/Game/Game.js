@@ -50,7 +50,7 @@ const Game = () => {
     if (!categoryQuestions.length && !!answeredQuestions.length) {
       setRoundOver(true)
     }
-  }, [categoryQuestions.length])
+  }, [categoryQuestions.length, answeredQuestions.length])
 
   const addGameAndReset = () => {
     if (!playerName) {
