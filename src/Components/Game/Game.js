@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
-import { Route, Switch, Redirect, NavLink } from 'react-router-dom';
+import { Route, Routes, Navigate, NavLink, useParams } from 'react-router-dom';
 import './Game.css';
 import ErrorComponent from '../ErrorComponent/ErrorComponent';
 import Question from '../Question/Question';
@@ -10,6 +10,21 @@ import PastGames from '../PastGames/PastGames';
 import SavedGamePage from '../SavedGamePage/SavedGamePage'
 import { getQuestions, addGame } from '../../utilities/apiCalls';
 const dayjs = require('dayjs');
+
+const SavedGameWrapper = () => {
+  const { game_id } = useParams();
+  return <SavedGamePage id={parseInt(game_id)} />;
+};
+
+const QuestionWrapper = ({ isCorrect, pickQuestion, pickAnswer, hasAnswered }) => {
+  const { question_id } = useParams();
+  return (
+    <>
+      {!!hasAnswered && <Navigate to="/game" replace />}
+      <Question selectedQuestion={parseInt(question_id)} isCorrect={isCorrect} pickQuestion={pickQuestion} pickAnswer={pickAnswer} hasAnswered={hasAnswered} />
+    </>
+  );
+};
 
 const Game = () => {
 
@@ -158,15 +173,14 @@ const Game = () => {
   }
 
   return (
-      <Switch>
+      <Routes>
         <Route
-            exact
             path='/'
-            render={() => {
-              return (
+            element={
+              <>
+                {!!errorMessage && <ErrorComponent />}
+                { !!categoryQuestions.length && <Navigate to="/game" replace />}
                 <div>
-                  {!!errorMessage && <ErrorComponent />}
-                  { !!categoryQuestions.length && <Redirect to="/game" />}
                   <section className="categories-selector">
                   <label htmlFor="numberOfCategories">Choose Number of Categories:</label>
                     <div className="selector-bg">
@@ -184,87 +198,58 @@ const Game = () => {
                     </div>
                     {!!notify && <h3>{notify}</h3>}
                     <button id="startGameBtn" className="start-game" onClick={getQuestionsByCategory}>Start Game</button>
-                    <NavLink exact to="/saved-games"><button className="nav-button">Saved Games</button></NavLink>
+                    <NavLink to="/saved-games"><button className="nav-button">Saved Games</button></NavLink>
                   </section>
                 </div>
-              );
-            }}
+              </>
+            }
           />
         <Route
-            exact
             path='/results'
-            render={() => {
-              return (
-                <>
-                  {!answeredQuestions.length && <Redirect exact to="/" />}
-                  <Results
-                  newGame={resetGame}
-                  playerSet={setPlayerName}
-                  player={playerName}
-                  userScore={userScore}
-                  answeredQuestions={answeredQuestions}
-                  setPastGame={setPastGame}
-                  pastGame={pastGame}
-                  addGameAndReset={addGameAndReset}
-                  />
-                </>
-              )
-            }}
+            element={
+              <>
+                {!answeredQuestions.length && <Navigate to="/" replace />}
+                <Results
+                newGame={resetGame}
+                playerSet={setPlayerName}
+                player={playerName}
+                userScore={userScore}
+                answeredQuestions={answeredQuestions}
+                setPastGame={setPastGame}
+                pastGame={pastGame}
+                addGameAndReset={addGameAndReset}
+                />
+              </>
+            }
           />
         <Route
-          exact
           path='/saved-games'
-          render={() => {
-            return (
-              <PastGames />
-            )
-          }}
+          element={<PastGames />}
         />
         <Route
-          exact
           path='/saved-games/:game_id'
-          render={({match}) => {
-            return (
-              <>
-              <SavedGamePage id={parseInt(match.params.game_id)} />
-              </>
-            );
-          }}
+          element={<SavedGameWrapper />}
         />
         <Route
-          exact
           path='/game'
-          render={() => {
-            return (
-              <>
-              {!categoryQuestions.length && <Redirect exact to="/" />}
-              {!!answeredQuestions.length && !!roundOver && <Redirect exact to="/results" />}
-              <h1 className="in-correct">{!isCorrect && hasAnswered && "Incorrect!"}{!!isCorrect && hasAnswered && "Correct!"}{!hasAnswered && "Pick a Question"}</h1>
-              {!!categoryQuestions.length && <GameBoard categories={selectedCategories} questions={categoryQuestions} reset={resetGame}/>}
-              </>
-            );
-          }}
+          element={
+            <>
+            {!categoryQuestions.length && <Navigate to="/" replace />}
+            {!!answeredQuestions.length && !!roundOver && <Navigate to="/results" replace />}
+            <h1 className="in-correct">{!isCorrect && hasAnswered && "Incorrect!"}{!!isCorrect && hasAnswered && "Correct!"}{!hasAnswered && "Pick a Question"}</h1>
+            {!!categoryQuestions.length && <GameBoard categories={selectedCategories} questions={categoryQuestions} reset={resetGame}/>}
+            </>
+          }
         />
         <Route
-          exact
           path='/game/:question_id'
-          render={({match}) => {
-            return (
-              <>
-              {!!hasAnswered && <Redirect exact to="/game" />}
-              <Question selectedQuestion={parseInt(match.params.question_id)} isCorrect={isCorrect} pickQuestion={pickQuestion} pickAnswer={pickAnswer} hasAnswered={hasAnswered} />
-              </>
-            );
-          }}
+          element={<QuestionWrapper isCorrect={isCorrect} pickQuestion={pickQuestion} pickAnswer={pickAnswer} hasAnswered={hasAnswered} />}
         />
         <Route
-          render={() => {
-            return (
-              <Redirect to="/" />
-            )
-          }}
+          path='*'
+          element={<Navigate to="/" replace />}
         />
-      </Switch>
+      </Routes>
   )
 }
 
