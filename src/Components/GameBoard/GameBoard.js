@@ -22,7 +22,6 @@ const GameBoard = ({categories, questions, reset}) => {
               />
             )
           }
-          return null;
         })}
         </div>
       </div>

@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
-import { Route, Routes, Navigate, NavLink } from 'react-router-dom';
+import { Route, Switch, Redirect, NavLink } from 'react-router-dom';
 import './Game.css';
 import ErrorComponent from '../ErrorComponent/ErrorComponent';
 import Question from '../Question/Question';
@@ -50,7 +50,7 @@ const Game = () => {
     if (!categoryQuestions.length && !!answeredQuestions.length) {
       setRoundOver(true)
     }
-  }, [categoryQuestions.length, answeredQuestions.length])
+  }, [categoryQuestions.length])
 
   const addGameAndReset = () => {
     if (!playerName) {
@@ -158,92 +158,120 @@ const Game = () => {
   }
 
   return (
-      <Routes>
+      <Switch>
         <Route
+            exact
             path='/'
-            element={
-              <>
-                {!!errorMessage && <ErrorComponent />}
-                { !!categoryQuestions.length && <Navigate to="/game" replace />}
-                <section className="categories-selector">
-                <label htmlFor="numberOfCategories">Choose Number of Categories:</label>
-                  <div className="selector-bg">
-                    <select
-                      name="numberOfCategories"
-                      id="numberOfCategories"
-                      onChange={updateNumberOfCategories}
-                      >
-                      <option></option>
-                      <option value="1">1</option>
-                      <option value="2">2</option>
-                      <option value="3">3</option>
-                      <option value="6">6</option>
-                    </select>
-                  </div>
-                  {!!notify && <h3>{notify}</h3>}
-                  <button id="startGameBtn" className="start-game" onClick={getQuestionsByCategory}>Start Game</button>
-                  <NavLink to="/saved-games"><button className="nav-button">Saved Games</button></NavLink>
-                </section>
-              </>
-            }
+            render={() => {
+              return (
+                <div>
+                  {!!errorMessage && <ErrorComponent />}
+                  { !!categoryQuestions.length && <Redirect to="/game" />}
+                  <section className="categories-selector">
+                  <label htmlFor="numberOfCategories">Choose Number of Categories:</label>
+                    <div className="selector-bg">
+                      <select
+                        name="numberOfCategories"
+                        id="numberOfCategories"
+                        onChange={updateNumberOfCategories}
+                        >
+                        <option></option>
+                        <option value="1">1</option>
+                        <option value="2">2</option>
+                        <option value="3">3</option>
+                        <option value="6">6</option>
+                      </select>
+                    </div>
+                    {!!notify && <h3>{notify}</h3>}
+                    <button id="startGameBtn" className="start-game" onClick={getQuestionsByCategory}>Start Game</button>
+                    <NavLink exact to="/saved-games"><button className="nav-button">Saved Games</button></NavLink>
+                  </section>
+                </div>
+              );
+            }}
           />
         <Route
+            exact
             path='/results'
-            element={
-              <>
-                {!answeredQuestions.length && <Navigate to="/" replace />}
-                <Results
-                newGame={resetGame}
-                playerSet={setPlayerName}
-                player={playerName}
-                userScore={userScore}
-                answeredQuestions={answeredQuestions}
-                setPastGame={setPastGame}
-                pastGame={pastGame}
-                addGameAndReset={addGameAndReset}
-                />
-              </>
-            }
+            render={() => {
+              return (
+                <>
+                  {!answeredQuestions.length && <Redirect exact to="/" />}
+                  <Results
+                  newGame={resetGame}
+                  playerSet={setPlayerName}
+                  player={playerName}
+                  userScore={userScore}
+                  answeredQuestions={answeredQuestions}
+                  setPastGame={setPastGame}
+                  pastGame={pastGame}
+                  addGameAndReset={addGameAndReset}
+                  />
+                </>
+              )
+            }}
           />
         <Route
+          exact
           path='/saved-games'
-          element={<PastGames />}
+          render={() => {
+            return (
+              <PastGames />
+            )
+          }}
         />
         <Route
+          exact
           path='/saved-games/:game_id'
-          element={<SavedGamePage />}
+          render={({match}) => {
+            return (
+              <>
+              <SavedGamePage id={parseInt(match.params.game_id)} />
+              </>
+            );
+          }}
         />
         <Route
+          exact
           path='/game'
-          element={
-            <>
-            {!categoryQuestions.length && <Navigate to="/" replace />}
-            {!!answeredQuestions.length && !!roundOver && <Navigate to="/results" replace />}
-            <h1 className="in-correct">{!isCorrect && hasAnswered && "Incorrect!"}{!!isCorrect && hasAnswered && "Correct!"}{!hasAnswered && "Pick a Question"}</h1>
-            {!!categoryQuestions.length && <GameBoard categories={selectedCategories} questions={categoryQuestions} reset={resetGame}/>}
-            </>
-          }
+          render={() => {
+            return (
+              <>
+              {!categoryQuestions.length && <Redirect exact to="/" />}
+              {!!answeredQuestions.length && !!roundOver && <Redirect exact to="/results" />}
+              <h1 className="in-correct">{!isCorrect && hasAnswered && "Incorrect!"}{!!isCorrect && hasAnswered && "Correct!"}{!hasAnswered && "Pick a Question"}</h1>
+              {!!categoryQuestions.length && <GameBoard categories={selectedCategories} questions={categoryQuestions} reset={resetGame}/>}
+              </>
+            );
+          }}
         />
         <Route
+          exact
           path='/game/:question_id'
-          element={
-            <>
-            {!!hasAnswered && <Navigate to="/game" replace />}
-            <Question isCorrect={isCorrect} pickQuestion={pickQuestion} pickAnswer={pickAnswer} hasAnswered={hasAnswered} />
-            </>
-          }
+          render={({match}) => {
+            return (
+              <>
+              {!!hasAnswered && <Redirect exact to="/game" />}
+              <Question selectedQuestion={parseInt(match.params.question_id)} isCorrect={isCorrect} pickQuestion={pickQuestion} pickAnswer={pickAnswer} hasAnswered={hasAnswered} />
+              </>
+            );
+          }}
         />
         <Route
-          path='*'
-          element={<Navigate to="/" replace />}
+          render={() => {
+            return (
+              <Redirect to="/" />
+            )
+          }}
         />
-      </Routes>
+      </Switch>
   )
 }
 
 export default Game;
 
 Question.propTypes = {
+  selectedQuestion: PropTypes.number.isRequired,
   pickQuestion: PropTypes.func.isRequired,
   pickAnswer: PropTypes.func.isRequired,
 }
