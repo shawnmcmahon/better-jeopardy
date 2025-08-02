@@ -1,0 +1,16 @@
+[build]
+  command = "npm install && npm run build"
+  publish = "build"
+
+[build.environment]
+  NODE_VERSION = "18"
+  NPM_VERSION = "8"
+  CI = "false"
+  NODE_OPTIONS = "--max_old_space_size=4096"
+  GENERATE_SOURCEMAP = "false"
+  INLINE_RUNTIME_CHUNK = "false"
+
+[[redirects]]
+  from = "/*"
+  to = "/index.html"
+  status = 200 
